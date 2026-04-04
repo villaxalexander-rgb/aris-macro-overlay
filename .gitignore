@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables & secrets
+.env
+*.env
+credentials.json
+token.json
+service_account.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/*.log
+
+# Data cache
+data/cache/
+*.pkl
+*.pickle
+
+# Jupyter
+.ipynb_checkpoints/

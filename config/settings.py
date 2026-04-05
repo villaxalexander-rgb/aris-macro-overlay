@@ -28,13 +28,29 @@ VIX_HALT_THRESHOLD = 35
 DAILY_LOSS_LIMIT_PCT = 0.03
 NO_TRADE_MINUTES_BEFORE_CLOSE = 30
 
-# --- GSCI Universe (24 assets) ---
+# --- GSCI Universe (yfinance front-month futures tickers) ---
 GSCI_ASSETS = [
-    "CL", "BZ", "NG", "HO", "RB",
-    "GC", "SI", "HG", "PA", "PL",
-    "ZC", "ZW", "ZS", "ZM", "ZL",
-    "CT", "KC", "SB", "CC", "LC",
-    "LH", "FC", "LE", "AL",
+    "CL=F",   # Crude Oil WTI
+    "BZ=F",   # Brent Crude
+    "NG=F",   # Natural Gas
+    "HO=F",   # Heating Oil
+    "RB=F",   # RBOB Gasoline
+    "GC=F",   # Gold
+    "SI=F",   # Silver
+    "HG=F",   # Copper
+    "PA=F",   # Palladium
+    "PL=F",   # Platinum
+    "ZC=F",   # Corn
+    "ZW=F",   # Wheat
+    "ZS=F",   # Soybeans
+    "ZM=F",   # Soybean Meal
+    "ZL=F",   # Soybean Oil
+    "CT=F",   # Cotton
+    "KC=F",   # Coffee
+    "SB=F",   # Sugar
+    "CC=F",   # Cocoa    "LE=F",   # Live Cattle
+    "HE=F",   # Lean Hogs
+    "GF=F",   # Feeder Cattle
 ]
 
 # --- FRED Series for Regime Classifier ---

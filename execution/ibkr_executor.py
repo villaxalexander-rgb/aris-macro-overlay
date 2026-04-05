@@ -1,6 +1,5 @@
 """
-Module 3 — IBKR Execution Engine
-Uses ib_insync for order management via IBKR Gateway.
+Module 3 - IBKR Execution Engine
 """
 from datetime import datetime
 from ib_insync import IB, Future, MarketOrder, LimitOrder
@@ -22,26 +21,27 @@ class IBKRExecutor:
             self.ib.disconnect()
             self.connected = False
 
-    def get_nav(self) -> float:
+    def get_nav(self):
         for av in self.ib.accountValues():
             if av.tag == "NetLiquidationByCurrency" and av.currency == "BASE":
                 return float(av.value)
         return 0.0
 
-    def get_positions(self) -> list:
+    def get_positions(self):
         return self.ib.positions()
-    def get_daily_pnl(self) -> float:
+
+    def get_daily_pnl(self):
         pnl = self.ib.pnl()
         if pnl:
             return pnl[0].dailyPnL or 0.0
         return 0.0
 
-    def create_futures_contract(self, symbol: str, exchange: str = "NYMEX") -> Future:
+    def create_futures_contract(self, symbol, exchange="NYMEX"):
         contract = Future(symbol=symbol, exchange=exchange)
         self.ib.qualifyContracts(contract)
         return contract
 
-    def place_market_order(self, contract, quantity: int, action: str = "BUY") -> dict:
+    def place_market_order(self, contract, quantity, action="BUY"):
         order = MarketOrder(action, quantity)
         trade = self.ib.placeOrder(contract, order)
         self.ib.sleep(1)
@@ -54,9 +54,8 @@ class IBKRExecutor:
             "fill_price": trade.orderStatus.avgFillPrice,
             "timestamp": datetime.now().isoformat(),
         }
-    def place_limit_order(self, contract, quantity: int, price: float,
-                          action: str = "BUY", timeout_seconds: int = 900) -> dict:
-        """Place a limit order with 15-minute timeout."""
+
+    def place_limit_order(self, contract, quantity, price, action="BUY", timeout_seconds=900):
         order = LimitOrder(action, quantity, price)
         trade = self.ib.placeOrder(contract, order)
         start = datetime.now()

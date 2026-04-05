@@ -1,6 +1,5 @@
 """
-Module 1 — Daily Signal Pipeline
-Orchestrates BSV signals + regime classifier into a daily JSON output.
+Module 1 - Daily Signal Pipeline
 """
 import json
 import os
@@ -12,7 +11,7 @@ from signal_engine.regime_classifier import classify_regime, REGIME_WEIGHTS
 from config.settings import GSCI_ASSETS, SIGNAL_OUTPUT_PATH
 
 
-def run_daily_signals() -> dict:
+def run_daily_signals():
     """Run the full daily signal pipeline."""
     regime = classify_regime()
     print(f"Regime: {regime['regime']} (Growth {regime['growth_trend']}, Inflation {regime['inflation_trend']})")
@@ -30,7 +29,7 @@ def run_daily_signals() -> dict:
     return output
 
 
-def save_daily_signals(output: dict) -> str:
+def save_daily_signals(output):
     """Save daily signal output as JSON."""
     os.makedirs(SIGNAL_OUTPUT_PATH, exist_ok=True)
     filename = f"{SIGNAL_OUTPUT_PATH}{output['date']}_signals.json"

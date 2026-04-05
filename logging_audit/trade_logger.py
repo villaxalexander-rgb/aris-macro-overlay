@@ -1,6 +1,5 @@
 """
-Module 4 — Logging & Audit Trail
-Immutable trade logging with pre-trade rationale.
+Module 4 - Logging and Audit Trail
 """
 import csv
 import os
@@ -21,13 +20,14 @@ def init_trade_log():
             csv.writer(f).writerow(TRADE_LOG_HEADERS)
 
 
-def log_trade(trade_data: dict):
+def log_trade(trade_data):
     init_trade_log()
     row = [trade_data.get(h, "") for h in TRADE_LOG_HEADERS]
     with open(TRADE_LOG_PATH, "a", newline="") as f:
         csv.writer(f).writerow(row)
 
-def generate_pre_trade_thesis(symbol: str, signal_score: float, regime: str) -> str:
+
+def generate_pre_trade_thesis(symbol, signal_score, regime):
     direction = "LONG" if signal_score > 0 else "SHORT"
     strength = "strong" if abs(signal_score) > 0.5 else "moderate"
     return f"{direction} {symbol}: {strength} BSV composite ({signal_score:.2f}) in {regime} regime"

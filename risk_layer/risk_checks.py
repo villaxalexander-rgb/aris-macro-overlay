@@ -1,5 +1,5 @@
 """
-Module 2 — Risk Layer
+Module 2 - Risk Layer
 Hardcoded risk controls that gate all execution.
 """
 import yfinance as yf
@@ -12,7 +12,7 @@ from config.settings import (
 )
 
 
-def check_vix() -> tuple[bool, float]:
+def check_vix():
     """Check if VIX is below halt threshold."""
     vix = yf.Ticker("^VIX")
     current_vix = vix.info.get("regularMarketPrice", 0)
@@ -20,21 +20,22 @@ def check_vix() -> tuple[bool, float]:
     return ok, current_vix
 
 
-def check_position_size(proposed_notional: float, nav: float) -> tuple[bool, float]:
+def check_position_size(proposed_notional, nav):
     """Check if proposed position is within 2% NAV limit."""
     pct = proposed_notional / nav if nav > 0 else 1.0
     ok = pct <= MAX_POSITION_PCT
     return ok, pct
 
 
-def check_daily_loss(daily_pnl: float, nav: float) -> tuple[bool, float]:
-    """Check if daily loss exceeds kill switch threshold."""    loss_pct = daily_pnl / nav if nav > 0 else 0.0
+def check_daily_loss(daily_pnl, nav):
+    """Check if daily loss exceeds kill switch threshold."""
+    loss_pct = daily_pnl / nav if nav > 0 else 0.0
     ok = loss_pct > -DAILY_LOSS_LIMIT_PCT
     return ok, loss_pct
 
 
-def check_market_hours() -> tuple[bool, int]:
-    """Check if we're not in the final 30 minutes before close."""
+def check_market_hours():
+    """Check if we are not in the final 30 minutes before close."""
     now = datetime.now()
     close_hour, close_min = 17, 0
     minutes_to_close = (close_hour * 60 + close_min) - (now.hour * 60 + now.minute)
@@ -42,7 +43,7 @@ def check_market_hours() -> tuple[bool, int]:
     return ok, minutes_to_close
 
 
-def run_all_checks(proposed_notional: float, nav: float, daily_pnl: float) -> dict:
+def run_all_checks(proposed_notional, nav, daily_pnl):
     """Run all risk checks. ALL must pass for execution to proceed."""
     vix_ok, vix_level = check_vix()
     size_ok, size_pct = check_position_size(proposed_notional, nav)
@@ -58,7 +59,8 @@ def run_all_checks(proposed_notional: float, nav: float, daily_pnl: float) -> di
             "position_size": {"pass": size_ok, "value": size_pct, "threshold": MAX_POSITION_PCT},
             "daily_loss": {"pass": loss_ok, "value": loss_pct, "threshold": -DAILY_LOSS_LIMIT_PCT},
             "market_hours": {"pass": hours_ok, "minutes_to_close": mins_left},
-        },        "timestamp": datetime.now().isoformat(),
+        },
+        "timestamp": datetime.now().isoformat(),
     }
 
 

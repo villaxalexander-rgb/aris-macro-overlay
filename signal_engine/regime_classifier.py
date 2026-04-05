@@ -1,33 +1,28 @@
 """
-Module 1 — Macro Regime Classifier
+Module 1 - Macro Regime Classifier
 Growth/Inflation quadrant using FRED API (ISM + CPI).
-
-Regimes:
-  - Goldilocks:  Growth up, Inflation down
-  - Reflation:   Growth up, Inflation up
-  - Stagflation: Growth down, Inflation up
-  - Deflation:   Growth down, Inflation down
 """
 import pandas as pd
 from fredapi import Fred
 from config.settings import FRED_API_KEY, FRED_ISM_SERIES, FRED_CPI_SERIES
 
 
-def get_fred_data(series_id: str, lookback_months: int = 24) -> pd.Series:
+def get_fred_data(series_id, lookback_months=24):
     """Fetch a FRED series."""
     fred = Fred(api_key=FRED_API_KEY)
     data = fred.get_series(series_id)
     return data.tail(lookback_months)
 
 
-def compute_trend(series: pd.Series, window: int = 6) -> str:
+def compute_trend(series, window=6):
     """Determine if a series is trending up or down."""
     ma = series.rolling(window).mean()
     if ma.iloc[-1] > ma.iloc[-2]:
         return "up"
     return "down"
 
-def classify_regime() -> dict:
+
+def classify_regime():
     """Classify the current macro regime based on ISM and CPI trends."""
     ism = get_fred_data(FRED_ISM_SERIES)
     cpi = get_fred_data(FRED_CPI_SERIES)
@@ -53,6 +48,7 @@ def classify_regime() -> dict:
         "inflation_value": float(cpi_yoy.iloc[-1]),
         "timestamp": pd.Timestamp.now().isoformat(),
     }
+
 
 REGIME_WEIGHTS = {
     "Goldilocks":  {"energy": 1.0, "metals": 1.0, "agriculture": 1.0, "livestock": 1.0},

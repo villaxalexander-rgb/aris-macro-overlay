@@ -1,6 +1,5 @@
 """
-A.R.I.S Macro Overlay System — Main Entry Point
-Daily orchestration: signals -> risk checks -> execution -> logging -> briefing
+A.R.I.S Macro Overlay System - Main Entry Point
 """
 from datetime import datetime
 
@@ -10,7 +9,7 @@ from risk_layer.risk_checks import run_all_checks
 
 def run_daily_pipeline():
     print(f"\n{'='*60}")
-    print(f"A.R.I.S MACRO OVERLAY — Daily Run {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"A.R.I.S MACRO OVERLAY - Daily Run {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print(f"{'='*60}\n")
 
     # Step 1: Signals
@@ -24,6 +23,7 @@ def run_daily_pipeline():
     daily_pnl = 0
     risk_result = run_all_checks(proposed_notional=5000, nav=nav, daily_pnl=daily_pnl)
     print(f"Risk checks: {'ALL PASS' if risk_result['all_pass'] else 'BLOCKED'}")
+
     if not risk_result["all_pass"]:
         print("Execution blocked by risk layer. Logging and exiting.")
         return

@@ -1,0 +1,26 @@
+{
+  "date": "2026-04-06",
+  "timestamp": "2026-04-06T11:40:22.154238",
+  "risk_status": "ALL PASS",
+  "checks": {
+    "vix": {
+      "pass": true,
+      "value": 24.09,
+      "threshold": 35
+    },
+    "position_size": {
+      "pass": true,
+      "value": 0.02,
+      "threshold": 0.02
+    },
+    "daily_loss": {
+      "pass": true,
+      "value": 0.0,
+      "threshold": -0.03
+    },
+    "market_hours": {
+      "pass": true,
+      "minutes_to_close": 320
+    }
+  }
+}

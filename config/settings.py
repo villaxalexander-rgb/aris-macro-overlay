@@ -48,10 +48,45 @@ GSCI_ASSETS = [
     "CT=F",   # Cotton
     "KC=F",   # Coffee
     "SB=F",   # Sugar
-    "CC=F",   # Cocoa    "LE=F",   # Live Cattle
+    "CC=F",   # Cocoa
+    "LE=F",   # Live Cattle
     "HE=F",   # Lean Hogs
     "GF=F",   # Feeder Cattle
 ]
+
+# --- Sector Mapping (ticker -> sector for regime weight application) ---
+# Splits base metals (HG) from precious metals (GC, SI, PA, PL) because they
+# behave very differently across regimes — precious metals are the inflation
+# hedge, base metals are the growth play.
+SECTOR_MAP = {
+    # Energy
+    "CL=F": "energy",
+    "BZ=F": "energy",
+    "NG=F": "energy",
+    "HO=F": "energy",
+    "RB=F": "energy",
+    # Precious metals
+    "GC=F": "precious_metals",
+    "SI=F": "precious_metals",
+    "PA=F": "precious_metals",
+    "PL=F": "precious_metals",
+    # Base metals
+    "HG=F": "metals",
+    # Agriculture
+    "ZC=F": "agriculture",
+    "ZW=F": "agriculture",
+    "ZS=F": "agriculture",
+    "ZM=F": "agriculture",
+    "ZL=F": "agriculture",
+    "CT=F": "agriculture",
+    "KC=F": "agriculture",
+    "SB=F": "agriculture",
+    "CC=F": "agriculture",
+    # Livestock
+    "LE=F": "livestock",
+    "HE=F": "livestock",
+    "GF=F": "livestock",
+}
 
 # --- FRED Series for Regime Classifier ---
 FRED_ISM_SERIES = "MANEMP"

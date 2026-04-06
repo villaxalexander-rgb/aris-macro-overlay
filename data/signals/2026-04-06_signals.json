@@ -1,0 +1,282 @@
+{
+  "date": "2026-04-06",
+  "timestamp": "2026-04-06T11:40:21.838792",
+  "regime": {
+    "regime": "Deflation",
+    "growth_trend": "down",
+    "inflation_trend": "down",
+    "growth_value": 12591.0,
+    "inflation_value": 2.4340041103732224,
+    "timestamp": "2026-04-06T11:40:20.860600"
+  },
+  "signals": {
+    "BZ=F": {
+      "momentum": 0.5238095238095237,
+      "carry": 0.9047619047619047,
+      "value": -0.2727272727272727,
+      "reversal": -0.8095238095238095,
+      "composite": 0.25974025974025966,
+      "sector": "energy",
+      "sector_weight": 0.6,
+      "regime_adjusted_composite": 0.15584415584415579
+    },
+    "CC=F": {
+      "momentum": -0.9047619047619048,
+      "carry": 0.6190476190476191,
+      "value": 1.0,
+      "reversal": -0.5238095238095238,
+      "composite": -0.08571428571428574,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.0685714285714286
+    },
+    "CL=F": {
+      "momentum": 0.7142857142857142,
+      "carry": 1.0,
+      "value": -0.4545454545454546,
+      "reversal": -0.9047619047619048,
+      "composite": 0.3090909090909091,
+      "sector": "energy",
+      "sector_weight": 0.6,
+      "regime_adjusted_composite": 0.18545454545454546
+    },
+    "CT=F": {
+      "momentum": NaN,
+      "carry": NaN,
+      "value": 0.7272727272727273,
+      "reversal": NaN,
+      "composite": NaN,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": NaN
+    },
+    "GC=F": {
+      "momentum": 0.4285714285714286,
+      "carry": -0.7142857142857143,
+      "value": -0.8181818181818181,
+      "reversal": 0.8095238095238095,
+      "composite": -0.049350649350649325,
+      "sector": "precious_metals",
+      "sector_weight": 1.1,
+      "regime_adjusted_composite": -0.054285714285714264
+    },
+    "GF=F": {
+      "momentum": 0.1428571428571428,
+      "carry": -0.04761904761904767,
+      "value": -0.5454545454545454,
+      "reversal": 0.1428571428571428,
+      "composite": -0.04242424242424246,
+      "sector": "livestock",
+      "sector_weight": 0.7,
+      "regime_adjusted_composite": -0.02969696969696972
+    },
+    "HE=F": {
+      "momentum": 0.04761904761904767,
+      "carry": 0.5238095238095237,
+      "value": 0.09090909090909083,
+      "reversal": -0.4285714285714286,
+      "composite": 0.10389610389610386,
+      "sector": "livestock",
+      "sector_weight": 0.7,
+      "regime_adjusted_composite": 0.0727272727272727
+    },
+    "HG=F": {
+      "momentum": -0.1428571428571429,
+      "carry": -0.33333333333333337,
+      "value": -0.18181818181818177,
+      "reversal": 0.4285714285714286,
+      "composite": -0.11255411255411256,
+      "sector": "metals",
+      "sector_weight": 0.7,
+      "regime_adjusted_composite": -0.07878787878787878
+    },
+    "HO=F": {
+      "momentum": 0.8095238095238095,
+      "carry": 0.8095238095238095,
+      "value": -0.6363636363636364,
+      "reversal": -0.7142857142857143,
+      "composite": 0.29177489177489174,
+      "sector": "energy",
+      "sector_weight": 0.6,
+      "regime_adjusted_composite": 0.17506493506493503
+    },
+    "KC=F": {
+      "momentum": -0.7142857142857143,
+      "carry": -0.4285714285714286,
+      "value": 0.18181818181818188,
+      "reversal": 0.5238095238095237,
+      "composite": -0.27792207792207796,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.2223376623376624
+    },
+    "LE=F": {
+      "momentum": -0.04761904761904767,
+      "carry": 0.23809523809523814,
+      "value": -0.36363636363636365,
+      "reversal": -0.1428571428571429,
+      "composite": -0.05367965367965371,
+      "sector": "livestock",
+      "sector_weight": 0.7,
+      "regime_adjusted_composite": -0.037575757575757596
+    },
+    "NG=F": {
+      "momentum": -0.8095238095238095,
+      "carry": -0.5238095238095238,
+      "value": 0.9090909090909092,
+      "reversal": 0.6190476190476191,
+      "composite": -0.18008658008658007,
+      "sector": "energy",
+      "sector_weight": 0.6,
+      "regime_adjusted_composite": -0.10805194805194804
+    },
+    "PA=F": {
+      "momentum": 0.6190476190476191,
+      "carry": -0.8095238095238095,
+      "value": 0.2727272727272727,
+      "reversal": 0.9047619047619047,
+      "composite": 0.23549783549783548,
+      "sector": "precious_metals",
+      "sector_weight": 1.1,
+      "regime_adjusted_composite": 0.259047619047619
+    },
+    "PL=F": {
+      "momentum": 0.9047619047619047,
+      "carry": -0.6190476190476191,
+      "value": -0.7272727272727273,
+      "reversal": 0.7142857142857142,
+      "composite": 0.16883116883116878,
+      "sector": "precious_metals",
+      "sector_weight": 1.1,
+      "regime_adjusted_composite": 0.18571428571428567
+    },
+    "RB=F": {
+      "momentum": 0.23809523809523814,
+      "carry": 0.7142857142857142,
+      "value": -0.09090909090909094,
+      "reversal": -0.6190476190476191,
+      "composite": 0.1627705627705628,
+      "sector": "energy",
+      "sector_weight": 0.6,
+      "regime_adjusted_composite": 0.09766233766233767
+    },
+    "SB=F": {
+      "momentum": -0.6190476190476191,
+      "carry": 0.4285714285714286,
+      "value": 0.8181818181818181,
+      "reversal": -0.33333333333333337,
+      "composite": -0.026839826839826844,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.021471861471861475
+    },
+    "SI=F": {
+      "momentum": 1.0,
+      "carry": -0.9047619047619048,
+      "value": -0.9090909090909091,
+      "reversal": 1.0,
+      "composite": 0.141991341991342,
+      "sector": "precious_metals",
+      "sector_weight": 1.1,
+      "regime_adjusted_composite": 0.1561904761904762
+    },
+    "ZC=F": {
+      "momentum": -0.5238095238095238,
+      "carry": 0.04761904761904767,
+      "value": 0.5454545454545454,
+      "reversal": 0.04761904761904767,
+      "composite": -0.08138528138528141,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.06510822510822513
+    },
+    "ZL=F": {
+      "momentum": 0.33333333333333326,
+      "carry": 0.33333333333333326,
+      "value": 0.0,
+      "reversal": -0.23809523809523814,
+      "composite": 0.1809523809523809,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": 0.14476190476190473
+    },
+    "ZM=F": {
+      "momentum": -0.4285714285714286,
+      "carry": 0.1428571428571428,
+      "value": 0.6363636363636365,
+      "reversal": -0.04761904761904767,
+      "composite": -0.015584415584415623,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.012467532467532499
+    },
+    "ZS=F": {
+      "momentum": -0.23809523809523814,
+      "carry": -0.23809523809523814,
+      "value": 0.36363636363636354,
+      "reversal": 0.33333333333333326,
+      "composite": -0.032034632034632096,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.02562770562770568
+    },
+    "ZW=F": {
+      "momentum": -0.33333333333333337,
+      "carry": -0.1428571428571429,
+      "value": 0.4545454545454546,
+      "reversal": 0.23809523809523814,
+      "composite": -0.04242424242424244,
+      "sector": "agriculture",
+      "sector_weight": 0.8,
+      "regime_adjusted_composite": -0.03393939393939396
+    }
+  },
+  "target_positions": {
+    "BZ=F": 0.15584415584415579,
+    "CC=F": -0.0685714285714286,
+    "CL=F": 0.18545454545454546,
+    "CT=F": NaN,
+    "GC=F": -0.054285714285714264,
+    "GF=F": -0.02969696969696972,
+    "HE=F": 0.0727272727272727,
+    "HG=F": -0.07878787878787878,
+    "HO=F": 0.17506493506493503,
+    "KC=F": -0.2223376623376624,
+    "LE=F": -0.037575757575757596,
+    "NG=F": -0.10805194805194804,
+    "PA=F": 0.259047619047619,
+    "PL=F": 0.18571428571428567,
+    "RB=F": 0.09766233766233767,
+    "SB=F": -0.021471861471861475,
+    "SI=F": 0.1561904761904762,
+    "ZC=F": -0.06510822510822513,
+    "ZL=F": 0.14476190476190473,
+    "ZM=F": -0.012467532467532499,
+    "ZS=F": -0.02562770562770568,
+    "ZW=F": -0.03393939393939396
+  },
+  "raw_composite": {
+    "BZ=F": 0.25974025974025966,
+    "CC=F": -0.08571428571428574,
+    "CL=F": 0.3090909090909091,
+    "CT=F": NaN,
+    "GC=F": -0.049350649350649325,
+    "GF=F": -0.04242424242424246,
+    "HE=F": 0.10389610389610386,
+    "HG=F": -0.11255411255411256,
+    "HO=F": 0.29177489177489174,
+    "KC=F": -0.27792207792207796,
+    "LE=F": -0.05367965367965371,
+    "NG=F": -0.18008658008658007,
+    "PA=F": 0.23549783549783548,
+    "PL=F": 0.16883116883116878,
+    "RB=F": 0.1627705627705628,
+    "SB=F": -0.026839826839826844,
+    "SI=F": 0.141991341991342,
+    "ZC=F": -0.08138528138528141,
+    "ZL=F": 0.1809523809523809,
+    "ZM=F": -0.015584415584415623,
+    "ZS=F": -0.032034632034632096,
+    "ZW=F": -0.04242424242424244
+  }
+}

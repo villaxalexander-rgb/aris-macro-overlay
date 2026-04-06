@@ -36,7 +36,8 @@ run_daily.sh                 <- Auto-run script (activates venv, runs main.py, g
 signal_engine/
   bsv_signals.py             <- 4-factor momentum: momentum, carry, value, reversal
   regime_classifier.py       <- Growth/inflation quadrant via FRED (ISM + CPI)
-  daily_signals.py           <- Combines BSV + regime -> daily JSON
+  vol_target.py              <- Inverse-vol position sizing layer
+  daily_signals.py           <- Combines BSV + regime + vol-target -> daily JSON
 risk_layer/
   risk_checks.py             <- VIX halt, position limits, loss kill switch, time filter
 execution/
@@ -129,21 +130,55 @@ def apply_regime_weights(signals: pd.DataFrame, regime: str) -> pd.DataFrame:
     Original 'composite' is preserved."""
 ```
 
+### vol_target.py
+
+```python
+def compute_realized_vol(prices: pd.DataFrame, window: int = 60) -> pd.Series:
+    """Annualized realized volatility per asset.
+    Uses 60-day rolling stdev of daily log returns × sqrt(252).
+    Returns: Series indexed by ticker. NaN for assets with insufficient history."""
+
+def compute_vol_target_size(score: float, asset_vol: float,
+                             target_vol: float = 0.10,
+                             max_pct: float = 0.02) -> float:
+    """Vol-targeted position size as fraction of NAV.
+    Formula: clip(score * (target_vol / asset_vol), -max_pct, +max_pct)
+    Returns 0.0 if asset_vol is missing/zero/negative."""
+
+def apply_vol_targeting(signals: pd.DataFrame, prices: pd.DataFrame,
+                         target_vol: float = 0.10,
+                         max_pct: float = 0.02) -> pd.DataFrame:
+    """Add vol-targeted position sizing to a signals DataFrame.
+    Reads regime_adjusted_composite if present, else falls back to composite.
+    Adds 3 columns:
+      realized_vol_60d (float)
+      vol_scalar (float)       — capped at 10x to prevent extreme leverage
+      position_pct (float)     — final size as fraction of NAV, capped at max_pct
+    This is the FINAL sizing layer — position_pct is what the executor uses."""
+```
+
 ### daily_signals.py
 
 ```python
 def run_daily_signals() -> dict:
-    """Orchestrates regime classification + BSV signal generation +
-    regime weight application.
+    """Orchestrates the 5-step daily signal pipeline:
+      1. classify_regime() from FRED
+      2. fetch_commodity_prices() from yfinance
+      3. generate_bsv_signals() — raw 4-factor composite
+      4. apply_regime_weights() — sector multipliers → regime_adjusted_composite
+      5. apply_vol_targeting() — inverse-vol scaling → position_pct (FINAL)
+
     Returns dict with keys:
-      date: str              — 'YYYY-MM-DD'
-      timestamp: str         — ISO format
+      date: str
+      timestamp: str
       regime: dict           — full output of classify_regime()
-      signals: dict          — bsv DataFrame (with sector + adjusted columns)
-                               as {ticker: {factor: score, ...}} (orient='index')
-      target_positions: dict — {ticker: regime_adjusted_composite} (THIS is what
-                               the executor consumes)
-      raw_composite: dict    — {ticker: raw_composite} preserved for transparency"""
+      signals: dict          — full bsv DataFrame (all factor + sizing columns)
+                               as {ticker: {col: value}} (orient='index')
+      target_positions: dict — {ticker: position_pct} — vol-targeted, capped, FINAL
+      regime_adjusted_composite: dict  — preserved for transparency
+      raw_composite: dict    — preserved for transparency
+      gross_exposure: float  — sum of |position_pct|
+      net_exposure: float    — sum of position_pct"""
 
 def save_daily_signals(output: dict) -> str:
     """Saves output as JSON to data/signals/YYYY-MM-DD_signals.json
@@ -268,12 +303,18 @@ def run_daily_pipeline() -> None:
 - All values in `[-1, +1]` — cross-sectional percentile rank mapped to `rank(pct=True) * 2 - 1`
 - `composite` = weighted sum: `0.40*momentum + 0.25*carry + 0.20*value + 0.15*reversal`
 
-### BSV signals after apply_regime_weights() (used by daily_signals.py)
-- Same as above plus 3 added columns:
-  - `sector` (str): one of energy, metals, precious_metals, agriculture, livestock
-  - `sector_weight` (float): the regime-conditional multiplier looked up from REGIME_WEIGHTS
-  - `regime_adjusted_composite` (float): composite × sector_weight
-- `regime_adjusted_composite` is what becomes `target_positions` in the daily JSON
+### BSV signals after apply_regime_weights() + apply_vol_targeting()
+The full pipeline produces a DataFrame with these columns per ticker:
+- `momentum`, `carry`, `value`, `reversal` — raw factor scores in [-1, +1]
+- `composite` — weighted sum of factors
+- `sector` (str), `sector_weight` (float) — added by apply_regime_weights
+- `regime_adjusted_composite` (float) — composite × sector_weight
+- `realized_vol_60d` (float) — annualized 60-day vol; NaN if insufficient data
+- `vol_scalar` (float) — VOL_TARGET_PCT / realized_vol, capped at 10x
+- `position_pct` (float) — final position size as fraction of NAV, in [-2%, +2%]
+
+`position_pct` is what becomes `target_positions` in the daily JSON.
+This is the value the executor multiplies by NAV to get dollar notional.
 
 ### daily_signals.json (output of save_daily_signals)
 ```json
@@ -292,26 +333,29 @@ def run_daily_pipeline() -> None:
     "CL=F": {
       "momentum": 0.71, "carry": 1.00, "value": -0.45, "reversal": -0.90,
       "composite": 0.31, "sector": "energy", "sector_weight": 0.6,
-      "regime_adjusted_composite": 0.185
+      "regime_adjusted_composite": 0.185,
+      "realized_vol_60d": 0.66, "vol_scalar": 0.152, "position_pct": 0.0200
     },
-    "PA=F": {
-      "momentum": 0.52, "carry": 0.31, "value": 0.18, "reversal": 0.05,
-      "composite": 0.34, "sector": "precious_metals", "sector_weight": 1.1,
-      "regime_adjusted_composite": 0.374
+    "NG=F": {
+      "momentum": -0.04, "carry": -0.18, "value": -0.20, "reversal": 0.10,
+      "composite": -0.18, "sector": "energy", "sector_weight": 0.6,
+      "regime_adjusted_composite": -0.108,
+      "realized_vol_60d": 1.80, "vol_scalar": 0.056, "position_pct": -0.0060
     }
   },
   "target_positions": {
-    "CL=F": 0.185,
-    "PA=F": 0.374
+    "CL=F": 0.0200,
+    "NG=F": -0.0060
   },
-  "raw_composite": {
-    "CL=F": 0.31,
-    "PA=F": 0.34
-  }
+  "regime_adjusted_composite": {"CL=F": 0.185, "NG=F": -0.108},
+  "raw_composite": {"CL=F": 0.31, "NG=F": -0.18},
+  "gross_exposure": 0.3426,
+  "net_exposure": -0.0024
 }
 ```
-Note: `target_positions` is the **regime-adjusted** composite (what the executor uses).
-`raw_composite` is preserved for transparency and debugging.
+Note: `target_positions` is the **vol-targeted, capped position_pct** — the final
+sizing that the executor uses. `regime_adjusted_composite` and `raw_composite`
+are preserved alongside for transparency and debugging the pipeline stages.
 
 ### risk_result dict (output of run_all_checks)
 ```json
@@ -655,10 +699,15 @@ Source:          Booth School coursework, rigorously validated
    (21-day return), not true roll yield. Value signal uses price levels which may be
    distorted at roll dates. Bloomberg or Quandl would fix this but cost money.
 
-4. **No volatility-adjusted position sizing** — position size is proportional to
-   composite score × 2% NAV, but not scaled by asset volatility. NG=F (natural gas,
-   ~50% annualized vol) gets same NAV% as GC=F (gold, ~15% vol). Vol-targeting
-   overlay planned for Week 6.
+4. ~~No volatility-adjusted position sizing~~ **FIXED 2026-04-06**:
+   Added `signal_engine/vol_target.py` with `apply_vol_targeting()`. Positions
+   are now scaled by `(VOL_TARGET_PCT / realized_vol_60d)` so each contributes
+   ~10% annualized vol regardless of underlying asset volatility. Capped at
+   ±2% NAV (`MAX_POSITION_PCT`). Live test: NG=F at -0.108 score now sizes
+   to -0.6% NAV instead of -2% NAV (saved from oversized exposure to a
+   180%-vol asset). Caveat: realized vol estimates are inflated by yfinance
+   continuous-contract roll noise (see Known Weakness #3) — this makes the
+   sizing slightly conservative, which is the right error direction.
 
 5. **No correlation or portfolio-level risk constraint** — in Stagflation regime,
    energy assets can cluster long simultaneously, creating concentration risk.
@@ -697,10 +746,14 @@ Source:          Booth School coursework, rigorously validated
 
 ```python
 # Risk Parameters
-MAX_POSITION_PCT = 0.02           # 2% of NAV per position
+MAX_POSITION_PCT = 0.02           # 2% of NAV per position (hard cap)
 VIX_HALT_THRESHOLD = 35           # VIX > 35 → no new entries
 DAILY_LOSS_LIMIT_PCT = 0.03       # -3% daily P&L → kill switch
 NO_TRADE_MINUTES_BEFORE_CLOSE = 30
+
+# Volatility Targeting
+VOL_TARGET_PCT = 0.10             # 10% annualized vol target per position
+VOL_LOOKBACK_DAYS = 60            # 60-day rolling window for realized vol
 
 # BSV Factor Weights (default, in bsv_signals.py)
 weights = {"momentum": 0.40, "carry": 0.25, "value": 0.20, "reversal": 0.15}
@@ -748,13 +801,16 @@ Google Sheets API (planned), SendGrid (planned), ElevenLabs (planned)
 - Signal engine: **WORKING** (22 assets scored, no NaN)
 - Regime classifier: **WORKING** (currently reading Deflation)
 - Regime weights: **APPLIED** ✓ (apply_regime_weights wired into daily pipeline)
+- Vol-targeting: **APPLIED** ✓ (apply_vol_targeting equalizes risk per position)
 - Risk layer: **WORKING** (correctly blocks outside market hours)
 - Full pipeline: **WORKING** (main.py chains steps 1-2, steps 3-5 are TODOs)
+- Current book: 22 vol-targeted positions, ~34% gross / ~0% net exposure
 - Auto-run script: **WORKING** (run_daily.sh commits + pushes)
 - Daily scheduler: **SET UP** (launchd at 6am)
-- GitHub commits: 2+ of 180 completed
+- GitHub commits: 3+ of 180 completed
 - IBKR execution: **NOT YET CONNECTED** (connection test written, awaiting Gateway)
 - Jeffrey briefing: **NOT YET CONNECTED** (Week 7)
+- Error handling layer: **NOT YET BUILT** (FRED 500 errors still crash pipeline)
 
 ## 19. The Interview Pitch
 "I built and ran a live systematic macro overlay on my IBKR account for

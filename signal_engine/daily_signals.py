@@ -12,6 +12,7 @@ from signal_engine.regime_classifier import (
     REGIME_WEIGHTS,
     apply_regime_weights,
 )
+from signal_engine.vol_target import apply_vol_targeting
 from config.settings import GSCI_ASSETS, SIGNAL_OUTPUT_PATH
 
 
@@ -21,8 +22,9 @@ def run_daily_signals():
     Pipeline:
       1. Classify regime from FRED (ISM + CPI)
       2. Compute raw BSV signals (4-factor composite, cross-sectionally ranked)
-      3. Apply regime-conditional sector multipliers to composite scores
-      4. Use regime_adjusted_composite as the actual target_positions
+      3. Apply regime-conditional sector multipliers (regime_adjusted_composite)
+      4. Apply vol-targeting to scale positions by inverse realized vol
+      5. Use position_pct (final, vol-targeted, capped) as target_positions
     """
     regime = classify_regime()
     print(f"Regime: {regime['regime']} "
@@ -31,22 +33,31 @@ def run_daily_signals():
     prices = fetch_commodity_prices(GSCI_ASSETS, lookback_days=365 * 5)
     bsv = generate_bsv_signals(prices)
 
-    # Apply regime weights — this is the step that was missing.
-    # bsv now has sector, sector_weight, and regime_adjusted_composite columns.
+    # Step 3: regime-conditional sector multipliers
     bsv = apply_regime_weights(bsv, regime["regime"])
 
-    print(f"Top 3 longs (regime-adjusted): "
-          f"{bsv.nlargest(3, 'regime_adjusted_composite').index.tolist()}")
-    print(f"Top 3 shorts (regime-adjusted): "
-          f"{bsv.nsmallest(3, 'regime_adjusted_composite').index.tolist()}")
+    # Step 4: vol-targeting — equalizes risk contribution across positions
+    bsv = apply_vol_targeting(bsv, prices)
+
+    # Report top positions by absolute size (not score)
+    top_by_size = bsv.reindex(bsv["position_pct"].abs().sort_values(ascending=False).index)
+    print(f"Top 3 longs (vol-targeted): "
+          f"{bsv.nlargest(3, 'position_pct').index.tolist()}")
+    print(f"Top 3 shorts (vol-targeted): "
+          f"{bsv.nsmallest(3, 'position_pct').index.tolist()}")
+    print(f"Gross exposure: {bsv['position_pct'].abs().sum():.2%} of NAV | "
+          f"Net: {bsv['position_pct'].sum():+.2%}")
 
     output = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "timestamp": datetime.now().isoformat(),
         "regime": regime,
         "signals": bsv.to_dict(orient="index"),
-        "target_positions": bsv["regime_adjusted_composite"].to_dict(),
-        "raw_composite": bsv["composite"].to_dict(),  # kept for transparency
+        "target_positions": bsv["position_pct"].to_dict(),         # final sized positions
+        "regime_adjusted_composite": bsv["regime_adjusted_composite"].to_dict(),
+        "raw_composite": bsv["composite"].to_dict(),               # transparency
+        "gross_exposure": float(bsv["position_pct"].abs().sum()),
+        "net_exposure": float(bsv["position_pct"].sum()),
     }
     return output
 

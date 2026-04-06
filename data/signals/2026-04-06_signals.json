@@ -1,13 +1,13 @@
 {
   "date": "2026-04-06",
-  "timestamp": "2026-04-06T11:40:21.838792",
+  "timestamp": "2026-04-06T11:45:48.502876",
   "regime": {
     "regime": "Deflation",
     "growth_trend": "down",
     "inflation_trend": "down",
     "growth_value": 12591.0,
     "inflation_value": 2.4340041103732224,
-    "timestamp": "2026-04-06T11:40:20.860600"
+    "timestamp": "2026-04-06T11:45:46.811398"
   },
   "signals": {
     "BZ=F": {
@@ -18,7 +18,10 @@
       "composite": 0.25974025974025966,
       "sector": "energy",
       "sector_weight": 0.6,
-      "regime_adjusted_composite": 0.15584415584415579
+      "regime_adjusted_composite": 0.15584415584415579,
+      "realized_vol_60d": 0.700106585716225,
+      "vol_scalar": 0.1428353939817574,
+      "position_pct": 0.02
     },
     "CC=F": {
       "momentum": -0.9047619047619048,
@@ -28,7 +31,10 @@
       "composite": -0.08571428571428574,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.0685714285714286
+      "regime_adjusted_composite": -0.0685714285714286,
+      "realized_vol_60d": 0.5993408539256281,
+      "vol_scalar": 0.1668499641648139,
+      "position_pct": -0.011441140399872958
     },
     "CL=F": {
       "momentum": 0.7142857142857142,
@@ -38,7 +44,10 @@
       "composite": 0.3090909090909091,
       "sector": "energy",
       "sector_weight": 0.6,
-      "regime_adjusted_composite": 0.18545454545454546
+      "regime_adjusted_composite": 0.18545454545454546,
+      "realized_vol_60d": 0.6577187152016296,
+      "vol_scalar": 0.15204067892357923,
+      "position_pct": 0.02
     },
     "CT=F": {
       "momentum": NaN,
@@ -48,7 +57,10 @@
       "composite": NaN,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": NaN
+      "regime_adjusted_composite": NaN,
+      "realized_vol_60d": NaN,
+      "vol_scalar": 0.0,
+      "position_pct": 0.0
     },
     "GC=F": {
       "momentum": 0.4285714285714286,
@@ -58,7 +70,10 @@
       "composite": -0.049350649350649325,
       "sector": "precious_metals",
       "sector_weight": 1.1,
-      "regime_adjusted_composite": -0.054285714285714264
+      "regime_adjusted_composite": -0.054285714285714264,
+      "realized_vol_60d": 0.42930233472821744,
+      "vol_scalar": 0.23293607304350666,
+      "position_pct": -0.012645101108076071
     },
     "GF=F": {
       "momentum": 0.1428571428571428,
@@ -68,7 +83,10 @@
       "composite": -0.04242424242424246,
       "sector": "livestock",
       "sector_weight": 0.7,
-      "regime_adjusted_composite": -0.02969696969696972
+      "regime_adjusted_composite": -0.02969696969696972,
+      "realized_vol_60d": 0.14870092202501148,
+      "vol_scalar": 0.6724907864604902,
+      "position_pct": -0.019970938507008512
     },
     "HE=F": {
       "momentum": 0.04761904761904767,
@@ -78,7 +96,10 @@
       "composite": 0.10389610389610386,
       "sector": "livestock",
       "sector_weight": 0.7,
-      "regime_adjusted_composite": 0.0727272727272727
+      "regime_adjusted_composite": 0.0727272727272727,
+      "realized_vol_60d": 0.38504987436119475,
+      "vol_scalar": 0.25970661635950915,
+      "position_pct": 0.018887753917055203
     },
     "HG=F": {
       "momentum": -0.1428571428571429,
@@ -88,7 +109,10 @@
       "composite": -0.11255411255411256,
       "sector": "metals",
       "sector_weight": 0.7,
-      "regime_adjusted_composite": -0.07878787878787878
+      "regime_adjusted_composite": -0.07878787878787878,
+      "realized_vol_60d": 0.305679315594733,
+      "vol_scalar": 0.32714022473335796,
+      "position_pct": -0.02
     },
     "HO=F": {
       "momentum": 0.8095238095238095,
@@ -98,7 +122,10 @@
       "composite": 0.29177489177489174,
       "sector": "energy",
       "sector_weight": 0.6,
-      "regime_adjusted_composite": 0.17506493506493503
+      "regime_adjusted_composite": 0.17506493506493503,
+      "realized_vol_60d": 0.7540780575633803,
+      "vol_scalar": 0.1326122660605265,
+      "position_pct": 0.02
     },
     "KC=F": {
       "momentum": -0.7142857142857143,
@@ -108,7 +135,10 @@
       "composite": -0.27792207792207796,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.2223376623376624
+      "regime_adjusted_composite": -0.2223376623376624,
+      "realized_vol_60d": 0.33892614632516177,
+      "vol_scalar": 0.29504952947495877,
+      "position_pct": -0.02
     },
     "LE=F": {
       "momentum": -0.04761904761904767,
@@ -118,7 +148,10 @@
       "composite": -0.05367965367965371,
       "sector": "livestock",
       "sector_weight": 0.7,
-      "regime_adjusted_composite": -0.037575757575757596
+      "regime_adjusted_composite": -0.037575757575757596,
+      "realized_vol_60d": 0.16309425875960473,
+      "vol_scalar": 0.6131423678585555,
+      "position_pct": -0.02
     },
     "NG=F": {
       "momentum": -0.8095238095238095,
@@ -128,7 +161,10 @@
       "composite": -0.18008658008658007,
       "sector": "energy",
       "sector_weight": 0.6,
-      "regime_adjusted_composite": -0.10805194805194804
+      "regime_adjusted_composite": -0.10805194805194804,
+      "realized_vol_60d": 1.7993491499870238,
+      "vol_scalar": 0.05557565078501922,
+      "position_pct": -0.006005057331576102
     },
     "PA=F": {
       "momentum": 0.6190476190476191,
@@ -138,7 +174,10 @@
       "composite": 0.23549783549783548,
       "sector": "precious_metals",
       "sector_weight": 1.1,
-      "regime_adjusted_composite": 0.259047619047619
+      "regime_adjusted_composite": 0.259047619047619,
+      "realized_vol_60d": 0.696794585324465,
+      "vol_scalar": 0.14351431843207368,
+      "position_pct": 0.02
     },
     "PL=F": {
       "momentum": 0.9047619047619047,
@@ -148,7 +187,10 @@
       "composite": 0.16883116883116878,
       "sector": "precious_metals",
       "sector_weight": 1.1,
-      "regime_adjusted_composite": 0.18571428571428567
+      "regime_adjusted_composite": 0.18571428571428567,
+      "realized_vol_60d": 0.7544378025092477,
+      "vol_scalar": 0.1325490314342702,
+      "position_pct": 0.02
     },
     "RB=F": {
       "momentum": 0.23809523809523814,
@@ -158,7 +200,10 @@
       "composite": 0.1627705627705628,
       "sector": "energy",
       "sector_weight": 0.6,
-      "regime_adjusted_composite": 0.09766233766233767
+      "regime_adjusted_composite": 0.09766233766233767,
+      "realized_vol_60d": 0.5721720956986288,
+      "vol_scalar": 0.1747725915887227,
+      "position_pct": 0.017068699853859674
     },
     "SB=F": {
       "momentum": -0.6190476190476191,
@@ -168,7 +213,10 @@
       "composite": -0.026839826839826844,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.021471861471861475
+      "regime_adjusted_composite": -0.021471861471861475,
+      "realized_vol_60d": 0.24932235352677803,
+      "vol_scalar": 0.4010871812553289,
+      "position_pct": -0.008612088394053816
     },
     "SI=F": {
       "momentum": 1.0,
@@ -178,7 +226,10 @@
       "composite": 0.141991341991342,
       "sector": "precious_metals",
       "sector_weight": 1.1,
-      "regime_adjusted_composite": 0.1561904761904762
+      "regime_adjusted_composite": 0.1561904761904762,
+      "realized_vol_60d": 1.103072222959854,
+      "vol_scalar": 0.09065589534262027,
+      "position_pct": 0.014159587463037833
     },
     "ZC=F": {
       "momentum": -0.5238095238095238,
@@ -188,7 +239,10 @@
       "composite": -0.08138528138528141,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.06510822510822513
+      "regime_adjusted_composite": -0.06510822510822513,
+      "realized_vol_60d": 0.1834025738097564,
+      "vol_scalar": 0.5452486185048312,
+      "position_pct": -0.02
     },
     "ZL=F": {
       "momentum": 0.33333333333333326,
@@ -198,7 +252,10 @@
       "composite": 0.1809523809523809,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": 0.14476190476190473
+      "regime_adjusted_composite": 0.14476190476190473,
+      "realized_vol_60d": 0.240057302304857,
+      "vol_scalar": 0.4165672072454042,
+      "position_pct": 0.02
     },
     "ZM=F": {
       "momentum": -0.4285714285714286,
@@ -208,7 +265,10 @@
       "composite": -0.015584415584415623,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.012467532467532499
+      "regime_adjusted_composite": -0.012467532467532499,
+      "realized_vol_60d": 0.21480083902606525,
+      "vol_scalar": 0.4655475297648413,
+      "position_pct": -0.005804228942522712
     },
     "ZS=F": {
       "momentum": -0.23809523809523814,
@@ -218,7 +278,10 @@
       "composite": -0.032034632034632096,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.02562770562770568
+      "regime_adjusted_composite": -0.02562770562770568,
+      "realized_vol_60d": 0.16136545117539647,
+      "vol_scalar": 0.6197113401387564,
+      "position_pct": -0.015881779799227037
     },
     "ZW=F": {
       "momentum": -0.33333333333333337,
@@ -228,10 +291,37 @@
       "composite": -0.04242424242424244,
       "sector": "agriculture",
       "sector_weight": 0.8,
-      "regime_adjusted_composite": -0.03393939393939396
+      "regime_adjusted_composite": -0.03393939393939396,
+      "realized_vol_60d": 0.2795056719598498,
+      "vol_scalar": 0.3577744927278782,
+      "position_pct": -0.012142649450158296
     }
   },
   "target_positions": {
+    "BZ=F": 0.02,
+    "CC=F": -0.011441140399872958,
+    "CL=F": 0.02,
+    "CT=F": 0.0,
+    "GC=F": -0.012645101108076071,
+    "GF=F": -0.019970938507008512,
+    "HE=F": 0.018887753917055203,
+    "HG=F": -0.02,
+    "HO=F": 0.02,
+    "KC=F": -0.02,
+    "LE=F": -0.02,
+    "NG=F": -0.006005057331576102,
+    "PA=F": 0.02,
+    "PL=F": 0.02,
+    "RB=F": 0.017068699853859674,
+    "SB=F": -0.008612088394053816,
+    "SI=F": 0.014159587463037833,
+    "ZC=F": -0.02,
+    "ZL=F": 0.02,
+    "ZM=F": -0.005804228942522712,
+    "ZS=F": -0.015881779799227037,
+    "ZW=F": -0.012142649450158296
+  },
+  "regime_adjusted_composite": {
     "BZ=F": 0.15584415584415579,
     "CC=F": -0.0685714285714286,
     "CL=F": 0.18545454545454546,
@@ -278,5 +368,7 @@
     "ZM=F": -0.015584415584415623,
     "ZS=F": -0.032034632034632096,
     "ZW=F": -0.04242424242424244
-  }
+  },
+  "gross_exposure": 0.34261902516644827,
+  "net_exposure": -0.002386942698542798
 }

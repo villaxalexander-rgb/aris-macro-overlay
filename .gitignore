@@ -41,3 +41,4 @@ data/cache/
 
 # Jupyter
 .ipynb_checkpoints/aris-references/
+aris_patch*/

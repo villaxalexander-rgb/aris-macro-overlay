@@ -40,4 +40,4 @@ data/cache/
 *.pickle
 
 # Jupyter
-.ipynb_checkpoints/
+.ipynb_checkpoints/aris-references/

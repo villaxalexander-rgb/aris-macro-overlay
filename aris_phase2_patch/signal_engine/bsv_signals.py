@@ -1,6 +1,18 @@
 """
 Module 1 — BSV Signal Engine
-Phase 2: DualSourceRouter prices + REAL curve carry from LSEG full futures curves.
+Multi-factor commodity momentum model: momentum, carry, value, reversal
+across the GSCI universe.
+
+Phase 2 changes:
+  - Prices now flow through DualSourceRouter (LSEG primary,
+    yfinance secondary, cross-validated).
+  - Carry is now REAL annualized roll yield computed from the LSEG
+    full futures curve (not the old short-term momentum proxy).
+  - Curve fetching is best-effort: if LSEG is down or a particular
+    asset has no curve, we fall back to the legacy momentum proxy
+    for that asset only.
+
+Output: signal scores per asset (-1 to +1)
 """
 from typing import Optional
 
@@ -10,10 +22,12 @@ import numpy as np
 from signal_engine.resilience import log
 from signal_engine.data_sources.dual_source import DualSourceRouter
 
+# ---- Lazy router singleton ----------------------------------------------
 _router: Optional[DualSourceRouter] = None
 
 
 def _get_router() -> DualSourceRouter:
+    """Lazily build a DualSourceRouter and open the LSEG session if available."""
     global _router
     if _router is None:
         _router = DualSourceRouter()
@@ -21,12 +35,18 @@ def _get_router() -> DualSourceRouter:
             try:
                 _router.lseg.open()
             except Exception as e:
-                log.warning(f"LSEG session could not open ({e}); router will use yfinance only")
+                log.warning(
+                    f"LSEG session could not open ({e}); router will use yfinance only"
+                )
                 _router.lseg = None
     return _router
 
 
-def fetch_commodity_prices(canonical: list[str], lookback_days: int = 365) -> pd.DataFrame:
+# ---- Public fetchers ----------------------------------------------------
+def fetch_commodity_prices(
+    canonical: list[str], lookback_days: int = 365
+) -> pd.DataFrame:
+    """Fetch commodity prices via DualSourceRouter (LSEG primary, yfinance secondary)."""
     router = _get_router()
     df = router.fetch_prices(canonical, lookback_days=lookback_days)
     log.info(
@@ -38,6 +58,11 @@ def fetch_commodity_prices(canonical: list[str], lookback_days: int = 365) -> pd
 
 
 def fetch_commodity_curves(canonical: list[str]) -> dict[str, pd.DataFrame]:
+    """
+    Best-effort curve fetch for the carry signal. Returns a dict
+    canonical -> curve DataFrame, skipping any asset whose curve fails.
+    LSEG-only — yfinance has no curve data.
+    """
     router = _get_router()
     curves: dict[str, pd.DataFrame] = {}
     if router.lseg is None:
@@ -52,18 +77,27 @@ def fetch_commodity_curves(canonical: list[str]) -> dict[str, pd.DataFrame]:
     return curves
 
 
+# ---- Factor functions ---------------------------------------------------
 def compute_momentum(prices: pd.DataFrame, window: int = 252) -> pd.Series:
-    # ffill to survive sparse LSEG history; pct_change then asks for the
-    # trailing-window return which is NaN only if an asset truly has no
-    # usable data at all.
-    p = prices.ffill()
-    returns = p.pct_change(window, fill_method=None).iloc[-1]
+    """12-month price momentum (return over lookback period)."""
+    returns = prices.pct_change(window).iloc[-1]
     return returns.rank(pct=True) * 2 - 1
 
 
 def compute_curve_carry(curves: dict[str, pd.DataFrame]) -> pd.Series:
-    """REAL carry — annualized roll yield from full futures curve.
-    backwardation = positive carry = long bias.
+    """
+    REAL carry signal — annualized roll yield from the full futures curve.
+
+    For each asset:
+        roll_yield = (front_settle - next_settle) / front_settle
+        annualized = roll_yield * (365 / days_between_expiries)
+
+    Convention:
+        backwardation (front > next) -> positive carry -> long bias
+        contango     (front < next) -> negative carry -> short bias
+
+    Returns a rank-normalised Series in [-1, 1]. Assets with no usable
+    curve are silently dropped — caller must handle missing entries.
     """
     raw: dict[str, float] = {}
     for canonical, curve in curves.items():
@@ -88,54 +122,68 @@ def compute_curve_carry(curves: dict[str, pd.DataFrame]) -> pd.Series:
 
     if not raw:
         return pd.Series(dtype=float)
+
     s = pd.Series(raw, dtype=float)
-    log.info(f"Real curve carry computed for {len(s)} assets (median: {s.median():.2%})")
+    log.info(
+        f"Real curve carry computed for {len(s)} assets "
+        f"(median annualized roll yield: {s.median():.2%})"
+    )
     return s.rank(pct=True) * 2 - 1
 
 
 def compute_carry_proxy(prices: pd.DataFrame) -> pd.Series:
-    """Legacy carry proxy — short-term return rank. Per-asset fallback only."""
-    p = prices.ffill()
-    short_ret = p.pct_change(21, fill_method=None).iloc[-1]
+    """
+    Legacy carry proxy — short-term return rank. Used only as a per-asset
+    fallback when the real curve is missing.
+    """
+    short_ret = prices.pct_change(21).iloc[-1]
     return short_ret.rank(pct=True) * 2 - 1
 
 
 def compute_value(prices: pd.DataFrame, window: int = 252 * 5) -> pd.Series:
-    """Value signal — 5y mean reversion, NaN-robust.
-
-    LSEG price panels can be 10-15% sparse; without ffill + min_periods
-    a single NaN anywhere in the 5y window collapses the rolling mean
-    to NaN and every composite becomes NaN.
-    """
+    """Value signal — mean reversion over 5-year horizon."""
     if len(prices) < window:
         window = len(prices)
-    p = prices.ffill()
-    min_p = max(60, window // 4)
-    long_mean = p.rolling(window, min_periods=min_p).mean().iloc[-1]
-    current = p.iloc[-1]
+    long_mean = prices.rolling(window).mean().iloc[-1]
+    current = prices.iloc[-1]
     deviation = (long_mean - current) / long_mean
     return deviation.rank(pct=True) * 2 - 1
 
 
 def compute_reversal(prices: pd.DataFrame, window: int = 21) -> pd.Series:
-    """Short-term reversal — 1-month contrarian signal. NaN-robust."""
-    p = prices.ffill()
-    short_ret = p.pct_change(window, fill_method=None).iloc[-1]
+    """Short-term reversal — 1-month contrarian signal."""
+    short_ret = prices.pct_change(window).iloc[-1]
     return (-short_ret).rank(pct=True) * 2 - 1
 
 
+# ---- Composite ----------------------------------------------------------
 def generate_bsv_signals(
     prices: pd.DataFrame,
     curves: dict[str, pd.DataFrame] | None = None,
     weights: dict | None = None,
 ) -> pd.DataFrame:
+    """
+    Combine all four factors into a composite BSV signal.
+
+    Args:
+        prices:  DataFrame of commodity prices (columns = canonical names)
+        curves:  optional dict canonical -> curve DataFrame for real carry.
+                 If None or empty for an asset, falls back to carry proxy.
+        weights: factor weights dict
+    """
     if weights is None:
-        weights = {"momentum": 0.40, "carry": 0.25, "value": 0.20, "reversal": 0.15}
+        weights = {
+            "momentum": 0.40,
+            "carry": 0.25,
+            "value": 0.20,
+            "reversal": 0.15,
+        }
 
     momentum = compute_momentum(prices)
     value = compute_value(prices)
     reversal = compute_reversal(prices)
 
+    # Real carry where available, proxy where not
     real_carry = compute_curve_carry(curves) if curves else pd.Series(dtype=float)
     proxy_carry = compute_carry_proxy(prices)
     carry = real_carry.reindex(prices.columns).combine_first(proxy_carry)
@@ -152,23 +200,28 @@ def generate_bsv_signals(
         "reversal": reversal,
     })
 
+    # Composite is numeric only
     signals["composite"] = (
         signals["momentum"].astype(float) * weights["momentum"]
         + signals["carry"].astype(float) * weights["carry"]
         + signals["value"].astype(float) * weights["value"]
         + signals["reversal"].astype(float) * weights["reversal"]
     )
+
     return signals
 
 
 if __name__ == "__main__":
     from config.tickers import get_canonical_list
+
     canonical = get_canonical_list()
     print(f"Fetching prices for {len(canonical)} assets via DualSourceRouter...")
     prices = fetch_commodity_prices(canonical, lookback_days=365 * 2)
     print(f"Got {prices.shape[1]} cols, {prices.shape[0]} rows")
+
     print("Fetching curves...")
     curves = fetch_commodity_curves(canonical)
+
     signals = generate_bsv_signals(prices, curves=curves)
     print("\nBSV Signals:")
     print(signals.sort_values("composite", ascending=False))

@@ -1,6 +1,18 @@
 """
 Module 1 — Macro Regime Classifier
-Phase 2: All FRED calls flow through DualSourceRouter (FRED primary).
+Growth/Inflation quadrant via DualSourceRouter.
+
+Phase 2 changes:
+  - All FRED calls now flow through DualSourceRouter (FRED primary,
+    LSEG secondary where entitled, cross-validated).
+  - Series identifiers come from config/tickers.MACRO_SERIES — single
+    source of truth shared with the data_sources package.
+
+Regimes:
+  - Goldilocks:  Growth ↑, Inflation ↓
+  - Reflation:   Growth ↑, Inflation ↑
+  - Stagflation: Growth ↓, Inflation ↑
+  - Deflation:   Growth ↓, Inflation ↓
 """
 from typing import Optional
 
@@ -9,17 +21,22 @@ import pandas as pd
 from signal_engine.resilience import log
 from signal_engine.data_sources.dual_source import DualSourceRouter
 
+# Lazy router singleton — shared with bsv_signals via the module
 _router: Optional[DualSourceRouter] = None
 
 
 def _get_router() -> DualSourceRouter:
     global _router
     if _router is None:
+        # FRED is primary for macro regime data — VIX/SPX/Treasuries are
+        # not entitled on this LSEG account, and FRED is the canonical
+        # source for ISM/CPI anyway.
         _router = DualSourceRouter(primary_macro="fred")
     return _router
 
 
 def compute_trend(series: pd.Series, window: int = 6) -> str:
+    """Determine if a series is trending up or down (6-month moving average)."""
     ma = series.rolling(window).mean()
     if ma.iloc[-1] > ma.iloc[-2]:
         return "up"
@@ -27,11 +44,19 @@ def compute_trend(series: pd.Series, window: int = 6) -> str:
 
 
 def classify_regime() -> dict:
+    """
+    Classify the current macro regime using router-fetched ISM + CPI.
+
+    Returns dict with keys: regime, growth_trend, inflation_trend,
+        growth_value, inflation_value, ism_source, cpi_source,
+        ism_provider, cpi_provider, timestamp.
+    """
     router = _get_router()
 
     ism = router.fetch_macro("ism_manufacturing", lookback_months=24)
     cpi = router.fetch_macro("cpi_yoy", lookback_months=36)
 
+    # CPI: compute YoY % change
     cpi_yoy = cpi.pct_change(12) * 100
 
     growth_trend = compute_trend(ism)
@@ -61,6 +86,7 @@ def classify_regime() -> dict:
     }
 
 
+# Regime-based signal adjustments
 REGIME_WEIGHTS = {
     "Goldilocks": {
         "energy": 1.0, "metals": 1.0, "agriculture": 1.0, "livestock": 1.0,

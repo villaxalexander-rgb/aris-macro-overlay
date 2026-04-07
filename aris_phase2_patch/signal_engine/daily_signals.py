@@ -1,6 +1,14 @@
 """
 Module 1 — Daily Signal Pipeline
-Phase 2 orchestrator: DualSourceRouter, real curve carry, regime-weighted targets.
+Orchestrates BSV signals + regime classifier into a daily JSON output.
+This is the main entry point for the signal engine.
+
+Phase 2:
+  - Uses DualSourceRouter via bsv_signals/regime_classifier (LSEG primary
+    for prices+curves, FRED primary for macro).
+  - Real curve carry replaces the legacy proxy when LSEG curves are available.
+  - HealthRecord captures provider, source, and cross-validation
+    disagreements for every input.
 """
 import json
 import os
@@ -21,12 +29,18 @@ from config.settings import SIGNAL_OUTPUT_PATH
 
 
 def run_daily_signals() -> dict:
+    """
+    Run the full daily signal pipeline with resilient, dual-source data.
+    Each input is wrapped: failures retry, then fall back to cached values,
+    and the freshness/provider/disagreements of every source are recorded
+    in the output JSON.
+    """
     health = HealthRecord()
     log.info("=== Daily signal pipeline started (Phase 2) ===")
 
     canonical = get_canonical_list()
 
-    # 1. Regime
+    # 1. Regime ----------------------------------------------------------
     try:
         regime = classify_regime()
         health.record(
@@ -50,13 +64,16 @@ def run_daily_signals() -> dict:
         health.record("macro_ism", "missing")
         health.record("macro_cpi", "missing")
         regime = {
-            "regime": "Unknown", "growth_trend": "unknown", "inflation_trend": "unknown",
-            "growth_value": None, "inflation_value": None,
-            "timestamp": datetime.now().isoformat(), "error": str(e),
+            "regime": "Unknown",
+            "growth_trend": "unknown",
+            "inflation_trend": "unknown",
+            "growth_value": None,
+            "inflation_value": None,
+            "timestamp": datetime.now().isoformat(),
+            "error": str(e),
         }
 
-
-    # 2. Prices + curves + BSV
+    # 2. Prices + curves + BSV signals -----------------------------------
     try:
         prices = fetch_commodity_prices(canonical, lookback_days=365 * 5)
         router = _get_bsv_router()
@@ -68,7 +85,11 @@ def run_daily_signals() -> dict:
         health.merge_router_disagreements(router.last_disagreements)
 
         curves = fetch_commodity_curves(canonical)
-        health.record("curves", f"{len(curves)}/{len(canonical)}", provider="lseg")
+        health.record(
+            "curves",
+            f"{len(curves)}/{len(canonical)}",
+            provider="lseg",
+        )
 
         bsv = generate_bsv_signals(prices, curves=curves)
     except Exception as e:
@@ -77,7 +98,7 @@ def run_daily_signals() -> dict:
         health.record("curves", "missing")
         bsv = pd.DataFrame()
 
-    # 3. Regime-weighted target positions
+    # 3. Apply regime-based sector weights ------------------------------
     target_positions: dict[str, float] = {}
     if not bsv.empty and "composite" in bsv.columns and regime.get("regime") in REGIME_WEIGHTS:
         weights = REGIME_WEIGHTS[regime["regime"]]
@@ -88,25 +109,30 @@ def run_daily_signals() -> dict:
     elif not bsv.empty and "composite" in bsv.columns:
         target_positions = {a: float(v) for a, v in bsv["composite"].items()}
 
-
-    # 4. Output
+    # 4. Build output ---------------------------------------------------
     output = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "timestamp": datetime.now().isoformat(),
         "regime": regime,
         "signals": (
-            bsv.drop(columns=["carry_source"], errors="ignore").to_dict(orient="index")
-            if not bsv.empty else {}
+            bsv.drop(columns=["carry_source"], errors="ignore")
+            .to_dict(orient="index")
+            if not bsv.empty
+            else {}
         ),
         "carry_source_per_asset": (
-            bsv["carry_source"].to_dict() if "carry_source" in bsv.columns else {}
+            bsv["carry_source"].to_dict()
+            if "carry_source" in bsv.columns
+            else {}
         ),
         "target_positions": target_positions,
         "health": health.to_dict(),
     }
 
     if not health.is_healthy():
-        log.warning(f"Pipeline finished degraded: {health.errors}")
+        log.warning(
+            f"Pipeline finished with degraded inputs / disagreements: {health.errors}"
+        )
     else:
         log.info("Pipeline finished healthy — all inputs fresh, no disagreements")
 
@@ -114,6 +140,7 @@ def run_daily_signals() -> dict:
 
 
 def save_daily_signals(output: dict) -> str:
+    """Save daily signal output as JSON."""
     os.makedirs(SIGNAL_OUTPUT_PATH, exist_ok=True)
     filename = f"{SIGNAL_OUTPUT_PATH}{output['date']}_signals.json"
     with open(filename, "w") as f:
@@ -128,6 +155,8 @@ if __name__ == "__main__":
     print(f"\nRegime: {output['regime'].get('regime', 'Unknown')}")
     print(f"Health: {'OK' if output['health']['healthy'] else 'DEGRADED'}")
     if output["target_positions"]:
-        top = sorted(output["target_positions"].items(), key=lambda x: x[1], reverse=True)
+        top = sorted(
+            output["target_positions"].items(), key=lambda x: x[1], reverse=True
+        )
         print(f"Top 5 long:  {top[:5]}")
         print(f"Top 5 short: {top[-5:]}")

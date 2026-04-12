@@ -31,8 +31,11 @@ service_account.json
 .DS_Store
 Thumbs.db
 
-# Logs
-logs/*.log
+# Runtime state (daily NAV anchor, etc.)
+state/
+
+# Execution logs
+logs/
 
 # Data cache
 data/cache/

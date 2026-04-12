@@ -367,10 +367,16 @@ def main():
     # Load signals
     sig = load_signals(args.date)
 
-    # Hard gate: refuse to trade against a signal file the pipeline marked FAILED.
-    health_status = sig.get("health", {}).get("status", "UNKNOWN")
-    if health_status == "FAILED" and not args.force:
-        print(f"[BLOCKED] Signal health is FAILED. Pass --force to override.")
+    # Hard gate: refuse to trade against a degraded signal file.
+    health_info = sig.get("health", {})
+    health_ok = health_info.get("healthy", True)  # boolean from HealthRecord
+    if not health_ok and not args.force:
+        degradations = health_info.get("degradations", [])
+        print(f"[BLOCKED] Signal health check failed.")
+        if degradations:
+            for d in degradations:
+                print(f"  - {d}")
+        print(f"Pass --force to override.")
         return 4
 
     target_positions = sig.get("target_positions", {})
@@ -379,7 +385,7 @@ def main():
         return
     health = sig.get("health", {})
     print(f"  Regime: {sig.get('regime', {}).get('regime', '?')}")
-    print(f"  Pipeline status: {health.get('status', 'unknown')}")
+    print(f"  Pipeline health: {'OK' if health.get('healthy', True) else 'DEGRADED'}")
     if health.get("disagreements"):
         print(f"  Cross-validation disagreements: {len(health['disagreements'])}")
     print(f"  Targets: {len(target_positions)} assets\n")

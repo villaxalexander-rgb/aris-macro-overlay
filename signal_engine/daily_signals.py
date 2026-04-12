@@ -19,9 +19,13 @@ from signal_engine.resilience import HealthRecord, log
 from config.tickers import get_canonical_list, SECTOR_MAP
 from config.settings import SIGNAL_OUTPUT_PATH
 
+SECTOR_GROSS_CAP = 0.40
+
 
 def run_daily_signals() -> dict:
     health = HealthRecord()
+    skipped_assets: list[tuple[str, float]] = []
+    rescaled_sectors: list[tuple[str, float, float]] = []
     log.info("=== Daily signal pipeline started (Phase 2) ===")
 
     canonical = get_canonical_list()
@@ -67,7 +71,20 @@ def run_daily_signals() -> dict:
         )
         health.merge_router_disagreements(router.last_disagreements)
 
-        curves = fetch_commodity_curves(canonical)
+        # 2b. Drop assets with no current price (NA or 0) — data quality
+        #     filter only. Assets with stale/missing prices produce garbage
+        #     BSV signals. The executor's risk layer handles sizing.
+        valid_prices = prices.dropna(axis=1, how='all').loc[
+            :, (prices.iloc[-1].notna()) & (prices.iloc[-1] != 0)
+        ]
+        if len(valid_prices.columns) < len(prices.columns):
+            dropped = sorted(set(prices.columns) - set(valid_prices.columns))
+            log.info(f"Dropped {len(dropped)} assets with no current price: {dropped}")
+            for sym in dropped:
+                skipped_assets.append((sym, 0.0))
+            prices = valid_prices
+
+        curves = fetch_commodity_curves(list(prices.columns))
         health.record("curves", f"{len(curves)}/{len(canonical)}", provider="lseg")
 
         bsv = generate_bsv_signals(prices, curves=curves)
@@ -88,6 +105,35 @@ def run_daily_signals() -> dict:
     elif not bsv.empty and "composite" in bsv.columns:
         target_positions = {a: float(v) for a, v in bsv["composite"].items()}
 
+    # 3b. Proportional sector rescale — cap any sector whose gross weight
+    #     exceeds SECTOR_GROSS_CAP. This prevents correlated legs (e.g. all
+    #     5 energy futures going long simultaneously) from dominating the book.
+    #     The rescale is proportional: all legs in the breaching sector are
+    #     scaled by the same factor, preserving relative ordering within sector.
+    if target_positions:
+        sector_gross: dict[str, float] = {}
+        sector_assets: dict[str, list[str]] = {}
+        for asset, tgt in target_positions.items():
+            sector = SECTOR_MAP.get(asset, "other")
+            sector_gross.setdefault(sector, 0.0)
+            sector_gross[sector] += abs(tgt)
+            sector_assets.setdefault(sector, []).append(asset)
+
+        rescaled_sectors = []
+        for sector, gross in sector_gross.items():
+            if gross > SECTOR_GROSS_CAP:
+                scale = SECTOR_GROSS_CAP / gross
+                for asset in sector_assets[sector]:
+                    target_positions[asset] *= scale
+                rescaled_sectors.append((sector, gross, scale))
+
+        if rescaled_sectors:
+            log.info("Sector neutralization applied:")
+            for sector, old_gross, scale in rescaled_sectors:
+                log.info(
+                    f"  {sector}: {old_gross:.1%} -> {SECTOR_GROSS_CAP:.0%} "
+                    f"(scale={scale:.3f})"
+                )
 
     # 4. Output
     output = {
@@ -102,6 +148,12 @@ def run_daily_signals() -> dict:
             bsv["carry_source"].to_dict() if "carry_source" in bsv.columns else {}
         ),
         "target_positions": target_positions,
+        "excluded_assets": [
+            {"symbol": s, "one_lot_notional": n} for s, n in skipped_assets
+        ],
+        "sector_rescales": [
+            {"sector": s, "raw_gross": g, "scale": sc} for s, g, sc in rescaled_sectors
+        ],
         "health": health.to_dict(),
     }
 

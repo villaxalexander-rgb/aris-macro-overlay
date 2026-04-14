@@ -46,3 +46,6 @@ data/cache/
 .ipynb_checkpoints/aris-references/
 aris_patch*/
 .env
+
+# Backtest results (generated)
+backtest/results/

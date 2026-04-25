@@ -21,10 +21,29 @@ from zoneinfo import ZoneInfo
 # with no installed package.
 sys.path.insert(0, ".")
 
+import pytest
+
 from risk_layer import risk_checks as rc
 
 
 NAV = 1_000_000.0
+
+
+# ---- Pytest fixture -------------------------------------------------------
+@pytest.fixture
+def monkeypatch_time():
+    """Swap rc.datetime for a frozen ET time; restore after the test."""
+    original_dt = rc.datetime
+
+    def _patch(hour: int, minute: int):
+        class _FrozenDT:
+            @staticmethod
+            def now(tz=None):
+                return datetime(2026, 4, 8, hour, minute, tzinfo=tz or ET)
+        rc.datetime = _FrozenDT  # type: ignore
+
+    yield _patch
+    rc.datetime = original_dt
 ET = ZoneInfo("America/New_York")
 
 

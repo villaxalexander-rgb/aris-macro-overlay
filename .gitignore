@@ -49,3 +49,4 @@ aris_patch*/
 
 # Backtest results (generated)
 backtest/results/
+*.pkl

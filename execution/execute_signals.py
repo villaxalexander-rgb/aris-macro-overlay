@@ -49,7 +49,25 @@ from ib_async import IB, MarketOrder
 from config.settings import (
     IBKR_HOST, IBKR_PORT, IBKR_CLIENT_ID,
     MAX_POSITION_PCT, SIGNAL_OUTPUT_PATH, TRADE_LOG_PATH,
+    REBALANCE_FREQ,
+    REBALANCE_WEEKDAY,
+    TRADE_DEADBAND_PCT,
 )
+
+from datetime import date as _date
+
+
+def is_rebalance_day(today: _date | None = None) -> bool:
+    """True if today is a scheduled rebalance day per REBALANCE_FREQ policy."""
+    today = today or _date.today()
+    if REBALANCE_FREQ == "daily":
+        return True
+    if REBALANCE_FREQ == "weekly":
+        return today.weekday() == REBALANCE_WEEKDAY
+    if REBALANCE_FREQ == "monthly":
+        return today.day <= 7 and today.weekday() == REBALANCE_WEEKDAY
+    return True  # safe default
+
 
 # Sizing interpretation
 # ---------------------
@@ -241,6 +259,13 @@ def build_order_intents(
         target_qty = int(round(raw_qty))
         current_qty = current_positions.get(canonical, 0)
         delta = target_qty - current_qty
+
+        # Dead-band filter: skip small trades on non-rebalance days
+        if delta != 0 and not is_rebalance_day():
+            delta_frac = abs(delta * price * multiplier) / nav if nav > 0 else 0
+            if delta_frac < TRADE_DEADBAND_PCT:
+                continue
+
         action = "BUY" if delta > 0 else ("SELL" if delta < 0 else "NONE")
         intents.append(OrderIntent(
             canonical=canonical,

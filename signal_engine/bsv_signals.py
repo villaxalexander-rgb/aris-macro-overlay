@@ -172,3 +172,56 @@ if __name__ == "__main__":
     signals = generate_bsv_signals(prices, curves=curves)
     print("\nBSV Signals:")
     print(signals.sort_values("composite", ascending=False))
+
+
+# ---- Hybrid composite (Phase A) ----------------------------------------
+def generate_hybrid_signals(
+    prices: pd.DataFrame,
+    curves: dict[str, pd.DataFrame] | None = None,
+    bsv_weights: dict | None = None,
+    tsmom_lookbacks: tuple[int, ...] = (63, 126, 252),
+    tsmom_weight: float = 0.50,
+) -> pd.DataFrame:
+    """
+    Phase A hybrid signal: blend TSMOM ensemble with BSV composite.
+
+    Args:
+        prices:          DataFrame of commodity prices
+        curves:          optional curves dict for real carry (legacy BSV)
+        bsv_weights:     BSV factor weights (passed to generate_bsv_signals)
+        tsmom_lookbacks: TSMOM lookback windows in trading days
+        tsmom_weight:    weight on TSMOM side of hybrid, BSV gets (1 - this)
+
+    Returns:
+        DataFrame with columns: momentum, carry, carry_source, value,
+        reversal, bsv_composite, tsmom, composite
+        where `composite` is the hybrid signal used downstream.
+    """
+    from signal_engine.tsmom import compute_tsmom_ensemble
+
+    assert 0.0 <= tsmom_weight <= 1.0, f"tsmom_weight must be in [0,1], got {tsmom_weight}"
+
+    # BSV side (reuse existing function, grab its composite column)
+    bsv_signals = generate_bsv_signals(prices, curves=curves, weights=bsv_weights)
+    bsv_composite = bsv_signals["composite"].astype(float)
+
+    # TSMOM side
+    tsmom_signal = compute_tsmom_ensemble(prices, lookbacks=tsmom_lookbacks)
+    tsmom_signal = tsmom_signal.reindex(prices.columns).fillna(0.0)
+
+    # Blend
+    hybrid = tsmom_weight * tsmom_signal + (1.0 - tsmom_weight) * bsv_composite
+
+    # Preserve all BSV columns, add tsmom + hybrid composite (replaces old composite)
+    out = bsv_signals.copy()
+    out = out.rename(columns={"composite": "bsv_composite"})
+    out["tsmom"] = tsmom_signal
+    out["composite"] = hybrid
+
+    log.info(
+        f"Hybrid signal: BSV mean={bsv_composite.mean():.2f}, "
+        f"TSMOM mean={tsmom_signal.mean():.2f}, "
+        f"blend tsmom_w={tsmom_weight}, "
+        f"hybrid abs_mean={hybrid.abs().mean():.2f}"
+    )
+    return out

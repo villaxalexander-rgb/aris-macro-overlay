@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 
 import pandas as pd
+import numpy as np
 
 from signal_engine.bsv_signals import (
     fetch_commodity_prices,
@@ -94,16 +95,60 @@ def run_daily_signals() -> dict:
         health.record("curves", "missing")
         bsv = pd.DataFrame()
 
-    # 3. Regime-weighted target positions
+    # 3. Build target positions via vol-target sizing (Phase A) ---------
+    from signal_engine.tsmom import compute_asset_volatility
+    from config.settings import (
+        PORTFOLIO_VOL_TARGET,
+        VOL_TARGET_WINDOW,
+        SIGNAL_GROSS_CAP,
+        TSMOM_LOOKBACKS,
+        TSMOM_WEIGHT,
+        USE_HYBRID_ALPHA,
+    )
+    from signal_engine.bsv_signals import generate_hybrid_signals
+
     target_positions: dict[str, float] = {}
-    if not bsv.empty and "composite" in bsv.columns and regime.get("regime") in REGIME_WEIGHTS:
-        weights = REGIME_WEIGHTS[regime["regime"]]
-        for asset in bsv.index:
-            sector = SECTOR_MAP.get(asset, "metals")
-            mult = weights.get(sector, 1.0)
-            target_positions[asset] = float(bsv.loc[asset, "composite"]) * mult
-    elif not bsv.empty and "composite" in bsv.columns:
-        target_positions = {a: float(v) for a, v in bsv["composite"].items()}
+
+    if USE_HYBRID_ALPHA and not prices.empty:
+        # Regenerate using the hybrid engine — supersedes the BSV-only call above
+        bsv = generate_hybrid_signals(
+            prices,
+            curves=curves,
+            tsmom_lookbacks=TSMOM_LOOKBACKS,
+            tsmom_weight=TSMOM_WEIGHT,
+        )
+
+    if not bsv.empty and "composite" in bsv.columns:
+        asset_vol = compute_asset_volatility(prices, vol_window=VOL_TARGET_WINDOW)
+        active_assets = [
+            a for a in bsv.index
+            if abs(float(bsv.loc[a, "composite"])) > 0.05
+            and a in asset_vol.index
+            and asset_vol[a] > 0
+        ]
+        n_active = max(len(active_assets), 1)
+        target_vol_per_asset = PORTFOLIO_VOL_TARGET / np.sqrt(n_active)
+
+        for asset in active_assets:
+            signal = float(bsv.loc[asset, "composite"])
+            vol = float(asset_vol[asset])
+            # weight_i = signal_i * (target_vol_per_asset / vol_i)
+            target_positions[asset] = signal * (target_vol_per_asset / vol)
+
+        # Signal-level gross cap (prevents unbounded gross on strong signals)
+        gross = sum(abs(v) for v in target_positions.values())
+        if gross > SIGNAL_GROSS_CAP:
+            scale = SIGNAL_GROSS_CAP / gross
+            target_positions = {k: v * scale for k, v in target_positions.items()}
+            health.record("gross_cap_scaled", f"{gross:.2%}->{SIGNAL_GROSS_CAP:.2%}")
+
+        # Optional: apply regime overlay on top (kept for A/B testing; default off)
+        from config.settings import APPLY_REGIME_TILTS
+        if APPLY_REGIME_TILTS and regime.get("regime") in REGIME_WEIGHTS:
+            rw = REGIME_WEIGHTS[regime["regime"]]
+            for a in list(target_positions.keys()):
+                sector = SECTOR_MAP.get(a, "metals")
+                target_positions[a] *= rw.get(sector, 1.0)
 
     # 3b. Proportional sector rescale — cap any sector whose gross weight
     #     exceeds SECTOR_GROSS_CAP. This prevents correlated legs (e.g. all

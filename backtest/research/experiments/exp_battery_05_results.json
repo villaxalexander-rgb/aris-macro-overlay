@@ -1,0 +1,5178 @@
+{
+  "generated": "2026-04-28T15:24:26.683199",
+  "focus": "Stress test top B4 candidates: cost sensitivity, param sensitivity, regime, stability",
+  "candidates": [
+    "C10_multirev_carry",
+    "carry_5factor",
+    "corr_70",
+    "C8_baseline"
+  ],
+  "results": {
+    "C8_baseline_0bp": {
+      "label": "C8_baseline_0bp",
+      "cagr": 11.61,
+      "vol": 12.69,
+      "sharpe": 0.915,
+      "max_dd": -20.17,
+      "calmar": 0.575,
+      "turnover": 0.1612,
+      "win_rate": 50.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.614,
+      "oos_sharpe": 1.401,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 1.053,
+          "cagr": 12.9,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.443,
+          "cagr": 6.01,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.124,
+          "cagr": 26.5,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.548,
+          "cagr": 6.96,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.681,
+        "roll_2yr_max": 2.397,
+        "roll_2yr_pct_pos": 83.4,
+        "roll_3yr_min": -0.34,
+        "roll_3yr_max": 2.102,
+        "roll_3yr_pct_pos": 85.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -4.34,
+        "2009": 6.95,
+        "2010": 17.24,
+        "2011": -0.93,
+        "2012": 1.94,
+        "2013": 37.59,
+        "2014": 26.12,
+        "2015": 6.02,
+        "2016": -4.81,
+        "2017": 14.06,
+        "2018": -3.09,
+        "2019": 13.49,
+        "2020": -9.16,
+        "2021": 33.04,
+        "2022": 24.14,
+        "2023": 26.93,
+        "2024": 12.87,
+        "2025": 34.3,
+        "2026": 2.31
+      }
+    },
+    "C8_baseline_5bp": {
+      "label": "C8_baseline_5bp",
+      "cagr": 9.41,
+      "vol": 12.73,
+      "sharpe": 0.74,
+      "max_dd": -22.38,
+      "calmar": 0.421,
+      "turnover": 0.1612,
+      "win_rate": 50.1,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.43,
+      "oos_sharpe": 1.243,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.804,
+          "cagr": 10.0,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.307,
+          "cagr": 4.17,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.933,
+          "cagr": 24.09,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.385,
+          "cagr": 4.89,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.8,
+        "roll_2yr_max": 2.278,
+        "roll_2yr_pct_pos": 75.7,
+        "roll_3yr_min": -0.539,
+        "roll_3yr_max": 1.968,
+        "roll_3yr_pct_pos": 78.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.22,
+        "2009": 5.24,
+        "2010": 15.14,
+        "2011": -2.27,
+        "2012": -0.57,
+        "2013": 33.91,
+        "2014": 23.76,
+        "2015": 3.85,
+        "2016": -6.51,
+        "2017": 11.28,
+        "2018": -5.22,
+        "2019": 11.28,
+        "2020": -10.46,
+        "2021": 30.77,
+        "2022": 22.64,
+        "2023": 24.37,
+        "2024": 10.62,
+        "2025": 31.68,
+        "2026": 1.98
+      }
+    },
+    "C8_baseline_10bp": {
+      "label": "C8_baseline_10bp",
+      "cagr": 7.45,
+      "vol": 12.72,
+      "sharpe": 0.585,
+      "max_dd": -24.52,
+      "calmar": 0.304,
+      "turnover": 0.1612,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.276,
+      "oos_sharpe": 1.087,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.644,
+          "cagr": 8.02,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.173,
+          "cagr": 2.35,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.745,
+          "cagr": 21.7,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.226,
+          "cagr": 2.87,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.919,
+        "roll_2yr_max": 2.158,
+        "roll_2yr_pct_pos": 68.1,
+        "roll_3yr_min": -0.583,
+        "roll_3yr_max": 1.833,
+        "roll_3yr_pct_pos": 70.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.99,
+        "2009": 3.55,
+        "2010": 13.07,
+        "2011": -3.6,
+        "2012": -3.0,
+        "2013": 30.26,
+        "2014": 21.42,
+        "2015": 1.73,
+        "2016": -8.17,
+        "2017": 8.57,
+        "2018": -7.29,
+        "2019": 9.11,
+        "2020": -11.74,
+        "2021": 28.52,
+        "2022": 21.15,
+        "2023": 21.85,
+        "2024": 8.41,
+        "2025": 29.1,
+        "2026": 1.64
+      }
+    },
+    "C8_baseline_15bp": {
+      "label": "C8_baseline_15bp",
+      "cagr": 5.51,
+      "vol": 12.72,
+      "sharpe": 0.433,
+      "max_dd": -26.61,
+      "calmar": 0.207,
+      "turnover": 0.1612,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.125,
+      "oos_sharpe": 0.934,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.487,
+          "cagr": 6.06,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.042,
+          "cagr": 0.56,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.558,
+          "cagr": 19.36,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.069,
+          "cagr": 0.88,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.038,
+        "roll_2yr_max": 2.038,
+        "roll_2yr_pct_pos": 60.7,
+        "roll_3yr_min": -0.627,
+        "roll_3yr_max": 1.698,
+        "roll_3yr_pct_pos": 61.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.76,
+        "2009": 1.89,
+        "2010": 11.03,
+        "2011": -4.9,
+        "2012": -5.36,
+        "2013": 26.67,
+        "2014": 19.12,
+        "2015": -0.35,
+        "2016": -9.79,
+        "2017": 5.91,
+        "2018": -9.3,
+        "2019": 6.99,
+        "2020": -12.99,
+        "2021": 26.31,
+        "2022": 19.67,
+        "2023": 19.37,
+        "2024": 6.23,
+        "2025": 26.56,
+        "2026": 1.3
+      }
+    },
+    "C8_baseline_20bp": {
+      "label": "C8_baseline_20bp",
+      "cagr": 3.61,
+      "vol": 12.71,
+      "sharpe": 0.284,
+      "max_dd": -34.4,
+      "calmar": 0.105,
+      "turnover": 0.1612,
+      "win_rate": 48.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.023,
+      "oos_sharpe": 0.783,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.332,
+          "cagr": 4.14,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.088,
+          "cagr": -1.19,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.375,
+          "cagr": 17.05,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.084,
+          "cagr": -1.07,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.157,
+        "roll_2yr_max": 1.918,
+        "roll_2yr_pct_pos": 54.7,
+        "roll_3yr_min": -0.671,
+        "roll_3yr_max": 1.561,
+        "roll_3yr_pct_pos": 53.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.52,
+        "2009": 0.26,
+        "2010": 9.02,
+        "2011": -6.19,
+        "2012": -7.65,
+        "2013": 23.14,
+        "2014": 16.84,
+        "2015": -2.39,
+        "2016": -11.38,
+        "2017": 3.33,
+        "2018": -11.25,
+        "2019": 4.92,
+        "2020": -14.22,
+        "2021": 24.13,
+        "2022": 18.2,
+        "2023": 16.92,
+        "2024": 4.09,
+        "2025": 24.06,
+        "2026": 0.96
+      }
+    },
+    "C8_baseline_30bp": {
+      "label": "C8_baseline_30bp",
+      "cagr": -0.08,
+      "vol": 12.7,
+      "sharpe": -0.006,
+      "max_dd": -52.58,
+      "calmar": -0.001,
+      "turnover": 0.1612,
+      "win_rate": 48.0,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.311,
+      "oos_sharpe": 0.488,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.033,
+          "cagr": 0.41,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.339,
+          "cagr": -4.6,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.016,
+          "cagr": 12.56,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.38,
+          "cagr": -4.82,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.395,
+        "roll_2yr_max": 1.677,
+        "roll_2yr_pct_pos": 42.4,
+        "roll_3yr_min": -0.967,
+        "roll_3yr_max": 1.287,
+        "roll_3yr_pct_pos": 40.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -12.05,
+        "2009": -2.92,
+        "2010": 5.11,
+        "2011": -8.7,
+        "2012": -11.98,
+        "2013": 16.33,
+        "2014": 12.39,
+        "2015": -6.32,
+        "2016": -14.44,
+        "2017": -1.61,
+        "2018": -14.97,
+        "2019": 0.92,
+        "2020": -16.58,
+        "2021": 19.87,
+        "2022": 15.29,
+        "2023": 12.15,
+        "2024": -0.06,
+        "2025": 19.2,
+        "2026": 0.3
+      }
+    },
+    "C10_multirev_carry_0bp": {
+      "label": "C10_multirev_carry_0bp",
+      "cagr": 13.77,
+      "vol": 12.89,
+      "sharpe": 1.068,
+      "max_dd": -19.8,
+      "calmar": 0.696,
+      "turnover": 0.1719,
+      "win_rate": 50.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.7,
+      "oos_sharpe": 1.649,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 1.205,
+          "cagr": 15.48,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.354,
+          "cagr": 4.87,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.306,
+          "cagr": 28.4,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 1.072,
+          "cagr": 13.75,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.355,
+        "roll_2yr_max": 2.861,
+        "roll_2yr_pct_pos": 87.8,
+        "roll_3yr_min": -0.355,
+        "roll_3yr_max": 2.398,
+        "roll_3yr_pct_pos": 89.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -3.87,
+        "2009": 14.9,
+        "2010": 10.19,
+        "2011": 1.24,
+        "2012": 9.37,
+        "2013": 30.96,
+        "2014": 19.44,
+        "2015": 2.78,
+        "2016": -2.87,
+        "2017": 22.51,
+        "2018": 1.78,
+        "2019": 23.82,
+        "2020": -10.18,
+        "2021": 35.56,
+        "2022": 29.37,
+        "2023": 30.62,
+        "2024": 16.39,
+        "2025": 38.68,
+        "2026": 4.41
+      }
+    },
+    "C10_multirev_carry_5bp": {
+      "label": "C10_multirev_carry_5bp",
+      "cagr": 11.38,
+      "vol": 12.93,
+      "sharpe": 0.88,
+      "max_dd": -20.27,
+      "calmar": 0.561,
+      "turnover": 0.1719,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.502,
+      "oos_sharpe": 1.48,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.95,
+          "cagr": 12.38,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.21,
+          "cagr": 2.89,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.099,
+          "cagr": 25.81,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.886,
+          "cagr": 11.37,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.551,
+        "roll_2yr_max": 2.73,
+        "roll_2yr_pct_pos": 80.8,
+        "roll_3yr_min": -0.551,
+        "roll_3yr_max": 2.255,
+        "roll_3yr_pct_pos": 85.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.69,
+        "2009": 12.78,
+        "2010": 8.19,
+        "2011": -0.41,
+        "2012": 6.38,
+        "2013": 27.12,
+        "2014": 17.08,
+        "2015": 0.46,
+        "2016": -4.82,
+        "2017": 19.62,
+        "2018": -0.54,
+        "2019": 21.26,
+        "2020": -11.5,
+        "2021": 33.11,
+        "2022": 27.6,
+        "2023": 27.86,
+        "2024": 13.88,
+        "2025": 35.68,
+        "2026": 3.97
+      }
+    },
+    "C10_multirev_carry_10bp": {
+      "label": "C10_multirev_carry_10bp",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_multirev_carry_15bp": {
+      "label": "C10_multirev_carry_15bp",
+      "cagr": 7.09,
+      "vol": 12.92,
+      "sharpe": 0.549,
+      "max_dd": -22.4,
+      "calmar": 0.317,
+      "turnover": 0.1719,
+      "win_rate": 48.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.169,
+      "oos_sharpe": 1.149,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.615,
+          "cagr": 8.02,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.07,
+          "cagr": -0.97,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.692,
+          "cagr": 20.74,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.525,
+          "cagr": 6.74,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.754,
+        "roll_2yr_max": 2.464,
+        "roll_2yr_pct_pos": 70.1,
+        "roll_3yr_min": -0.644,
+        "roll_3yr_max": 1.968,
+        "roll_3yr_pct_pos": 73.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.32,
+        "2009": 8.63,
+        "2010": 4.27,
+        "2011": -3.63,
+        "2012": 0.67,
+        "2013": 19.65,
+        "2014": 12.47,
+        "2015": -4.03,
+        "2016": -8.57,
+        "2017": 13.99,
+        "2018": -5.02,
+        "2019": 16.3,
+        "2020": -14.07,
+        "2021": 28.29,
+        "2022": 24.1,
+        "2023": 22.48,
+        "2024": 8.96,
+        "2025": 29.85,
+        "2026": 3.1
+      }
+    },
+    "C10_multirev_carry_20bp": {
+      "label": "C10_multirev_carry_20bp",
+      "cagr": 5.01,
+      "vol": 12.92,
+      "sharpe": 0.388,
+      "max_dd": -29.07,
+      "calmar": 0.172,
+      "turnover": 0.1719,
+      "win_rate": 48.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.008,
+      "oos_sharpe": 0.988,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.452,
+          "cagr": 5.89,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.207,
+          "cagr": -2.85,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.493,
+          "cagr": 18.27,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.351,
+          "cagr": 4.5,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.887,
+        "roll_2yr_max": 2.33,
+        "roll_2yr_pct_pos": 64.4,
+        "roll_3yr_min": -0.692,
+        "roll_3yr_max": 1.824,
+        "roll_3yr_pct_pos": 59.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.13,
+        "2009": 6.61,
+        "2010": 2.35,
+        "2011": -5.2,
+        "2012": -2.05,
+        "2013": 16.04,
+        "2014": 10.23,
+        "2015": -6.2,
+        "2016": -10.38,
+        "2017": 11.27,
+        "2018": -7.17,
+        "2019": 13.91,
+        "2020": -15.31,
+        "2021": 25.92,
+        "2022": 22.37,
+        "2023": 19.86,
+        "2024": 6.56,
+        "2025": 27.02,
+        "2026": 2.66
+      }
+    },
+    "C10_multirev_carry_30bp": {
+      "label": "C10_multirev_carry_30bp",
+      "cagr": 0.98,
+      "vol": 12.9,
+      "sharpe": 0.076,
+      "max_dd": -52.03,
+      "calmar": 0.019,
+      "turnover": 0.1719,
+      "win_rate": 47.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.304,
+      "oos_sharpe": 0.675,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.137,
+          "cagr": 1.78,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.471,
+          "cagr": -6.48,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.104,
+          "cagr": 13.46,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.015,
+          "cagr": 0.19,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.23,
+        "roll_2yr_max": 2.059,
+        "roll_2yr_pct_pos": 41.1,
+        "roll_3yr_min": -0.94,
+        "roll_3yr_max": 1.534,
+        "roll_3yr_pct_pos": 37.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.75,
+        "2009": 2.67,
+        "2010": -1.37,
+        "2011": -8.27,
+        "2012": -7.18,
+        "2013": 9.16,
+        "2014": 5.87,
+        "2015": -10.36,
+        "2016": -13.85,
+        "2017": 6.05,
+        "2018": -11.28,
+        "2019": 9.31,
+        "2020": -17.74,
+        "2021": 21.3,
+        "2022": 18.95,
+        "2023": 14.78,
+        "2024": 1.91,
+        "2025": 21.55,
+        "2026": 1.8
+      }
+    },
+    "carry_5factor_0bp": {
+      "label": "carry_5factor_0bp",
+      "cagr": 13.15,
+      "vol": 12.64,
+      "sharpe": 1.04,
+      "max_dd": -19.87,
+      "calmar": 0.662,
+      "turnover": 0.1725,
+      "win_rate": 50.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.595,
+      "oos_sharpe": 1.762,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 1.041,
+          "cagr": 12.87,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.59,
+          "cagr": 7.84,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.45,
+          "cagr": 30.55,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.613,
+          "cagr": 7.85,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.63,
+        "roll_2yr_max": 2.678,
+        "roll_2yr_pct_pos": 86.8,
+        "roll_3yr_min": -0.408,
+        "roll_3yr_max": 2.256,
+        "roll_3yr_pct_pos": 86.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -5.21,
+        "2009": 6.16,
+        "2010": 15.96,
+        "2011": 0.06,
+        "2012": 6.13,
+        "2013": 23.72,
+        "2014": 24.98,
+        "2015": 3.48,
+        "2016": 0.04,
+        "2017": 12.07,
+        "2018": 1.96,
+        "2019": 28.11,
+        "2020": -3.36,
+        "2021": 36.19,
+        "2022": 28.01,
+        "2023": 27.87,
+        "2024": 6.7,
+        "2025": 43.35,
+        "2026": 6.29
+      }
+    },
+    "carry_5factor_5bp": {
+      "label": "carry_5factor_5bp",
+      "cagr": 10.72,
+      "vol": 12.69,
+      "sharpe": 0.845,
+      "max_dd": -22.09,
+      "calmar": 0.485,
+      "turnover": 0.1725,
+      "win_rate": 50.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.393,
+      "oos_sharpe": 1.582,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.772,
+          "cagr": 9.73,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.434,
+          "cagr": 5.76,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.234,
+          "cagr": 27.83,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.435,
+          "cagr": 5.58,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.765,
+        "roll_2yr_max": 2.545,
+        "roll_2yr_pct_pos": 82.0,
+        "roll_3yr_min": -0.614,
+        "roll_3yr_max": 2.107,
+        "roll_3yr_pct_pos": 82.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.31,
+        "2009": 4.22,
+        "2010": 13.69,
+        "2011": -1.57,
+        "2012": 3.31,
+        "2013": 20.2,
+        "2014": 22.44,
+        "2015": 1.19,
+        "2016": -2.04,
+        "2017": 9.35,
+        "2018": -0.51,
+        "2019": 25.38,
+        "2020": -4.9,
+        "2021": 33.56,
+        "2022": 26.25,
+        "2023": 25.12,
+        "2024": 4.53,
+        "2025": 40.11,
+        "2026": 5.84
+      }
+    },
+    "carry_5factor_10bp": {
+      "label": "carry_5factor_10bp",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "carry_5factor_15bp": {
+      "label": "carry_5factor_15bp",
+      "cagr": 6.39,
+      "vol": 12.68,
+      "sharpe": 0.504,
+      "max_dd": -26.8,
+      "calmar": 0.239,
+      "turnover": 0.1725,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.059,
+      "oos_sharpe": 1.23,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.432,
+          "cagr": 5.44,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.129,
+          "cagr": 1.71,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.81,
+          "cagr": 22.51,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.092,
+          "cagr": 1.17,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.036,
+        "roll_2yr_max": 2.278,
+        "roll_2yr_pct_pos": 71.3,
+        "roll_3yr_min": -0.707,
+        "roll_3yr_max": 1.807,
+        "roll_3yr_pct_pos": 68.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.9,
+        "2009": 0.46,
+        "2010": 9.24,
+        "2011": -4.75,
+        "2012": -2.09,
+        "2013": 13.34,
+        "2014": 17.46,
+        "2015": -3.23,
+        "2016": -6.05,
+        "2017": 4.09,
+        "2018": -5.26,
+        "2019": 20.08,
+        "2020": -7.88,
+        "2021": 28.41,
+        "2022": 22.78,
+        "2023": 19.76,
+        "2024": 0.29,
+        "2025": 33.78,
+        "2026": 4.93
+      }
+    },
+    "carry_5factor_20bp": {
+      "label": "carry_5factor_20bp",
+      "cagr": 4.29,
+      "vol": 12.68,
+      "sharpe": 0.339,
+      "max_dd": -29.05,
+      "calmar": 0.148,
+      "turnover": 0.1725,
+      "win_rate": 48.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.103,
+      "oos_sharpe": 1.059,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.267,
+          "cagr": 3.36,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.019,
+          "cagr": -0.25,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.603,
+          "cagr": 19.92,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.074,
+          "cagr": -0.95,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.172,
+        "roll_2yr_max": 2.144,
+        "roll_2yr_pct_pos": 62.9,
+        "roll_3yr_min": -0.754,
+        "roll_3yr_max": 1.657,
+        "roll_3yr_pct_pos": 61.7
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.69,
+        "2009": -1.36,
+        "2010": 7.07,
+        "2011": -6.3,
+        "2012": -4.66,
+        "2013": 10.03,
+        "2014": 15.03,
+        "2015": -5.36,
+        "2016": -7.97,
+        "2017": 1.57,
+        "2018": -7.53,
+        "2019": 17.51,
+        "2020": -9.31,
+        "2021": 25.9,
+        "2022": 21.07,
+        "2023": 17.16,
+        "2024": -1.77,
+        "2025": 30.7,
+        "2026": 4.48
+      }
+    },
+    "carry_5factor_30bp": {
+      "label": "carry_5factor_30bp",
+      "cagr": 0.23,
+      "vol": 12.67,
+      "sharpe": 0.018,
+      "max_dd": -53.78,
+      "calmar": 0.004,
+      "turnover": 0.1725,
+      "win_rate": 47.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.415,
+      "oos_sharpe": 0.726,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": -0.052,
+          "cagr": -0.66,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.306,
+          "cagr": -4.06,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.202,
+          "cagr": 14.91,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.394,
+          "cagr": -5.04,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.441,
+        "roll_2yr_max": 1.876,
+        "roll_2yr_pct_pos": 39.7,
+        "roll_3yr_min": -0.989,
+        "roll_3yr_max": 1.355,
+        "roll_3yr_pct_pos": 32.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -13.27,
+        "2009": -4.89,
+        "2010": 2.85,
+        "2011": -9.31,
+        "2012": -9.55,
+        "2013": 3.68,
+        "2014": 10.3,
+        "2015": -9.45,
+        "2016": -11.66,
+        "2017": -3.26,
+        "2018": -11.86,
+        "2019": 12.55,
+        "2020": -12.09,
+        "2021": 21.03,
+        "2022": 17.69,
+        "2023": 12.13,
+        "2024": -5.75,
+        "2025": 24.75,
+        "2026": 3.59
+      }
+    },
+    "corr_70_0bp": {
+      "label": "corr_70_0bp",
+      "cagr": 13.02,
+      "vol": 12.6,
+      "sharpe": 1.033,
+      "max_dd": -21.25,
+      "calmar": 0.613,
+      "turnover": 0.1617,
+      "win_rate": 50.1,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.72,
+      "oos_sharpe": 1.535,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.976,
+          "cagr": 11.9,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.516,
+          "cagr": 6.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.254,
+          "cagr": 28.37,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.888,
+          "cagr": 11.07,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.718,
+        "roll_2yr_max": 2.689,
+        "roll_2yr_pct_pos": 86.8,
+        "roll_3yr_min": -0.251,
+        "roll_3yr_max": 2.361,
+        "roll_3yr_pct_pos": 85.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -2.03,
+        "2009": 2.89,
+        "2010": 17.57,
+        "2011": -0.49,
+        "2012": 2.63,
+        "2013": 39.75,
+        "2014": 25.68,
+        "2015": 7.46,
+        "2016": -2.32,
+        "2017": 13.91,
+        "2018": 5.36,
+        "2019": 19.3,
+        "2020": -7.74,
+        "2021": 38.18,
+        "2022": 25.0,
+        "2023": 33.42,
+        "2024": 13.74,
+        "2025": 25.99,
+        "2026": 2.18
+      }
+    },
+    "corr_70_5bp": {
+      "label": "corr_70_5bp",
+      "cagr": 10.67,
+      "vol": 12.63,
+      "sharpe": 0.845,
+      "max_dd": -23.59,
+      "calmar": 0.452,
+      "turnover": 0.1617,
+      "win_rate": 49.9,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.525,
+      "oos_sharpe": 1.361,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.732,
+          "cagr": 9.02,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.365,
+          "cagr": 4.91,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.05,
+          "cagr": 25.77,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.704,
+          "cagr": 8.77,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.846,
+        "roll_2yr_max": 2.541,
+        "roll_2yr_pct_pos": 83.0,
+        "roll_3yr_min": -0.425,
+        "roll_3yr_max": 2.205,
+        "roll_3yr_pct_pos": 82.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -5.57,
+        "2009": 1.13,
+        "2010": 15.46,
+        "2011": -1.93,
+        "2012": -0.07,
+        "2013": 35.42,
+        "2014": 23.02,
+        "2015": 4.91,
+        "2016": -4.27,
+        "2017": 11.19,
+        "2018": 3.13,
+        "2019": 16.86,
+        "2020": -9.09,
+        "2021": 35.49,
+        "2022": 23.18,
+        "2023": 30.35,
+        "2024": 11.38,
+        "2025": 23.55,
+        "2026": 1.82
+      }
+    },
+    "corr_70_10bp": {
+      "label": "corr_70_10bp",
+      "cagr": 8.53,
+      "vol": 12.62,
+      "sharpe": 0.676,
+      "max_dd": -25.87,
+      "calmar": 0.33,
+      "turnover": 0.1617,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.356,
+      "oos_sharpe": 1.19,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.559,
+          "cagr": 6.89,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.216,
+          "cagr": 2.91,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.849,
+          "cagr": 23.21,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.523,
+          "cagr": 6.51,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.973,
+        "roll_2yr_max": 2.391,
+        "roll_2yr_pct_pos": 76.9,
+        "roll_3yr_min": -0.501,
+        "roll_3yr_max": 2.048,
+        "roll_3yr_pct_pos": 79.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -6.5,
+        "2009": -0.6,
+        "2010": 13.37,
+        "2011": -3.34,
+        "2012": -2.68,
+        "2013": 31.16,
+        "2014": 20.39,
+        "2015": 2.42,
+        "2016": -6.18,
+        "2017": 8.53,
+        "2018": 0.95,
+        "2019": 14.46,
+        "2020": -10.42,
+        "2021": 32.84,
+        "2022": 21.37,
+        "2023": 27.32,
+        "2024": 9.07,
+        "2025": 21.14,
+        "2026": 1.47
+      }
+    },
+    "corr_70_15bp": {
+      "label": "corr_70_15bp",
+      "cagr": 6.42,
+      "vol": 12.62,
+      "sharpe": 0.509,
+      "max_dd": -28.08,
+      "calmar": 0.229,
+      "turnover": 0.1617,
+      "win_rate": 49.1,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.19,
+      "oos_sharpe": 1.022,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.39,
+          "cagr": 4.8,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.07,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.65,
+          "cagr": 20.69,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.345,
+          "cagr": 4.3,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.101,
+        "roll_2yr_max": 2.24,
+        "roll_2yr_pct_pos": 68.5,
+        "roll_3yr_min": -0.585,
+        "roll_3yr_max": 1.891,
+        "roll_3yr_pct_pos": 69.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.41,
+        "2009": -2.3,
+        "2010": 11.32,
+        "2011": -4.74,
+        "2012": -5.21,
+        "2013": 26.98,
+        "2014": 17.79,
+        "2015": -0.01,
+        "2016": -8.04,
+        "2017": 5.94,
+        "2018": -1.17,
+        "2019": 12.1,
+        "2020": -11.72,
+        "2021": 30.22,
+        "2022": 19.58,
+        "2023": 24.34,
+        "2024": 6.79,
+        "2025": 18.77,
+        "2026": 1.11
+      }
+    },
+    "corr_70_20bp": {
+      "label": "corr_70_20bp",
+      "cagr": 4.36,
+      "vol": 12.62,
+      "sharpe": 0.345,
+      "max_dd": -30.21,
+      "calmar": 0.144,
+      "turnover": 0.1617,
+      "win_rate": 48.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.028,
+      "oos_sharpe": 0.856,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.223,
+          "cagr": 2.75,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.073,
+          "cagr": -0.98,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.454,
+          "cagr": 18.21,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.172,
+          "cagr": 2.14,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.228,
+        "roll_2yr_max": 2.088,
+        "roll_2yr_pct_pos": 61.6,
+        "roll_3yr_min": -0.68,
+        "roll_3yr_max": 1.732,
+        "roll_3yr_pct_pos": 60.3
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.32,
+        "2009": -3.96,
+        "2010": 9.3,
+        "2011": -6.11,
+        "2012": -7.66,
+        "2013": 22.91,
+        "2014": 15.24,
+        "2015": -2.37,
+        "2016": -9.85,
+        "2017": 3.4,
+        "2018": -3.23,
+        "2019": 9.78,
+        "2020": -12.99,
+        "2021": 27.65,
+        "2022": 17.81,
+        "2023": 21.42,
+        "2024": 4.55,
+        "2025": 16.45,
+        "2026": 0.76
+      }
+    },
+    "corr_70_30bp": {
+      "label": "corr_70_30bp",
+      "cagr": 0.35,
+      "vol": 12.6,
+      "sharpe": 0.028,
+      "max_dd": -48.06,
+      "calmar": 0.007,
+      "turnover": 0.1617,
+      "win_rate": 47.9,
+      "max_dd_duration_days": 0,
+      "is_sharpe": -0.287,
+      "oos_sharpe": 0.535,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": -0.098,
+          "cagr": -1.21,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.35,
+          "cagr": -4.7,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.073,
+          "cagr": 13.4,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.163,
+          "cagr": -2.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.482,
+        "roll_2yr_max": 1.782,
+        "roll_2yr_pct_pos": 44.5,
+        "roll_3yr_min": -1.041,
+        "roll_3yr_max": 1.415,
+        "roll_3yr_pct_pos": 39.3
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.13,
+        "2009": -7.2,
+        "2010": 5.37,
+        "2011": -8.8,
+        "2012": -12.28,
+        "2013": 15.13,
+        "2014": 10.27,
+        "2015": -6.91,
+        "2016": -13.32,
+        "2017": -1.45,
+        "2018": -7.19,
+        "2019": 5.3,
+        "2020": -15.44,
+        "2021": 22.63,
+        "2022": 14.32,
+        "2023": 15.76,
+        "2024": 0.22,
+        "2025": 11.95,
+        "2026": 0.06
+      }
+    },
+    "C10_sens_rev_w_60": {
+      "label": "C10_sens_rev_w_60",
+      "cagr": 9.89,
+      "vol": 12.65,
+      "sharpe": 0.782,
+      "max_dd": -25.64,
+      "calmar": 0.386,
+      "turnover": 0.1423,
+      "win_rate": 50.0,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.35,
+      "oos_sharpe": 1.499,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.9,
+          "cagr": 11.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.208,
+          "cagr": 2.66,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.905,
+          "cagr": 23.99,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.586,
+          "cagr": 7.58,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.827,
+        "roll_2yr_max": 2.677,
+        "roll_2yr_pct_pos": 82.6,
+        "roll_3yr_min": -0.822,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 80.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.76,
+        "2009": 4.34,
+        "2010": 7.03,
+        "2011": -6.7,
+        "2012": 5.36,
+        "2013": 19.69,
+        "2014": 21.56,
+        "2015": 6.36,
+        "2016": -1.63,
+        "2017": 10.28,
+        "2018": -0.4,
+        "2019": 20.45,
+        "2020": -2.99,
+        "2021": 30.5,
+        "2022": 24.16,
+        "2023": 18.09,
+        "2024": 8.61,
+        "2025": 36.04,
+        "2026": 8.67
+      }
+    },
+    "C10_sens_rev_w_80": {
+      "label": "C10_sens_rev_w_80",
+      "cagr": 9.58,
+      "vol": 12.81,
+      "sharpe": 0.748,
+      "max_dd": -23.2,
+      "calmar": 0.413,
+      "turnover": 0.1598,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.343,
+      "oos_sharpe": 1.401,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.85,
+          "cagr": 11.07,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.124,
+          "cagr": 1.65,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.903,
+          "cagr": 23.64,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.655,
+          "cagr": 8.41,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.728,
+        "roll_2yr_max": 2.634,
+        "roll_2yr_pct_pos": 78.7,
+        "roll_3yr_min": -0.657,
+        "roll_3yr_max": 2.066,
+        "roll_3yr_pct_pos": 80.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.76,
+        "2009": 7.71,
+        "2010": 6.73,
+        "2011": -4.1,
+        "2012": 4.25,
+        "2013": 21.97,
+        "2014": 18.3,
+        "2015": 1.32,
+        "2016": -4.58,
+        "2017": 14.18,
+        "2018": -1.73,
+        "2019": 19.64,
+        "2020": -9.12,
+        "2021": 30.7,
+        "2022": 25.28,
+        "2023": 22.62,
+        "2024": 9.72,
+        "2025": 34.83,
+        "2026": 6.27
+      }
+    },
+    "C10_sens_rev_w_100": {
+      "label": "C10_sens_rev_w_100",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_sens_rev_w_120": {
+      "label": "C10_sens_rev_w_120",
+      "cagr": 8.79,
+      "vol": 12.97,
+      "sharpe": 0.678,
+      "max_dd": -22.29,
+      "calmar": 0.395,
+      "turnover": 0.1795,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.318,
+      "oos_sharpe": 1.243,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.692,
+          "cagr": 8.94,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.036,
+          "cagr": 0.5,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.842,
+          "cagr": 22.41,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.757,
+          "cagr": 9.7,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.665,
+        "roll_2yr_max": 2.533,
+        "roll_2yr_pct_pos": 74.6,
+        "roll_3yr_min": -0.543,
+        "roll_3yr_max": 2.118,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.45,
+        "2009": 13.35,
+        "2010": 5.36,
+        "2011": -0.39,
+        "2012": 3.04,
+        "2013": 23.24,
+        "2014": 11.09,
+        "2015": -3.87,
+        "2016": -8.24,
+        "2017": 18.21,
+        "2018": -3.13,
+        "2019": 18.04,
+        "2020": -14.77,
+        "2021": 30.43,
+        "2022": 25.48,
+        "2023": 26.32,
+        "2024": 12.39,
+        "2025": 31.18,
+        "2026": 1.17
+      }
+    },
+    "C10_sens_rev_w_150": {
+      "label": "C10_sens_rev_w_150",
+      "cagr": 8.17,
+      "vol": 12.99,
+      "sharpe": 0.629,
+      "max_dd": -23.88,
+      "calmar": 0.342,
+      "turnover": 0.1861,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.294,
+      "oos_sharpe": 1.148,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.565,
+          "cagr": 7.2,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.003,
+          "cagr": -0.05,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.76,
+          "cagr": 21.32,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.81,
+          "cagr": 10.36,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.775,
+        "roll_2yr_max": 2.431,
+        "roll_2yr_pct_pos": 74.8,
+        "roll_3yr_min": -0.574,
+        "roll_3yr_max": 2.082,
+        "roll_3yr_pct_pos": 78.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -6.43,
+        "2009": 15.98,
+        "2010": 4.01,
+        "2011": 1.74,
+        "2012": 2.63,
+        "2013": 22.15,
+        "2014": 8.45,
+        "2015": -5.41,
+        "2016": -10.26,
+        "2017": 19.23,
+        "2018": -3.98,
+        "2019": 17.58,
+        "2020": -16.55,
+        "2021": 29.44,
+        "2022": 24.4,
+        "2023": 26.29,
+        "2024": 12.47,
+        "2025": 29.35,
+        "2026": -0.87
+      }
+    },
+    "C10_sens_sec_w_60": {
+      "label": "C10_sens_sec_w_60",
+      "cagr": 9.9,
+      "vol": 12.97,
+      "sharpe": 0.763,
+      "max_dd": -22.42,
+      "calmar": 0.442,
+      "turnover": 0.1777,
+      "win_rate": 49.5,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.414,
+      "oos_sharpe": 1.306,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.842,
+          "cagr": 10.94,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.132,
+          "cagr": 1.85,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.846,
+          "cagr": 22.55,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.817,
+          "cagr": 10.48,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.551,
+        "roll_2yr_max": 2.744,
+        "roll_2yr_pct_pos": 78.2,
+        "roll_3yr_min": -0.482,
+        "roll_3yr_max": 2.292,
+        "roll_3yr_pct_pos": 84.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -6.3,
+        "2009": 15.54,
+        "2010": 7.42,
+        "2011": 1.9,
+        "2012": 3.72,
+        "2013": 21.46,
+        "2014": 10.34,
+        "2015": -1.8,
+        "2016": -6.56,
+        "2017": 18.74,
+        "2018": -0.19,
+        "2019": 21.09,
+        "2020": -13.97,
+        "2021": 33.6,
+        "2022": 27.8,
+        "2023": 27.56,
+        "2024": 8.47,
+        "2025": 31.63,
+        "2026": 1.42
+      }
+    },
+    "C10_sens_sec_w_80": {
+      "label": "C10_sens_sec_w_80",
+      "cagr": 9.57,
+      "vol": 12.95,
+      "sharpe": 0.739,
+      "max_dd": -21.79,
+      "calmar": 0.439,
+      "turnover": 0.1752,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.373,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.821,
+          "cagr": 10.7,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.096,
+          "cagr": 1.33,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.879,
+          "cagr": 22.99,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.757,
+          "cagr": 9.71,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.546,
+        "roll_2yr_max": 2.68,
+        "roll_2yr_pct_pos": 76.9,
+        "roll_3yr_min": -0.546,
+        "roll_3yr_max": 2.2,
+        "roll_3yr_pct_pos": 83.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.52,
+        "2009": 13.19,
+        "2010": 6.89,
+        "2011": -0.17,
+        "2012": 3.58,
+        "2013": 22.6,
+        "2014": 12.5,
+        "2015": -1.92,
+        "2016": -6.59,
+        "2017": 17.78,
+        "2018": -1.65,
+        "2019": 19.94,
+        "2020": -13.46,
+        "2021": 32.19,
+        "2022": 26.78,
+        "2023": 26.36,
+        "2024": 10.06,
+        "2025": 32.34,
+        "2026": 2.64
+      }
+    },
+    "C10_sens_sec_w_100": {
+      "label": "C10_sens_sec_w_100",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_sens_sec_w_120": {
+      "label": "C10_sens_sec_w_120",
+      "cagr": 8.84,
+      "vol": 12.89,
+      "sharpe": 0.686,
+      "max_dd": -22.39,
+      "calmar": 0.395,
+      "turnover": 0.1678,
+      "win_rate": 49.5,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.298,
+      "oos_sharpe": 1.303,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.729,
+          "cagr": 9.48,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.046,
+          "cagr": 0.63,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.891,
+          "cagr": 23.32,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.66,
+          "cagr": 8.48,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.724,
+        "roll_2yr_max": 2.497,
+        "roll_2yr_pct_pos": 75.0,
+        "roll_3yr_min": -0.642,
+        "roll_3yr_max": 2.046,
+        "roll_3yr_pct_pos": 78.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.41,
+        "2009": 8.73,
+        "2010": 5.43,
+        "2011": -3.69,
+        "2012": 3.52,
+        "2013": 23.74,
+        "2014": 16.75,
+        "2015": -1.58,
+        "2016": -6.7,
+        "2017": 15.71,
+        "2018": -3.83,
+        "2019": 17.45,
+        "2020": -11.91,
+        "2021": 29.02,
+        "2022": 24.8,
+        "2023": 23.87,
+        "2024": 12.52,
+        "2025": 32.9,
+        "2026": 3.98
+      }
+    },
+    "C10_sens_sec_w_150": {
+      "label": "C10_sens_sec_w_150",
+      "cagr": 8.34,
+      "vol": 12.8,
+      "sharpe": 0.651,
+      "max_dd": -23.79,
+      "calmar": 0.35,
+      "turnover": 0.1604,
+      "win_rate": 49.5,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.251,
+      "oos_sharpe": 1.302,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.652,
+          "cagr": 8.41,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.027,
+          "cagr": 0.37,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.87,
+          "cagr": 23.21,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.607,
+          "cagr": 7.81,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.834,
+        "roll_2yr_max": 2.379,
+        "roll_2yr_pct_pos": 73.9,
+        "roll_3yr_min": -0.71,
+        "roll_3yr_max": 2.077,
+        "roll_3yr_pct_pos": 75.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.46,
+        "2009": 6.85,
+        "2010": 4.17,
+        "2011": -6.07,
+        "2012": 3.72,
+        "2013": 24.11,
+        "2014": 19.21,
+        "2015": -1.06,
+        "2016": -6.68,
+        "2017": 13.94,
+        "2018": -5.26,
+        "2019": 15.51,
+        "2020": -10.0,
+        "2021": 26.63,
+        "2022": 23.39,
+        "2023": 21.97,
+        "2024": 14.19,
+        "2025": 33.47,
+        "2026": 4.01
+      }
+    },
+    "C10_sens_carry_w_60": {
+      "label": "C10_sens_carry_w_60",
+      "cagr": 9.22,
+      "vol": 12.99,
+      "sharpe": 0.71,
+      "max_dd": -22.56,
+      "calmar": 0.409,
+      "turnover": 0.1717,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.409,
+      "oos_sharpe": 1.175,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.796,
+          "cagr": 10.26,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.029,
+          "cagr": 0.4,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.845,
+          "cagr": 22.45,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.811,
+          "cagr": 10.39,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.583,
+        "roll_2yr_max": 2.541,
+        "roll_2yr_pct_pos": 76.0,
+        "roll_3yr_min": -0.583,
+        "roll_3yr_max": 2.117,
+        "roll_3yr_pct_pos": 80.3
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.21,
+        "2009": 15.94,
+        "2010": 6.13,
+        "2011": -0.1,
+        "2012": 2.41,
+        "2013": 28.38,
+        "2014": 13.73,
+        "2015": -1.55,
+        "2016": -6.91,
+        "2017": 18.13,
+        "2018": -2.54,
+        "2019": 14.05,
+        "2020": -15.31,
+        "2021": 31.29,
+        "2022": 25.39,
+        "2023": 25.12,
+        "2024": 12.98,
+        "2025": 29.85,
+        "2026": 0.88
+      }
+    },
+    "C10_sens_carry_w_80": {
+      "label": "C10_sens_carry_w_80",
+      "cagr": 9.25,
+      "vol": 12.96,
+      "sharpe": 0.714,
+      "max_dd": -21.93,
+      "calmar": 0.422,
+      "turnover": 0.1718,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.375,
+      "oos_sharpe": 1.243,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.792,
+          "cagr": 10.27,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.049,
+          "cagr": 0.69,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.876,
+          "cagr": 22.92,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.759,
+          "cagr": 9.73,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.591,
+        "roll_2yr_max": 2.574,
+        "roll_2yr_pct_pos": 75.3,
+        "roll_3yr_min": -0.591,
+        "roll_3yr_max": 2.121,
+        "roll_3yr_pct_pos": 80.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.38,
+        "2009": 13.3,
+        "2010": 6.26,
+        "2011": -1.01,
+        "2012": 2.9,
+        "2013": 26.07,
+        "2014": 14.25,
+        "2015": -1.73,
+        "2016": -6.84,
+        "2017": 17.65,
+        "2018": -2.57,
+        "2019": 16.33,
+        "2020": -14.25,
+        "2021": 31.09,
+        "2022": 25.78,
+        "2023": 25.24,
+        "2024": 12.43,
+        "2025": 31.21,
+        "2026": 2.06
+      }
+    },
+    "C10_sens_carry_w_100": {
+      "label": "C10_sens_carry_w_100",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_sens_carry_w_120": {
+      "label": "C10_sens_carry_w_120",
+      "cagr": 9.18,
+      "vol": 12.87,
+      "sharpe": 0.713,
+      "max_dd": -21.97,
+      "calmar": 0.418,
+      "turnover": 0.1717,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.289,
+      "oos_sharpe": 1.392,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.759,
+          "cagr": 9.95,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.093,
+          "cagr": 1.26,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.903,
+          "cagr": 23.49,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.657,
+          "cagr": 8.44,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.687,
+        "roll_2yr_max": 2.611,
+        "roll_2yr_pct_pos": 75.8,
+        "roll_3yr_min": -0.602,
+        "roll_3yr_max": 2.101,
+        "roll_3yr_pct_pos": 79.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.61,
+        "2009": 8.39,
+        "2010": 5.91,
+        "2011": -2.98,
+        "2012": 4.23,
+        "2013": 20.02,
+        "2014": 14.87,
+        "2015": -1.98,
+        "2016": -6.37,
+        "2017": 15.67,
+        "2018": -2.91,
+        "2019": 21.29,
+        "2020": -10.79,
+        "2021": 30.17,
+        "2022": 25.7,
+        "2023": 24.75,
+        "2024": 10.3,
+        "2025": 34.52,
+        "2026": 5.28
+      }
+    },
+    "C10_sens_carry_w_150": {
+      "label": "C10_sens_carry_w_150",
+      "cagr": 9.06,
+      "vol": 12.79,
+      "sharpe": 0.709,
+      "max_dd": -23.43,
+      "calmar": 0.387,
+      "turnover": 0.171,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.211,
+      "oos_sharpe": 1.525,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.711,
+          "cagr": 9.38,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.139,
+          "cagr": 1.83,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.59,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.592,
+          "cagr": 7.61,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.796,
+        "roll_2yr_max": 2.62,
+        "roll_2yr_pct_pos": 76.5,
+        "roll_3yr_min": -0.603,
+        "roll_3yr_max": 2.077,
+        "roll_3yr_pct_pos": 77.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.6,
+        "2009": 4.79,
+        "2010": 4.88,
+        "2011": -4.41,
+        "2012": 5.37,
+        "2013": 14.85,
+        "2014": 14.15,
+        "2015": -2.26,
+        "2016": -5.89,
+        "2017": 13.72,
+        "2018": -2.68,
+        "2019": 25.33,
+        "2020": -6.95,
+        "2021": 29.3,
+        "2022": 25.39,
+        "2023": 24.02,
+        "2024": 8.76,
+        "2025": 37.11,
+        "2026": 7.96
+      }
+    },
+    "C10_sens_ts_w_60": {
+      "label": "C10_sens_ts_w_60",
+      "cagr": 9.96,
+      "vol": 13.02,
+      "sharpe": 0.765,
+      "max_dd": -21.75,
+      "calmar": 0.458,
+      "turnover": 0.1754,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.39,
+      "oos_sharpe": 1.35,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.732,
+          "cagr": 9.59,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.08,
+          "cagr": 1.12,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.908,
+          "cagr": 23.32,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.97,
+          "cagr": 12.5,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.63,
+        "roll_2yr_max": 2.788,
+        "roll_2yr_pct_pos": 79.0,
+        "roll_3yr_min": -0.489,
+        "roll_3yr_max": 2.267,
+        "roll_3yr_pct_pos": 84.7
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -6.44,
+        "2009": 20.43,
+        "2010": 3.69,
+        "2011": -1.3,
+        "2012": 8.23,
+        "2013": 18.41,
+        "2014": 11.18,
+        "2015": -5.01,
+        "2016": -5.05,
+        "2017": 18.96,
+        "2018": -1.63,
+        "2019": 21.78,
+        "2020": -12.34,
+        "2021": 34.22,
+        "2022": 28.28,
+        "2023": 24.51,
+        "2024": 10.71,
+        "2025": 33.42,
+        "2026": 1.45
+      }
+    },
+    "C10_sens_ts_w_80": {
+      "label": "C10_sens_ts_w_80",
+      "cagr": 9.64,
+      "vol": 12.98,
+      "sharpe": 0.743,
+      "max_dd": -21.43,
+      "calmar": 0.45,
+      "turnover": 0.174,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.364,
+      "oos_sharpe": 1.337,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.767,
+          "cagr": 10.04,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.073,
+          "cagr": 1.01,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.912,
+          "cagr": 23.41,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.838,
+          "cagr": 10.77,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.58,
+        "roll_2yr_max": 2.706,
+        "roll_2yr_pct_pos": 77.3,
+        "roll_3yr_min": -0.553,
+        "roll_3yr_max": 2.196,
+        "roll_3yr_pct_pos": 83.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.61,
+        "2009": 15.63,
+        "2010": 5.09,
+        "2011": -1.68,
+        "2012": 5.85,
+        "2013": 21.1,
+        "2014": 13.07,
+        "2015": -3.52,
+        "2016": -5.9,
+        "2017": 18.01,
+        "2018": -2.31,
+        "2019": 20.34,
+        "2020": -12.61,
+        "2021": 32.54,
+        "2022": 27.14,
+        "2023": 24.96,
+        "2024": 11.09,
+        "2025": 33.27,
+        "2026": 2.61
+      }
+    },
+    "C10_sens_ts_w_100": {
+      "label": "C10_sens_ts_w_100",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_sens_ts_w_120": {
+      "label": "C10_sens_ts_w_120",
+      "cagr": 8.75,
+      "vol": 12.85,
+      "sharpe": 0.681,
+      "max_dd": -23.14,
+      "calmar": 0.378,
+      "turnover": 0.1689,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.305,
+      "oos_sharpe": 1.281,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.776,
+          "cagr": 10.04,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.92,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.859,
+          "cagr": 22.91,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.583,
+          "cagr": 7.47,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.795,
+        "roll_2yr_max": 2.465,
+        "roll_2yr_pct_pos": 74.2,
+        "roll_3yr_min": -0.63,
+        "roll_3yr_max": 2.031,
+        "roll_3yr_pct_pos": 77.7
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.24,
+        "2009": 6.62,
+        "2010": 7.01,
+        "2011": -2.25,
+        "2012": 1.2,
+        "2013": 25.0,
+        "2014": 16.24,
+        "2015": 0.05,
+        "2016": -7.46,
+        "2017": 15.33,
+        "2018": -3.1,
+        "2019": 16.91,
+        "2020": -12.72,
+        "2021": 28.72,
+        "2022": 24.45,
+        "2023": 24.73,
+        "2024": 11.67,
+        "2025": 32.26,
+        "2026": 4.13
+      }
+    },
+    "C10_sens_ts_w_150": {
+      "label": "C10_sens_ts_w_150",
+      "cagr": 8.03,
+      "vol": 12.73,
+      "sharpe": 0.631,
+      "max_dd": -26.61,
+      "calmar": 0.302,
+      "turnover": 0.1632,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.261,
+      "oos_sharpe": 1.231,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.759,
+          "cagr": 9.71,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.071,
+          "cagr": 0.95,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.775,
+          "cagr": 22.0,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.423,
+          "cagr": 5.4,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.996,
+        "roll_2yr_max": 2.287,
+        "roll_2yr_pct_pos": 72.6,
+        "roll_3yr_min": -0.722,
+        "roll_3yr_max": 2.012,
+        "roll_3yr_pct_pos": 75.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.2,
+        "2009": 1.97,
+        "2010": 8.11,
+        "2011": -2.64,
+        "2012": -1.86,
+        "2013": 26.64,
+        "2014": 17.87,
+        "2015": 3.05,
+        "2016": -8.59,
+        "2017": 12.67,
+        "2018": -3.3,
+        "2019": 14.18,
+        "2020": -12.25,
+        "2021": 26.03,
+        "2022": 22.52,
+        "2023": 23.35,
+        "2024": 11.85,
+        "2025": 31.57,
+        "2026": 4.73
+      }
+    },
+    "C10_sens_val_w_60": {
+      "label": "C10_sens_val_w_60",
+      "cagr": 6.72,
+      "vol": 12.74,
+      "sharpe": 0.527,
+      "max_dd": -28.84,
+      "calmar": 0.233,
+      "turnover": 0.1753,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.093,
+      "oos_sharpe": 1.242,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.483,
+          "cagr": 6.16,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.001,
+          "cagr": 0.01,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.759,
+          "cagr": 21.75,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.37,
+          "cagr": 4.73,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.105,
+        "roll_2yr_max": 2.174,
+        "roll_2yr_pct_pos": 67.7,
+        "roll_3yr_min": -0.715,
+        "roll_3yr_max": 2.109,
+        "roll_3yr_pct_pos": 65.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.82,
+        "2009": 0.24,
+        "2010": 4.32,
+        "2011": -4.53,
+        "2012": -0.76,
+        "2013": 22.31,
+        "2014": 14.47,
+        "2015": -2.77,
+        "2016": -10.91,
+        "2017": 13.27,
+        "2018": -6.87,
+        "2019": 15.89,
+        "2020": -11.89,
+        "2021": 22.58,
+        "2022": 21.42,
+        "2023": 24.48,
+        "2024": 15.23,
+        "2025": 31.77,
+        "2026": 3.22
+      }
+    },
+    "C10_sens_val_w_80": {
+      "label": "C10_sens_val_w_80",
+      "cagr": 7.98,
+      "vol": 12.84,
+      "sharpe": 0.622,
+      "max_dd": -24.64,
+      "calmar": 0.324,
+      "turnover": 0.1744,
+      "win_rate": 49.5,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.213,
+      "oos_sharpe": 1.281,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.635,
+          "cagr": 8.2,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.028,
+          "cagr": 0.38,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.84,
+          "cagr": 22.64,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.54,
+          "cagr": 6.92,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.868,
+        "roll_2yr_max": 2.341,
+        "roll_2yr_pct_pos": 71.9,
+        "roll_3yr_min": -0.63,
+        "roll_3yr_max": 2.08,
+        "roll_3yr_pct_pos": 74.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.2,
+        "2009": 5.22,
+        "2010": 5.35,
+        "2011": -3.19,
+        "2012": 1.36,
+        "2013": 22.9,
+        "2014": 14.69,
+        "2015": -2.42,
+        "2016": -8.96,
+        "2017": 15.2,
+        "2018": -4.9,
+        "2019": 17.41,
+        "2020": -12.56,
+        "2021": 26.53,
+        "2022": 23.57,
+        "2023": 25.12,
+        "2024": 13.4,
+        "2025": 32.37,
+        "2026": 3.5
+      }
+    },
+    "C10_sens_val_w_100": {
+      "label": "C10_sens_val_w_100",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_sens_val_w_120": {
+      "label": "C10_sens_val_w_120",
+      "cagr": 10.44,
+      "vol": 12.99,
+      "sharpe": 0.803,
+      "max_dd": -21.74,
+      "calmar": 0.48,
+      "turnover": 0.1681,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.46,
+      "oos_sharpe": 1.337,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.909,
+          "cagr": 11.92,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.116,
+          "cagr": 1.62,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.926,
+          "cagr": 23.63,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.881,
+          "cagr": 11.32,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.557,
+        "roll_2yr_max": 2.822,
+        "roll_2yr_pct_pos": 79.5,
+        "roll_3yr_min": -0.557,
+        "roll_3yr_max": 2.27,
+        "roll_3yr_pct_pos": 85.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.69,
+        "2009": 17.23,
+        "2010": 6.76,
+        "2011": -0.81,
+        "2012": 5.78,
+        "2013": 23.07,
+        "2014": 14.6,
+        "2015": -1.05,
+        "2016": -4.11,
+        "2017": 18.08,
+        "2018": -0.44,
+        "2019": 19.85,
+        "2020": -12.52,
+        "2021": 34.5,
+        "2022": 28.05,
+        "2023": 24.72,
+        "2024": 9.66,
+        "2025": 32.69,
+        "2026": 3.14
+      }
+    },
+    "C10_sens_val_w_150": {
+      "label": "C10_sens_val_w_150",
+      "cagr": 12.06,
+      "vol": 13.08,
+      "sharpe": 0.922,
+      "max_dd": -23.6,
+      "calmar": 0.511,
+      "turnover": 0.161,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.636,
+      "oos_sharpe": 1.358,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 1.051,
+          "cagr": 13.84,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.197,
+          "cagr": 2.79,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.954,
+          "cagr": 23.96,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 1.128,
+          "cagr": 14.56,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.478,
+        "roll_2yr_max": 3.116,
+        "roll_2yr_pct_pos": 85.4,
+        "roll_3yr_min": -0.478,
+        "roll_3yr_max": 2.483,
+        "roll_3yr_pct_pos": 88.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -6.12,
+        "2009": 25.71,
+        "2010": 7.53,
+        "2011": 1.15,
+        "2012": 9.15,
+        "2013": 22.24,
+        "2014": 14.52,
+        "2015": 0.29,
+        "2016": 0.05,
+        "2017": 19.32,
+        "2018": 3.15,
+        "2019": 21.25,
+        "2020": -11.82,
+        "2021": 39.87,
+        "2022": 31.31,
+        "2023": 23.63,
+        "2024": 7.35,
+        "2025": 31.76,
+        "2026": 2.0
+      }
+    },
+    "CF5_sens_rev_w_60": {
+      "label": "CF5_sens_rev_w_60",
+      "cagr": 8.67,
+      "vol": 12.77,
+      "sharpe": 0.679,
+      "max_dd": -26.04,
+      "calmar": 0.333,
+      "turnover": 0.144,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.232,
+      "oos_sharpe": 1.404,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.633,
+          "cagr": 7.99,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.384,
+          "cagr": 5.1,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.902,
+          "cagr": 23.82,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.203,
+          "cagr": 2.65,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.009,
+        "roll_2yr_max": 2.339,
+        "roll_2yr_pct_pos": 80.6,
+        "roll_3yr_min": -0.747,
+        "roll_3yr_max": 1.727,
+        "roll_3yr_pct_pos": 77.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -12.09,
+        "2009": -1.68,
+        "2010": 10.85,
+        "2011": -8.03,
+        "2012": 2.18,
+        "2013": 14.58,
+        "2014": 24.73,
+        "2015": 7.43,
+        "2016": -1.2,
+        "2017": 2.64,
+        "2018": -0.89,
+        "2019": 22.31,
+        "2020": 2.84,
+        "2021": 29.13,
+        "2022": 21.58,
+        "2023": 14.56,
+        "2024": 4.43,
+        "2025": 35.4,
+        "2026": 7.11
+      }
+    },
+    "CF5_sens_rev_w_80": {
+      "label": "CF5_sens_rev_w_80",
+      "cagr": 8.72,
+      "vol": 12.7,
+      "sharpe": 0.687,
+      "max_dd": -25.14,
+      "calmar": 0.347,
+      "turnover": 0.161,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.243,
+      "oos_sharpe": 1.411,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.642,
+          "cagr": 8.1,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.335,
+          "cagr": 4.43,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.99,
+          "cagr": 24.82,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.226,
+          "cagr": 2.92,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.95,
+        "roll_2yr_max": 2.382,
+        "roll_2yr_pct_pos": 79.5,
+        "roll_3yr_min": -0.707,
+        "roll_3yr_max": 1.845,
+        "roll_3yr_pct_pos": 78.7
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.25,
+        "2009": 0.79,
+        "2010": 11.2,
+        "2011": -5.44,
+        "2012": 1.51,
+        "2013": 16.79,
+        "2014": 22.9,
+        "2015": 3.1,
+        "2016": -2.89,
+        "2017": 4.79,
+        "2018": -1.98,
+        "2019": 22.23,
+        "2020": -2.81,
+        "2021": 30.27,
+        "2022": 23.11,
+        "2023": 19.04,
+        "2024": 2.55,
+        "2025": 37.39,
+        "2026": 6.69
+      }
+    },
+    "CF5_sens_rev_w_100": {
+      "label": "CF5_sens_rev_w_100",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "CF5_sens_rev_w_120": {
+      "label": "CF5_sens_rev_w_120",
+      "cagr": 8.19,
+      "vol": 12.7,
+      "sharpe": 0.645,
+      "max_dd": -23.91,
+      "calmar": 0.343,
+      "turnover": 0.1795,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.2,
+      "oos_sharpe": 1.373,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.544,
+          "cagr": 6.8,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.232,
+          "cagr": 3.1,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.016,
+          "cagr": 25.07,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.277,
+          "cagr": 3.55,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.861,
+        "roll_2yr_max": 2.391,
+        "roll_2yr_pct_pos": 75.6,
+        "roll_3yr_min": -0.603,
+        "roll_3yr_max": 2.014,
+        "roll_3yr_pct_pos": 76.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.92,
+        "2009": 3.39,
+        "2010": 11.43,
+        "2011": -1.37,
+        "2012": 0.09,
+        "2013": 16.0,
+        "2014": 16.31,
+        "2015": -3.58,
+        "2016": -5.35,
+        "2017": 8.08,
+        "2018": -3.65,
+        "2019": 23.16,
+        "2020": -9.08,
+        "2021": 31.09,
+        "2022": 25.15,
+        "2023": 24.87,
+        "2024": 3.3,
+        "2025": 35.05,
+        "2026": 3.17
+      }
+    },
+    "CF5_sens_rev_w_150": {
+      "label": "CF5_sens_rev_w_150",
+      "cagr": 7.66,
+      "vol": 12.7,
+      "sharpe": 0.603,
+      "max_dd": -23.0,
+      "calmar": 0.333,
+      "turnover": 0.1845,
+      "win_rate": 49.1,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.166,
+      "oos_sharpe": 1.319,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.463,
+          "cagr": 5.74,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.19,
+          "cagr": 2.56,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.969,
+          "cagr": 24.53,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.273,
+          "cagr": 3.48,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.803,
+        "roll_2yr_max": 2.309,
+        "roll_2yr_pct_pos": 74.0,
+        "roll_3yr_min": -0.529,
+        "roll_3yr_max": 2.034,
+        "roll_3yr_pct_pos": 75.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.41,
+        "2009": 4.49,
+        "2010": 10.9,
+        "2011": 0.58,
+        "2012": 0.17,
+        "2013": 14.45,
+        "2014": 11.27,
+        "2015": -6.15,
+        "2016": -6.54,
+        "2017": 9.39,
+        "2018": -4.16,
+        "2019": 23.44,
+        "2020": -11.43,
+        "2021": 30.88,
+        "2022": 25.15,
+        "2023": 26.6,
+        "2024": 4.18,
+        "2025": 32.83,
+        "2026": 0.68
+      }
+    },
+    "CF5_sens_sec_w_60": {
+      "label": "CF5_sens_sec_w_60",
+      "cagr": 9.09,
+      "vol": 12.69,
+      "sharpe": 0.716,
+      "max_dd": -21.25,
+      "calmar": 0.428,
+      "turnover": 0.1812,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.268,
+      "oos_sharpe": 1.451,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.675,
+          "cagr": 8.51,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.322,
+          "cagr": 4.24,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.006,
+          "cagr": 25.02,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.321,
+          "cagr": 4.14,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.716,
+        "roll_2yr_max": 2.528,
+        "roll_2yr_pct_pos": 77.3,
+        "roll_3yr_min": -0.534,
+        "roll_3yr_max": 2.147,
+        "roll_3yr_pct_pos": 80.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.51,
+        "2009": 4.89,
+        "2010": 13.9,
+        "2011": 0.7,
+        "2012": 0.82,
+        "2013": 13.3,
+        "2014": 13.34,
+        "2015": -3.82,
+        "2016": -3.37,
+        "2017": 8.51,
+        "2018": 0.44,
+        "2019": 26.38,
+        "2020": -8.1,
+        "2021": 33.56,
+        "2022": 27.45,
+        "2023": 26.67,
+        "2024": 0.14,
+        "2025": 35.13,
+        "2026": 3.52
+      }
+    },
+    "CF5_sens_sec_w_80": {
+      "label": "CF5_sens_sec_w_80",
+      "cagr": 8.84,
+      "vol": 12.68,
+      "sharpe": 0.697,
+      "max_dd": -22.91,
+      "calmar": 0.386,
+      "turnover": 0.1774,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.248,
+      "oos_sharpe": 1.431,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.643,
+          "cagr": 8.11,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.3,
+          "cagr": 3.96,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.16,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.293,
+          "cagr": 3.77,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.808,
+        "roll_2yr_max": 2.481,
+        "roll_2yr_pct_pos": 77.5,
+        "roll_3yr_min": -0.605,
+        "roll_3yr_max": 2.055,
+        "roll_3yr_pct_pos": 78.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.92,
+        "2009": 3.69,
+        "2010": 12.69,
+        "2011": -1.21,
+        "2012": 0.52,
+        "2013": 15.17,
+        "2014": 16.79,
+        "2015": -2.35,
+        "2016": -3.73,
+        "2017": 7.71,
+        "2018": -1.32,
+        "2019": 24.58,
+        "2020": -7.54,
+        "2021": 32.36,
+        "2022": 26.0,
+        "2023": 24.49,
+        "2024": 1.27,
+        "2025": 36.27,
+        "2026": 4.66
+      }
+    },
+    "CF5_sens_sec_w_100": {
+      "label": "CF5_sens_sec_w_100",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "CF5_sens_sec_w_120": {
+      "label": "CF5_sens_sec_w_120",
+      "cagr": 8.16,
+      "vol": 12.69,
+      "sharpe": 0.643,
+      "max_dd": -25.55,
+      "calmar": 0.319,
+      "turnover": 0.1665,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.2,
+      "oos_sharpe": 1.366,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.543,
+          "cagr": 6.83,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.265,
+          "cagr": 3.53,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.009,
+          "cagr": 24.98,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.225,
+          "cagr": 2.89,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.968,
+        "roll_2yr_max": 2.325,
+        "roll_2yr_pct_pos": 76.9,
+        "roll_3yr_min": -0.699,
+        "roll_3yr_max": 1.848,
+        "roll_3yr_pct_pos": 76.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.04,
+        "2009": 1.31,
+        "2010": 10.37,
+        "2011": -5.15,
+        "2012": 0.77,
+        "2013": 18.05,
+        "2014": 22.22,
+        "2015": 0.37,
+        "2016": -4.47,
+        "2017": 5.63,
+        "2018": -4.46,
+        "2019": 20.82,
+        "2020": -5.05,
+        "2021": 29.35,
+        "2022": 22.78,
+        "2023": 20.44,
+        "2024": 3.98,
+        "2025": 36.95,
+        "2026": 5.15
+      }
+    },
+    "CF5_sens_sec_w_150": {
+      "label": "CF5_sens_sec_w_150",
+      "cagr": 7.51,
+      "vol": 12.71,
+      "sharpe": 0.59,
+      "max_dd": -26.55,
+      "calmar": 0.283,
+      "turnover": 0.156,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.154,
+      "oos_sharpe": 1.299,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.449,
+          "cagr": 5.62,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.247,
+          "cagr": 3.31,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.959,
+          "cagr": 24.29,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.165,
+          "cagr": 2.13,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.034,
+        "roll_2yr_max": 2.189,
+        "roll_2yr_pct_pos": 74.8,
+        "roll_3yr_min": -0.722,
+        "roll_3yr_max": 1.813,
+        "roll_3yr_pct_pos": 72.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.74,
+        "2009": 0.12,
+        "2010": 9.03,
+        "2011": -7.67,
+        "2012": 0.88,
+        "2013": 19.41,
+        "2014": 23.65,
+        "2015": 2.18,
+        "2016": -5.66,
+        "2017": 4.21,
+        "2018": -6.47,
+        "2019": 18.2,
+        "2020": -2.72,
+        "2021": 26.74,
+        "2022": 20.37,
+        "2023": 17.54,
+        "2024": 6.71,
+        "2025": 36.54,
+        "2026": 4.05
+      }
+    },
+    "CF5_sens_carry_w_60": {
+      "label": "CF5_sens_carry_w_60",
+      "cagr": 8.72,
+      "vol": 12.69,
+      "sharpe": 0.687,
+      "max_dd": -22.55,
+      "calmar": 0.387,
+      "turnover": 0.1702,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.289,
+      "oos_sharpe": 1.337,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.657,
+          "cagr": 8.25,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.234,
+          "cagr": 3.12,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.002,
+          "cagr": 24.94,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.345,
+          "cagr": 4.43,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.794,
+        "roll_2yr_max": 2.425,
+        "roll_2yr_pct_pos": 76.1,
+        "roll_3yr_min": -0.632,
+        "roll_3yr_max": 2.011,
+        "roll_3yr_pct_pos": 79.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.51,
+        "2009": 5.74,
+        "2010": 12.0,
+        "2011": -2.08,
+        "2012": 0.41,
+        "2013": 20.62,
+        "2014": 19.48,
+        "2015": -1.41,
+        "2016": -4.95,
+        "2017": 9.55,
+        "2018": -3.49,
+        "2019": 18.59,
+        "2020": -8.98,
+        "2021": 32.21,
+        "2022": 24.17,
+        "2023": 24.21,
+        "2024": 5.03,
+        "2025": 34.09,
+        "2026": 3.0
+      }
+    },
+    "CF5_sens_carry_w_80": {
+      "label": "CF5_sens_carry_w_80",
+      "cagr": 8.69,
+      "vol": 12.68,
+      "sharpe": 0.685,
+      "max_dd": -23.47,
+      "calmar": 0.37,
+      "turnover": 0.1714,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.262,
+      "oos_sharpe": 1.375,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.633,
+          "cagr": 7.97,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.259,
+          "cagr": 3.44,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.022,
+          "cagr": 25.18,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.309,
+          "cagr": 3.95,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.845,
+        "roll_2yr_max": 2.427,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.649,
+        "roll_3yr_max": 1.991,
+        "roll_3yr_pct_pos": 79.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.86,
+        "2009": 4.17,
+        "2010": 11.88,
+        "2011": -2.56,
+        "2012": 0.43,
+        "2013": 18.85,
+        "2014": 19.92,
+        "2015": -1.2,
+        "2016": -4.52,
+        "2017": 8.28,
+        "2018": -3.18,
+        "2019": 20.65,
+        "2020": -7.74,
+        "2021": 31.61,
+        "2022": 24.38,
+        "2023": 23.47,
+        "2024": 3.78,
+        "2025": 35.58,
+        "2026": 4.16
+      }
+    },
+    "CF5_sens_carry_w_100": {
+      "label": "CF5_sens_carry_w_100",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "CF5_sens_carry_w_120": {
+      "label": "CF5_sens_carry_w_120",
+      "cagr": 8.31,
+      "vol": 12.7,
+      "sharpe": 0.654,
+      "max_dd": -25.43,
+      "calmar": 0.327,
+      "turnover": 0.1734,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.183,
+      "oos_sharpe": 1.425,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.563,
+          "cagr": 7.09,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.297,
+          "cagr": 3.95,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.006,
+          "cagr": 24.98,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.211,
+          "cagr": 2.7,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.954,
+        "roll_2yr_max": 2.38,
+        "roll_2yr_pct_pos": 77.0,
+        "roll_3yr_min": -0.669,
+        "roll_3yr_max": 1.91,
+        "roll_3yr_pct_pos": 76.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.34,
+        "2009": 0.45,
+        "2010": 10.95,
+        "2011": -3.96,
+        "2012": 0.85,
+        "2013": 14.44,
+        "2014": 19.52,
+        "2015": -0.82,
+        "2016": -3.53,
+        "2017": 5.13,
+        "2018": -2.72,
+        "2019": 24.64,
+        "2020": -5.17,
+        "2021": 30.16,
+        "2022": 24.42,
+        "2023": 21.14,
+        "2024": 1.27,
+        "2025": 38.06,
+        "2026": 6.64
+      }
+    },
+    "CF5_sens_carry_w_150": {
+      "label": "CF5_sens_carry_w_150",
+      "cagr": 7.86,
+      "vol": 12.74,
+      "sharpe": 0.617,
+      "max_dd": -26.93,
+      "calmar": 0.292,
+      "turnover": 0.1743,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.107,
+      "oos_sharpe": 1.449,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.495,
+          "cagr": 6.24,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.315,
+          "cagr": 4.19,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.96,
+          "cagr": 24.47,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.132,
+          "cagr": 1.71,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.042,
+        "roll_2yr_max": 2.306,
+        "roll_2yr_pct_pos": 75.9,
+        "roll_3yr_min": -0.681,
+        "roll_3yr_max": 1.829,
+        "roll_3yr_pct_pos": 73.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.64,
+        "2009": -2.59,
+        "2010": 9.87,
+        "2011": -5.11,
+        "2012": 1.04,
+        "2013": 10.52,
+        "2014": 18.53,
+        "2015": -0.58,
+        "2016": -2.86,
+        "2017": 2.71,
+        "2018": -2.22,
+        "2019": 27.47,
+        "2020": -3.45,
+        "2021": 28.76,
+        "2022": 23.98,
+        "2023": 19.43,
+        "2024": 0.54,
+        "2025": 39.13,
+        "2026": 8.25
+      }
+    },
+    "CF5_sens_ts_w_60": {
+      "label": "CF5_sens_ts_w_60",
+      "cagr": 9.07,
+      "vol": 12.7,
+      "sharpe": 0.714,
+      "max_dd": -20.88,
+      "calmar": 0.434,
+      "turnover": 0.1766,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.239,
+      "oos_sharpe": 1.49,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.557,
+          "cagr": 7.06,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.238,
+          "cagr": 3.15,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.104,
+          "cagr": 26.18,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.469,
+          "cagr": 6.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.653,
+        "roll_2yr_max": 2.576,
+        "roll_2yr_pct_pos": 77.4,
+        "roll_3yr_min": -0.608,
+        "roll_3yr_max": 2.06,
+        "roll_3yr_pct_pos": 79.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.97,
+        "2009": 7.4,
+        "2010": 9.09,
+        "2011": -2.44,
+        "2012": 3.72,
+        "2013": 13.35,
+        "2014": 16.09,
+        "2015": -6.1,
+        "2016": -1.46,
+        "2017": 8.75,
+        "2018": -1.84,
+        "2019": 27.32,
+        "2020": -5.92,
+        "2021": 33.24,
+        "2022": 28.02,
+        "2023": 22.69,
+        "2024": 2.64,
+        "2025": 36.4,
+        "2026": 3.65
+      }
+    },
+    "CF5_sens_ts_w_80": {
+      "label": "CF5_sens_ts_w_80",
+      "cagr": 8.82,
+      "vol": 12.69,
+      "sharpe": 0.695,
+      "max_dd": -22.42,
+      "calmar": 0.393,
+      "turnover": 0.175,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.233,
+      "oos_sharpe": 1.45,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.582,
+          "cagr": 7.36,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.26,
+          "cagr": 3.44,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.064,
+          "cagr": 25.69,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.367,
+          "cagr": 4.71,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.78,
+        "roll_2yr_max": 2.5,
+        "roll_2yr_pct_pos": 77.6,
+        "roll_3yr_min": -0.637,
+        "roll_3yr_max": 2.015,
+        "roll_3yr_pct_pos": 78.3
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.59,
+        "2009": 4.86,
+        "2010": 10.29,
+        "2011": -2.77,
+        "2012": 2.05,
+        "2013": 15.13,
+        "2014": 18.12,
+        "2015": -3.77,
+        "2016": -2.74,
+        "2017": 7.87,
+        "2018": -2.36,
+        "2019": 24.99,
+        "2020": -6.29,
+        "2021": 32.16,
+        "2022": 26.3,
+        "2023": 22.68,
+        "2024": 2.38,
+        "2025": 36.77,
+        "2026": 4.7
+      }
+    },
+    "CF5_sens_ts_w_100": {
+      "label": "CF5_sens_ts_w_100",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "CF5_sens_ts_w_120": {
+      "label": "CF5_sens_ts_w_120",
+      "cagr": 8.18,
+      "vol": 12.69,
+      "sharpe": 0.644,
+      "max_dd": -26.16,
+      "calmar": 0.313,
+      "turnover": 0.1695,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.214,
+      "oos_sharpe": 1.345,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.61,
+          "cagr": 7.65,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.293,
+          "cagr": 3.91,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.972,
+          "cagr": 24.56,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.156,
+          "cagr": 2.0,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.0,
+        "roll_2yr_max": 2.312,
+        "roll_2yr_pct_pos": 76.2,
+        "roll_3yr_min": -0.674,
+        "roll_3yr_max": 1.884,
+        "roll_3yr_pct_pos": 76.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.53,
+        "2009": 0.1,
+        "2010": 12.54,
+        "2011": -3.64,
+        "2012": -0.81,
+        "2013": 18.18,
+        "2014": 21.34,
+        "2015": 1.79,
+        "2016": -5.55,
+        "2017": 5.49,
+        "2018": -3.4,
+        "2019": 20.46,
+        "2020": -6.57,
+        "2021": 29.61,
+        "2022": 22.64,
+        "2023": 21.88,
+        "2024": 2.68,
+        "2025": 36.63,
+        "2026": 5.64
+      }
+    },
+    "CF5_sens_ts_w_150": {
+      "label": "CF5_sens_ts_w_150",
+      "cagr": 7.51,
+      "vol": 12.72,
+      "sharpe": 0.591,
+      "max_dd": -28.34,
+      "calmar": 0.265,
+      "turnover": 0.164,
+      "win_rate": 49.9,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.181,
+      "oos_sharpe": 1.255,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.603,
+          "cagr": 7.51,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.293,
+          "cagr": 3.95,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.883,
+          "cagr": 23.45,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.017,
+          "cagr": 0.22,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.125,
+        "roll_2yr_max": 2.166,
+        "roll_2yr_pct_pos": 73.9,
+        "roll_3yr_min": -0.682,
+        "roll_3yr_max": 1.793,
+        "roll_3yr_pct_pos": 74.3
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -11.04,
+        "2009": -2.76,
+        "2010": 13.68,
+        "2011": -4.44,
+        "2012": -2.8,
+        "2013": 19.68,
+        "2014": 22.75,
+        "2015": 5.53,
+        "2016": -8.22,
+        "2017": 3.66,
+        "2018": -3.96,
+        "2019": 17.35,
+        "2020": -6.57,
+        "2021": 27.73,
+        "2022": 20.11,
+        "2023": 20.63,
+        "2024": 3.59,
+        "2025": 35.55,
+        "2026": 5.71
+      }
+    },
+    "CF5_sens_val_w_60": {
+      "label": "CF5_sens_val_w_60",
+      "cagr": 6.07,
+      "vol": 12.75,
+      "sharpe": 0.476,
+      "max_dd": -30.82,
+      "calmar": 0.197,
+      "turnover": 0.1731,
+      "win_rate": 49.5,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.013,
+      "oos_sharpe": 1.226,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.327,
+          "cagr": 4.03,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.206,
+          "cagr": 2.82,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.891,
+          "cagr": 23.46,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": -0.074,
+          "cagr": -0.95,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.272,
+        "roll_2yr_max": 2.023,
+        "roll_2yr_pct_pos": 68.4,
+        "roll_3yr_min": -0.734,
+        "roll_3yr_max": 1.834,
+        "roll_3yr_pct_pos": 66.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.8,
+        "2009": -5.58,
+        "2010": 10.51,
+        "2011": -5.54,
+        "2012": -2.95,
+        "2013": 16.6,
+        "2014": 19.71,
+        "2015": 1.05,
+        "2016": -9.58,
+        "2017": 2.13,
+        "2018": -8.32,
+        "2019": 19.13,
+        "2020": -6.88,
+        "2021": 24.74,
+        "2022": 19.36,
+        "2023": 20.06,
+        "2024": 5.22,
+        "2025": 36.42,
+        "2026": 4.29
+      }
+    },
+    "CF5_sens_val_w_80": {
+      "label": "CF5_sens_val_w_80",
+      "cagr": 7.37,
+      "vol": 12.71,
+      "sharpe": 0.58,
+      "max_dd": -27.8,
+      "calmar": 0.265,
+      "turnover": 0.1736,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.127,
+      "oos_sharpe": 1.316,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.47,
+          "cagr": 5.85,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.246,
+          "cagr": 3.32,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.969,
+          "cagr": 24.48,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.095,
+          "cagr": 1.21,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.093,
+        "roll_2yr_max": 2.214,
+        "roll_2yr_pct_pos": 73.6,
+        "roll_3yr_min": -0.671,
+        "roll_3yr_max": 1.845,
+        "roll_3yr_pct_pos": 70.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.48,
+        "2009": -1.69,
+        "2010": 11.08,
+        "2011": -4.38,
+        "2012": -1.22,
+        "2013": 16.86,
+        "2014": 20.44,
+        "2015": 0.16,
+        "2016": -6.73,
+        "2017": 4.55,
+        "2018": -5.63,
+        "2019": 20.99,
+        "2020": -6.89,
+        "2021": 27.79,
+        "2022": 21.99,
+        "2023": 21.44,
+        "2024": 3.65,
+        "2025": 36.75,
+        "2026": 4.9
+      }
+    },
+    "CF5_sens_val_w_100": {
+      "label": "CF5_sens_val_w_100",
+      "cagr": 8.54,
+      "vol": 12.69,
+      "sharpe": 0.673,
+      "max_dd": -24.48,
+      "calmar": 0.349,
+      "turnover": 0.1725,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.225,
+      "oos_sharpe": 1.405,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.601,
+          "cagr": 7.57,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.28,
+          "cagr": 3.72,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.02,
+          "cagr": 25.15,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.262,
+          "cagr": 3.35,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.901,
+        "roll_2yr_max": 2.412,
+        "roll_2yr_pct_pos": 77.2,
+        "roll_3yr_min": -0.66,
+        "roll_3yr_max": 1.958,
+        "roll_3yr_pct_pos": 78.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.1,
+        "2009": 2.32,
+        "2010": 11.44,
+        "2011": -3.18,
+        "2012": 0.57,
+        "2013": 16.74,
+        "2014": 19.93,
+        "2015": -1.05,
+        "2016": -4.07,
+        "2017": 6.69,
+        "2018": -2.92,
+        "2019": 22.71,
+        "2020": -6.4,
+        "2021": 30.96,
+        "2022": 24.51,
+        "2023": 22.41,
+        "2024": 2.39,
+        "2025": 36.91,
+        "2026": 5.38
+      }
+    },
+    "CF5_sens_val_w_120": {
+      "label": "CF5_sens_val_w_120",
+      "cagr": 9.63,
+      "vol": 12.68,
+      "sharpe": 0.76,
+      "max_dd": -20.81,
+      "calmar": 0.463,
+      "turnover": 0.1701,
+      "win_rate": 49.9,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.32,
+      "oos_sharpe": 1.479,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.722,
+          "cagr": 9.19,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.311,
+          "cagr": 4.07,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.068,
+          "cagr": 25.79,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.419,
+          "cagr": 5.39,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.697,
+        "roll_2yr_max": 2.605,
+        "roll_2yr_pct_pos": 80.3,
+        "roll_3yr_min": -0.639,
+        "roll_3yr_max": 2.077,
+        "roll_3yr_pct_pos": 80.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.58,
+        "2009": 6.51,
+        "2010": 11.94,
+        "2011": -2.19,
+        "2012": 2.58,
+        "2013": 16.45,
+        "2014": 19.08,
+        "2015": -2.1,
+        "2016": -1.41,
+        "2017": 8.68,
+        "2018": -0.29,
+        "2019": 24.22,
+        "2020": -5.53,
+        "2021": 34.11,
+        "2022": 26.81,
+        "2023": 22.96,
+        "2024": 1.54,
+        "2025": 36.45,
+        "2026": 5.32
+      }
+    },
+    "CF5_sens_val_w_150": {
+      "label": "CF5_sens_val_w_150",
+      "cagr": 11.09,
+      "vol": 12.69,
+      "sharpe": 0.874,
+      "max_dd": -20.82,
+      "calmar": 0.533,
+      "turnover": 0.1649,
+      "win_rate": 49.7,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.452,
+      "oos_sharpe": 1.566,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.872,
+          "cagr": 11.23,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.349,
+          "cagr": 4.52,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 2.141,
+          "cagr": 26.76,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.634,
+          "cagr": 8.22,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.597,
+        "roll_2yr_max": 2.84,
+        "roll_2yr_pct_pos": 84.9,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.24,
+        "roll_3yr_pct_pos": 85.9
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.61,
+        "2009": 12.36,
+        "2010": 12.82,
+        "2011": -0.94,
+        "2012": 5.64,
+        "2013": 15.66,
+        "2014": 17.98,
+        "2015": -3.12,
+        "2016": 2.44,
+        "2017": 11.04,
+        "2018": 3.16,
+        "2019": 25.74,
+        "2020": -3.69,
+        "2021": 38.61,
+        "2022": 29.95,
+        "2023": 23.35,
+        "2024": 0.74,
+        "2025": 35.17,
+        "2026": 4.6
+      }
+    },
+    "C10_vf_dampen_0": {
+      "label": "C10_vf_dampen_0",
+      "cagr": 7.66,
+      "vol": 13.07,
+      "sharpe": 0.586,
+      "max_dd": -26.68,
+      "calmar": 0.287,
+      "turnover": 0.1795,
+      "win_rate": 48.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.166,
+      "oos_sharpe": 1.274,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.38,
+          "cagr": 4.99,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.019,
+          "cagr": 0.27,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.629,
+          "cagr": 20.54,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.834,
+          "cagr": 10.51,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.963,
+        "roll_2yr_max": 2.507,
+        "roll_2yr_pct_pos": 69.2,
+        "roll_3yr_min": -0.637,
+        "roll_3yr_max": 2.093,
+        "roll_3yr_pct_pos": 68.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.03,
+        "2009": 10.74,
+        "2010": -13.11,
+        "2011": -4.06,
+        "2012": 9.26,
+        "2013": 1.31,
+        "2014": 17.82,
+        "2015": -2.43,
+        "2016": -6.93,
+        "2017": 18.31,
+        "2018": 5.99,
+        "2019": 17.86,
+        "2020": -11.7,
+        "2021": 28.99,
+        "2022": 27.45,
+        "2023": 26.41,
+        "2024": 7.63,
+        "2025": 30.55,
+        "2026": 3.22
+      }
+    },
+    "C10_vf_dampen_1": {
+      "label": "C10_vf_dampen_1",
+      "cagr": 8.72,
+      "vol": 12.96,
+      "sharpe": 0.672,
+      "max_dd": -22.59,
+      "calmar": 0.386,
+      "turnover": 0.1768,
+      "win_rate": 49.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.279,
+      "oos_sharpe": 1.303,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.593,
+          "cagr": 7.77,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.93,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.78,
+          "cagr": 22.25,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.786,
+          "cagr": 10.01,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.786,
+        "roll_2yr_max": 2.554,
+        "roll_2yr_pct_pos": 74.3,
+        "roll_3yr_min": -0.541,
+        "roll_3yr_max": 2.11,
+        "roll_3yr_pct_pos": 77.1
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -7.59,
+        "2009": 10.9,
+        "2010": -4.6,
+        "2011": -2.69,
+        "2012": 6.75,
+        "2013": 13.25,
+        "2014": 17.12,
+        "2015": -2.57,
+        "2016": -6.86,
+        "2017": 18.9,
+        "2018": 2.54,
+        "2019": 19.19,
+        "2020": -12.1,
+        "2021": 29.93,
+        "2022": 26.98,
+        "2023": 26.02,
+        "2024": 9.05,
+        "2025": 31.36,
+        "2026": 3.25
+      }
+    },
+    "C10_vf_dampen_2": {
+      "label": "C10_vf_dampen_2",
+      "cagr": 9.11,
+      "vol": 12.94,
+      "sharpe": 0.704,
+      "max_dd": -21.03,
+      "calmar": 0.433,
+      "turnover": 0.1739,
+      "win_rate": 49.4,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.32,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.703,
+          "cagr": 9.2,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.076,
+          "cagr": 1.04,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.861,
+          "cagr": 23.03,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.744,
+          "cagr": 9.54,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.684,
+        "roll_2yr_max": 2.583,
+        "roll_2yr_pct_pos": 75.3,
+        "roll_3yr_min": -0.571,
+        "roll_3yr_max": 2.115,
+        "roll_3yr_pct_pos": 79.2
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.08,
+        "2009": 10.84,
+        "2010": 1.67,
+        "2011": -2.3,
+        "2012": 4.83,
+        "2013": 19.52,
+        "2014": 16.12,
+        "2015": -2.28,
+        "2016": -6.79,
+        "2017": 17.99,
+        "2018": -0.32,
+        "2019": 19.3,
+        "2020": -12.47,
+        "2021": 30.46,
+        "2022": 26.43,
+        "2023": 25.59,
+        "2024": 10.3,
+        "2025": 32.1,
+        "2026": 3.36
+      }
+    },
+    "C10_vf_dampen_3": {
+      "label": "C10_vf_dampen_3",
+      "cagr": 9.22,
+      "vol": 12.92,
+      "sharpe": 0.713,
+      "max_dd": -21.33,
+      "calmar": 0.432,
+      "turnover": 0.1719,
+      "win_rate": 49.3,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.334,
+      "oos_sharpe": 1.313,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.781,
+          "cagr": 10.18,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.068,
+          "cagr": 0.94,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.894,
+          "cagr": 23.26,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.703,
+          "cagr": 9.03,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.62,
+        "roll_2yr_max": 2.597,
+        "roll_2yr_pct_pos": 75.5,
+        "roll_3yr_min": -0.597,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 80.5
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.51,
+        "2009": 10.69,
+        "2010": 6.21,
+        "2011": -2.03,
+        "2012": 3.48,
+        "2013": 23.35,
+        "2014": 14.76,
+        "2015": -1.81,
+        "2016": -6.72,
+        "2017": 16.78,
+        "2018": -2.81,
+        "2019": 18.75,
+        "2020": -12.79,
+        "2021": 30.68,
+        "2022": 25.84,
+        "2023": 25.15,
+        "2024": 11.4,
+        "2025": 32.74,
+        "2026": 3.53
+      }
+    },
+    "C10_vf_dampen_4": {
+      "label": "C10_vf_dampen_4",
+      "cagr": 9.19,
+      "vol": 12.9,
+      "sharpe": 0.712,
+      "max_dd": -21.6,
+      "calmar": 0.425,
+      "turnover": 0.1704,
+      "win_rate": 49.6,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.335,
+      "oos_sharpe": 1.306,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.841,
+          "cagr": 10.93,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.055,
+          "cagr": 0.77,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.896,
+          "cagr": 23.13,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.666,
+          "cagr": 8.53,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.621,
+        "roll_2yr_max": 2.603,
+        "roll_2yr_pct_pos": 75.6,
+        "roll_3yr_min": -0.621,
+        "roll_3yr_max": 2.103,
+        "roll_3yr_pct_pos": 79.6
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -8.88,
+        "2009": 10.52,
+        "2010": 9.52,
+        "2011": -1.81,
+        "2012": 2.54,
+        "2013": 25.84,
+        "2014": 13.24,
+        "2015": -1.25,
+        "2016": -6.62,
+        "2017": 15.62,
+        "2018": -4.95,
+        "2019": 17.82,
+        "2020": -13.09,
+        "2021": 30.72,
+        "2022": 25.25,
+        "2023": 24.68,
+        "2024": 12.37,
+        "2025": 33.25,
+        "2026": 3.77
+      }
+    },
+    "C10_vf_dampen_5": {
+      "label": "C10_vf_dampen_5",
+      "cagr": 9.09,
+      "vol": 12.88,
+      "sharpe": 0.705,
+      "max_dd": -23.02,
+      "calmar": 0.395,
+      "turnover": 0.1693,
+      "win_rate": 49.8,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.33,
+      "oos_sharpe": 1.294,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.89,
+          "cagr": 11.53,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.041,
+          "cagr": 0.57,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.877,
+          "cagr": 22.81,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.632,
+          "cagr": 8.09,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.647,
+        "roll_2yr_max": 2.601,
+        "roll_2yr_pct_pos": 75.4,
+        "roll_3yr_min": -0.643,
+        "roll_3yr_max": 2.089,
+        "roll_3yr_pct_pos": 77.0
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.22,
+        "2009": 10.35,
+        "2010": 11.99,
+        "2011": -1.63,
+        "2012": 1.89,
+        "2013": 27.57,
+        "2014": 11.7,
+        "2015": -0.65,
+        "2016": -6.5,
+        "2017": 14.61,
+        "2018": -6.76,
+        "2019": 16.7,
+        "2020": -13.36,
+        "2021": 30.61,
+        "2022": 24.67,
+        "2023": 24.21,
+        "2024": 13.2,
+        "2025": 33.65,
+        "2026": 4.04
+      }
+    },
+    "C10_vf_dampen_7": {
+      "label": "C10_vf_dampen_7",
+      "cagr": 8.81,
+      "vol": 12.85,
+      "sharpe": 0.686,
+      "max_dd": -27.52,
+      "calmar": 0.32,
+      "turnover": 0.168,
+      "win_rate": 49.9,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.314,
+      "oos_sharpe": 1.264,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 0.964,
+          "cagr": 12.41,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": 0.015,
+          "cagr": 0.21,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.809,
+          "cagr": 21.9,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.576,
+          "cagr": 7.33,
+          "days": 1105
+        },
+        "roll_2yr_min": -0.845,
+        "roll_2yr_max": 2.586,
+        "roll_2yr_pct_pos": 73.6,
+        "roll_3yr_min": -0.68,
+        "roll_3yr_max": 2.112,
+        "roll_3yr_pct_pos": 71.8
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -9.8,
+        "2009": 10.02,
+        "2010": 15.36,
+        "2011": -1.39,
+        "2012": 1.09,
+        "2013": 29.75,
+        "2014": 8.82,
+        "2015": 0.54,
+        "2016": -6.21,
+        "2017": 13.01,
+        "2018": -9.51,
+        "2019": 14.39,
+        "2020": -13.83,
+        "2021": 30.17,
+        "2022": 23.55,
+        "2023": 23.27,
+        "2024": 14.52,
+        "2025": 34.13,
+        "2026": 4.68
+      }
+    },
+    "C10_vf_dampen_10": {
+      "label": "C10_vf_dampen_10",
+      "cagr": 8.39,
+      "vol": 12.82,
+      "sharpe": 0.654,
+      "max_dd": -32.6,
+      "calmar": 0.257,
+      "turnover": 0.1673,
+      "win_rate": 50.2,
+      "max_dd_duration_days": 0,
+      "is_sharpe": 0.293,
+      "oos_sharpe": 1.213,
+      "regime": {
+        "Goldilocks": {
+          "sharpe": 1.039,
+          "cagr": 13.27,
+          "days": 1062
+        },
+        "Deflation": {
+          "sharpe": -0.014,
+          "cagr": -0.19,
+          "days": 1472
+        },
+        "Stagflation": {
+          "sharpe": 1.683,
+          "cagr": 20.37,
+          "days": 980
+        },
+        "Reflation": {
+          "sharpe": 0.518,
+          "cagr": 6.54,
+          "days": 1105
+        },
+        "roll_2yr_min": -1.064,
+        "roll_2yr_max": 2.547,
+        "roll_2yr_pct_pos": 71.0,
+        "roll_3yr_min": -0.726,
+        "roll_3yr_max": 2.146,
+        "roll_3yr_pct_pos": 69.4
+      },
+      "yearly": {
+        "2007": 0.0,
+        "2008": -10.49,
+        "2009": 9.62,
+        "2010": 18.33,
+        "2011": -1.19,
+        "2012": 0.51,
+        "2013": 31.4,
+        "2014": 5.28,
+        "2015": 2.19,
+        "2016": -5.69,
+        "2017": 11.43,
+        "2018": -12.13,
+        "2019": 11.43,
+        "2020": -14.4,
+        "2021": 29.26,
+        "2022": 22.0,
+        "2023": 21.98,
+        "2024": 15.76,
+        "2025": 34.25,
+        "2026": 5.73
+      }
+    }
+  }
+}

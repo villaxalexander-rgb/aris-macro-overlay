@@ -63,10 +63,12 @@ FUND_NOTE_PATH = "docs/fund_notes/"
 
 # --- Phase A: Alpha engine ---
 # ALPHA_MODE controls which signal generator runs:
-#   "c8"     = C8 Kitchen Sink VF (Phase A.1 — recommended, Sharpe 0.92 backtest)
+#   "c18"    = C18 Balanced 6-Factor (Phase A.3 — recommended, Sharpe 1.098@10bp)
+#   "c10"    = C10 Multi-Rev Carry (Phase A.2)
+#   "c8"     = C8 Kitchen Sink VF (Phase A.1)
 #   "hybrid" = T6 Hybrid 50/50 TSMOM+BSV (Phase A original)
 #   "bsv"    = Pure BSV composite (legacy)
-ALPHA_MODE = os.getenv("ALPHA_MODE", "c10").lower()
+ALPHA_MODE = os.getenv("ALPHA_MODE", "c18").lower()
 
 # T6 hybrid settings (only used when ALPHA_MODE=hybrid)
 USE_HYBRID_ALPHA = ALPHA_MODE == "hybrid"
@@ -102,6 +104,27 @@ C10_WEIGHTS = {
     "carry": float(os.getenv("C10_W_CARRY", "0.15")),
     "tsmom": float(os.getenv("C10_W_TSMOM", "0.10")),
     "value": float(os.getenv("C10_W_VALUE", "0.20")),
+}
+
+# --- Phase A.3: C18 Balanced 6-Factor (Battery #8 stress-test winner) ---
+C18_REVERSAL_WINDOWS = tuple(
+    int(x) for x in os.getenv("C18_REVERSAL_WINDOWS", "5,10,21").split(",")
+)
+C18_SECTOR_ROT_LOOKBACK = int(os.getenv("C18_SECTOR_ROT_LOOKBACK", "252"))
+C18_CARRY_SHORT = int(os.getenv("C18_CARRY_SHORT", "21"))
+C18_CARRY_LONG = int(os.getenv("C18_CARRY_LONG", "63"))
+C18_ACCEL_FAST = int(os.getenv("C18_ACCEL_FAST", "63"))
+C18_ACCEL_SLOW = int(os.getenv("C18_ACCEL_SLOW", "63"))
+C18_SKEW_WINDOW = int(os.getenv("C18_SKEW_WINDOW", "63"))
+C18_VOL_FILTER = os.getenv("C18_VOL_FILTER", "true").lower() == "true"
+C18_VOL_DAMPEN_LOW = float(os.getenv("C18_VOL_DAMPEN_LOW", "0.3"))
+C18_WEIGHTS = {
+    "reversal": float(os.getenv("C18_W_REVERSAL", "0.30")),
+    "sector_rot": float(os.getenv("C18_W_SECTOR_ROT", "0.12")),
+    "carry": float(os.getenv("C18_W_CARRY", "0.13")),
+    "accel": float(os.getenv("C18_W_ACCEL", "0.10")),
+    "skew": float(os.getenv("C18_W_SKEW", "0.10")),
+    "value": float(os.getenv("C18_W_VALUE", "0.25")),
 }
 
 # --- Phase A: Vol-target sizing ---

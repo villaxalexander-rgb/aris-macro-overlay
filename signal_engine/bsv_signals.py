@@ -469,3 +469,127 @@ def generate_c10_signal(prices, curves=None, weights=None,
         f"composite={composite.abs().mean():.3f}"
     )
     return out
+
+
+
+# ---- C18 Balanced 6-Factor Composite (Phase A.3) --------------------------
+
+def compute_momentum_accel(prices: pd.DataFrame,
+                           fast: int = 63, slow: int = 63) -> pd.Series:
+    """Momentum acceleration — 2nd derivative of momentum.
+
+    Compares recent momentum to lagged momentum. Positive accel = trend
+    strengthening. Cross-sectionally ranked to [-1, 1].
+
+    Battery #7 found fast=63/slow=63 optimal (Sharpe 0.925@10bp as
+    replacement for TSMOM). Near-zero standalone (0.132 Sharpe) but
+    excellent composite diversifier (spread 0.010 under ±30% weight pert).
+    """
+    p = prices.ffill()
+    mom_recent = p.pct_change(fast).iloc[-1]
+    mom_lagged = p.pct_change(fast).iloc[-(slow + 1)]
+    accel = mom_recent - mom_lagged
+    return (accel.rank(pct=True) - 0.5) * 2
+
+
+def compute_skewness(prices: pd.DataFrame, window: int = 63) -> pd.Series:
+    """Rolling skewness factor — cross-sectionally ranked.
+
+    Negative skew = fat left tail = higher risk premium = long bias.
+    Battery #7: standalone Sharpe 0.132 but good diversifier in composite
+    (spread 0.013 under ±30% weight perturbation).
+    """
+    p = prices.ffill()
+    skew_raw = p.pct_change().rolling(window).skew().iloc[-1]
+    # Negative skew -> positive signal (risk premium)
+    return ((-skew_raw).rank(pct=True) - 0.5) * 2
+
+
+def generate_c18_signal(prices, curves=None, weights=None,
+                        reversal_windows=(5, 10, 21),
+                        sector_rot_lookback=252,
+                        carry_short=21, carry_long=63,
+                        accel_fast=63, accel_slow=63,
+                        skew_window=63,
+                        vol_filter_enabled=True,
+                        vol_dampen_low=0.3) -> pd.DataFrame:
+    """C18 'Balanced 6-Factor' composite — Battery #8 stress-test winner.
+
+    Default weights: rev=0.30, sec_rot=0.12, carry=0.13,
+                     accel=0.10, skew=0.10, value=0.25
+    Key improvements over C10:
+      - Replaces TSMOM with momentum acceleration (2nd derivative)
+      - Adds skewness factor (fat-tail risk premium)
+      - Rebalanced weights to accommodate 6 factors
+    Sharpe 1.394 (0bp) / 1.098 (10bp), breakeven ~52bp,
+    walk-forward 88% positive, bootstrap 95% CI [0.71, 1.56].
+    """
+    if weights is None:
+        weights = {
+            "reversal": 0.30, "sector_rot": 0.12, "carry": 0.13,
+            "accel": 0.10, "skew": 0.10, "value": 0.25,
+        }
+
+    # Factor 1: Multi-window reversal ensemble
+    rev_signals = [compute_reversal(prices, window=w)
+                   for w in reversal_windows]
+    rev = sum(rev_signals) / len(rev_signals)
+
+    # Factor 2: Sector rotation
+    sec_rot = compute_sector_rotation(prices, lookback=sector_rot_lookback)
+
+    # Factor 3: Carry proxy (roll yield)
+    carry = compute_carry_proxy(prices, short_window=carry_short,
+                                long_window=carry_long)
+
+    # Factor 4: Momentum acceleration
+    accel = compute_momentum_accel(prices, fast=accel_fast,
+                                   slow=accel_slow)
+
+    # Factor 5: Skewness
+    skew = compute_skewness(prices, window=skew_window)
+
+    # Factor 6: Value (5y mean reversion)
+    val = compute_value(prices)
+
+    # Raw composite
+    raw = (
+        weights["reversal"] * rev.astype(float)
+        + weights["sector_rot"] * sec_rot.astype(float)
+        + weights["carry"] * carry.astype(float)
+        + weights["accel"] * accel.astype(float)
+        + weights["skew"] * skew.astype(float)
+        + weights["value"] * val.astype(float)
+    )
+
+    # Vol filter
+    if vol_filter_enabled:
+        vol_mult = compute_vol_filter(prices, dampen_low_vol=vol_dampen_low)
+    else:
+        vol_mult = pd.Series(1.0, index=prices.columns)
+
+    composite = raw * vol_mult
+
+    out = pd.DataFrame({
+        "reversal": rev,
+        "sector_rot": sec_rot,
+        "carry": carry,
+        "accel": accel,
+        "skew": skew,
+        "value": val,
+        "vol_mult": vol_mult,
+        "composite": composite,
+    })
+
+    log.info(
+        f"C18 signal: rev={rev.abs().mean():.3f} "
+        f"(windows={reversal_windows}), "
+        f"secrot={sec_rot.abs().mean():.3f}, "
+        f"carry={carry.abs().mean():.3f}, "
+        f"accel={accel.abs().mean():.3f}, "
+        f"skew={skew.abs().mean():.3f}, "
+        f"val={val.abs().mean():.3f}, "
+        f"vf={'ON' if vol_filter_enabled else 'OFF'}, "
+        f"composite={composite.abs().mean():.3f}"
+    )
+    return out

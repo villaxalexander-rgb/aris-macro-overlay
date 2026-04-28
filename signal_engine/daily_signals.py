@@ -118,14 +118,42 @@ def run_daily_signals() -> dict:
         C10_VOL_FILTER,
         C10_VOL_DAMPEN_LOW,
         C10_WEIGHTS,
+        C18_REVERSAL_WINDOWS,
+        C18_SECTOR_ROT_LOOKBACK,
+        C18_CARRY_SHORT,
+        C18_CARRY_LONG,
+        C18_ACCEL_FAST,
+        C18_ACCEL_SLOW,
+        C18_SKEW_WINDOW,
+        C18_VOL_FILTER,
+        C18_VOL_DAMPEN_LOW,
+        C18_WEIGHTS,
     )
     from signal_engine.bsv_signals import (
         generate_hybrid_signals, generate_c8_signal, generate_c10_signal,
+        generate_c18_signal,
     )
 
     target_positions: dict[str, float] = {}
 
-    if ALPHA_MODE == "c10" and not prices.empty:
+    if ALPHA_MODE == "c18" and not prices.empty:
+        # C18 Balanced 6-Factor — Phase A.3 (battery #8 stress-test winner)
+        bsv = generate_c18_signal(
+            prices,
+            curves=curves,
+            weights=C18_WEIGHTS,
+            reversal_windows=C18_REVERSAL_WINDOWS,
+            sector_rot_lookback=C18_SECTOR_ROT_LOOKBACK,
+            carry_short=C18_CARRY_SHORT,
+            carry_long=C18_CARRY_LONG,
+            accel_fast=C18_ACCEL_FAST,
+            accel_slow=C18_ACCEL_SLOW,
+            skew_window=C18_SKEW_WINDOW,
+            vol_filter_enabled=C18_VOL_FILTER,
+            vol_dampen_low=C18_VOL_DAMPEN_LOW,
+        )
+        log.info("Alpha mode: C18 Balanced 6-Factor")
+    elif ALPHA_MODE == "c10" and not prices.empty:
         # C10 Multi-Rev Carry — Phase A.2 (battery #5 winner)
         bsv = generate_c10_signal(
             prices,

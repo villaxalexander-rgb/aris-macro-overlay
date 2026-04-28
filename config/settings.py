@@ -61,10 +61,30 @@ SIGNAL_OUTPUT_PATH = "data/signals/"
 FUND_NOTE_PATH = "docs/fund_notes/"
 
 
-# --- Phase A: Alpha engine (T6 Hybrid) ---
-USE_HYBRID_ALPHA = os.getenv("USE_HYBRID_ALPHA", "true").lower() == "true"
-TSMOM_WEIGHT = float(os.getenv("TSMOM_WEIGHT", "0.50"))  # 0.5 = 50/50 BSV hybrid
-TSMOM_LOOKBACKS = (63, 126, 252)  # 3m, 6m, 12m trading days
+# --- Phase A: Alpha engine ---
+# ALPHA_MODE controls which signal generator runs:
+#   "c8"     = C8 Kitchen Sink VF (Phase A.1 — recommended, Sharpe 0.92 backtest)
+#   "hybrid" = T6 Hybrid 50/50 TSMOM+BSV (Phase A original)
+#   "bsv"    = Pure BSV composite (legacy)
+ALPHA_MODE = os.getenv("ALPHA_MODE", "c8").lower()
+
+# T6 hybrid settings (only used when ALPHA_MODE=hybrid)
+USE_HYBRID_ALPHA = ALPHA_MODE == "hybrid"
+TSMOM_WEIGHT = float(os.getenv("TSMOM_WEIGHT", "0.50"))
+TSMOM_LOOKBACKS = (63, 126, 252)
+
+# C8 settings (only used when ALPHA_MODE=c8)
+C8_REVERSAL_WINDOW = int(os.getenv("C8_REVERSAL_WINDOW", "10"))
+C8_SECTOR_ROT_LOOKBACK = int(os.getenv("C8_SECTOR_ROT_LOOKBACK", "252"))
+C8_TSMOM_LOOKBACK = int(os.getenv("C8_TSMOM_LOOKBACK", "252"))
+C8_VOL_FILTER = os.getenv("C8_VOL_FILTER", "true").lower() == "true"
+C8_VOL_DAMPEN_LOW = float(os.getenv("C8_VOL_DAMPEN_LOW", "0.3"))
+C8_WEIGHTS = {
+    "reversal": float(os.getenv("C8_W_REVERSAL", "0.40")),
+    "sector_rot": float(os.getenv("C8_W_SECTOR_ROT", "0.25")),
+    "tsmom": float(os.getenv("C8_W_TSMOM", "0.15")),
+    "value": float(os.getenv("C8_W_VALUE", "0.20")),
+}
 
 # --- Phase A: Vol-target sizing ---
 PORTFOLIO_VOL_TARGET = float(os.getenv("PORTFOLIO_VOL_TARGET", "0.10"))  # 10% annualized

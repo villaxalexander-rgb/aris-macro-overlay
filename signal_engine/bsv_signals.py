@@ -225,3 +225,148 @@ def generate_hybrid_signals(
         f"hybrid abs_mean={hybrid.abs().mean():.2f}"
     )
     return out
+
+
+# ---- C8 Multi-Factor Composite (Phase A.1) --------------------------------
+
+def compute_sector_rotation(prices: pd.DataFrame, lookback: int = 252) -> pd.Series:
+    """Cross-sectional sector rotation signal.
+
+    Ranks sectors by trailing return, then maps the sector rank back to
+    each constituent asset.  Long the best-performing sector, short the
+    worst. Returns values in [-1, 1].
+    """
+    from config.tickers import SECTOR_MAP
+
+    sector_assets: dict[str, list[str]] = {}
+    for asset in prices.columns:
+        sec = SECTOR_MAP.get(asset, "other")
+        sector_assets.setdefault(sec, []).append(asset)
+
+    # Average trailing return per sector
+    sector_ret: dict[str, pd.Series] = {}
+    for sec, assets in sector_assets.items():
+        avail = [a for a in assets if a in prices.columns]
+        if avail:
+            sector_ret[sec] = prices[avail].pct_change(lookback).iloc[-1].mean()
+
+    if not sector_ret:
+        return pd.Series(0.0, index=prices.columns)
+
+    sr = pd.Series(sector_ret)
+    sr_rank = sr.rank(pct=True)
+    sr_signal = (sr_rank - 0.5) * 2  # map [0,1] -> [-1,1]
+
+    # Map sector signal back to individual assets
+    out = pd.Series(0.0, index=prices.columns)
+    for asset in prices.columns:
+        sec = SECTOR_MAP.get(asset, "other")
+        if sec in sr_signal.index:
+            out[asset] = sr_signal[sec]
+    return out
+
+
+def compute_vol_filter(
+    prices: pd.DataFrame,
+    vol_window: int = 63,
+    dampen_low_vol: float = 0.3,
+) -> pd.Series:
+    """Per-asset vol filter: 1.0 if current realized vol > expanding median,
+    else `dampen_low_vol`.  Used to concentrate exposure in volatile regimes
+    where mean-reversion (reversal) is strongest.
+    """
+    returns = prices.pct_change()
+    rv = returns.rolling(vol_window).std().iloc[-1] * np.sqrt(252)
+    rv_hist = returns.rolling(vol_window).std() * np.sqrt(252)
+    rv_median = rv_hist.expanding(min_periods=126).median().iloc[-1]
+
+    high_vol = rv > rv_median
+    mult = high_vol.astype(float) * 1.0 + (~high_vol).astype(float) * dampen_low_vol
+    return mult
+
+
+def generate_c8_signal(
+    prices: pd.DataFrame,
+    curves: dict[str, pd.DataFrame] | None = None,
+    weights: dict | None = None,
+    reversal_window: int = 10,
+    sector_rot_lookback: int = 252,
+    tsmom_lookback: int = 252,
+    vol_filter_enabled: bool = True,
+    vol_dampen_low: float = 0.3,
+) -> pd.DataFrame:
+    """
+    C8 'Kitchen Sink VF' multi-factor composite with vol filter.
+
+    Research battery #3 winner:  Sharpe 0.92, OOS Sharpe 0.75,
+    Sharpe@10bp 0.59, MaxDD -20%, Calmar 0.58.
+
+    Default weights: 40% reversal(10d) + 25% sector_rotation(252d)
+                   + 15% TSMOM(252d) + 20% value(5y)
+
+    Args:
+        prices:              DataFrame of commodity prices (index=dates, cols=assets)
+        curves:              optional curves dict (not used by C8 but kept for API compat)
+        weights:             factor weights dict; keys: reversal, sector_rot, tsmom, value
+        reversal_window:     lookback for cross-sectional reversal (default 10d)
+        sector_rot_lookback: lookback for sector rotation momentum (default 252d)
+        tsmom_lookback:      lookback for time-series momentum (default 252d)
+        vol_filter_enabled:  apply per-asset vol filter (default True)
+        vol_dampen_low:      multiplier for low-vol assets (default 0.3)
+
+    Returns:
+        DataFrame with columns: reversal, sector_rot, tsmom, value,
+        vol_mult, composite (the final signal used downstream).
+    """
+    from signal_engine.tsmom import compute_tsmom_ensemble
+
+    if weights is None:
+        weights = {"reversal": 0.40, "sector_rot": 0.25, "tsmom": 0.15, "value": 0.20}
+
+    # Factor 1: Cross-sectional reversal (10d)
+    rev = compute_reversal(prices, window=reversal_window)
+
+    # Factor 2: Sector rotation (252d)
+    sec_rot = compute_sector_rotation(prices, lookback=sector_rot_lookback)
+
+    # Factor 3: TSMOM (252d) — time-series momentum, sign of trailing return
+    tsmom_sig = compute_tsmom_ensemble(prices, lookbacks=(tsmom_lookback,))
+    tsmom_sig = tsmom_sig.reindex(prices.columns).fillna(0.0)
+
+    # Factor 4: Value (5y mean reversion)
+    val = compute_value(prices)
+
+    # Raw composite
+    raw = (
+        weights["reversal"] * rev.astype(float)
+        + weights["sector_rot"] * sec_rot.astype(float)
+        + weights["tsmom"] * tsmom_sig.astype(float)
+        + weights["value"] * val.astype(float)
+    )
+
+    # Vol filter
+    if vol_filter_enabled:
+        vol_mult = compute_vol_filter(prices, dampen_low_vol=vol_dampen_low)
+    else:
+        vol_mult = pd.Series(1.0, index=prices.columns)
+
+    composite = raw * vol_mult
+
+    out = pd.DataFrame({
+        "reversal": rev,
+        "sector_rot": sec_rot,
+        "tsmom": tsmom_sig,
+        "value": val,
+        "vol_mult": vol_mult,
+        "composite": composite,
+    })
+
+    log.info(
+        f"C8 signal: rev_mean={rev.abs().mean():.3f}, "
+        f"secrot_mean={sec_rot.abs().mean():.3f}, "
+        f"tsmom_mean={tsmom_sig.abs().mean():.3f}, "
+        f"val_mean={val.abs().mean():.3f}, "
+        f"vol_filt={'ON' if vol_filter_enabled else 'OFF'}, "
+        f"composite abs_mean={composite.abs().mean():.3f}"
+    )
+    return out

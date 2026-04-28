@@ -103,20 +103,42 @@ def run_daily_signals() -> dict:
         SIGNAL_GROSS_CAP,
         TSMOM_LOOKBACKS,
         TSMOM_WEIGHT,
-        USE_HYBRID_ALPHA,
+        ALPHA_MODE,
+        C8_REVERSAL_WINDOW,
+        C8_SECTOR_ROT_LOOKBACK,
+        C8_TSMOM_LOOKBACK,
+        C8_VOL_FILTER,
+        C8_VOL_DAMPEN_LOW,
+        C8_WEIGHTS,
     )
-    from signal_engine.bsv_signals import generate_hybrid_signals
+    from signal_engine.bsv_signals import generate_hybrid_signals, generate_c8_signal
 
     target_positions: dict[str, float] = {}
 
-    if USE_HYBRID_ALPHA and not prices.empty:
-        # Regenerate using the hybrid engine — supersedes the BSV-only call above
+    if ALPHA_MODE == "c8" and not prices.empty:
+        # C8 Kitchen Sink VF — Phase A.1 (battery #3 winner)
+        bsv = generate_c8_signal(
+            prices,
+            curves=curves,
+            weights=C8_WEIGHTS,
+            reversal_window=C8_REVERSAL_WINDOW,
+            sector_rot_lookback=C8_SECTOR_ROT_LOOKBACK,
+            tsmom_lookback=C8_TSMOM_LOOKBACK,
+            vol_filter_enabled=C8_VOL_FILTER,
+            vol_dampen_low=C8_VOL_DAMPEN_LOW,
+        )
+        log.info(f"Alpha mode: C8 Kitchen Sink VF")
+    elif ALPHA_MODE == "hybrid" and not prices.empty:
+        # T6 Hybrid — Phase A original
         bsv = generate_hybrid_signals(
             prices,
             curves=curves,
             tsmom_lookbacks=TSMOM_LOOKBACKS,
             tsmom_weight=TSMOM_WEIGHT,
         )
+        log.info(f"Alpha mode: T6 Hybrid (TSMOM={TSMOM_WEIGHT})")
+    else:
+        log.info(f"Alpha mode: BSV-only (legacy)")
 
     if not bsv.empty and "composite" in bsv.columns:
         asset_vol = compute_asset_volatility(prices, vol_window=VOL_TARGET_WINDOW)

@@ -1,0 +1,155 @@
+[
+  {
+    "name": "T1: TSMOM sign(1/3/6/12m) vol-target 10%",
+    "cagr": -0.000546507804218721,
+    "vol": 0.08304845729067631,
+    "sharpe_arith": -0.32632622614795403,
+    "max_dd": -0.29004387558185535,
+    "avg_positions": 9.481124707107524,
+    "avg_gross_pct_nav": 0.5173148565097255,
+    "regime_returns": {
+      "Goldilocks": -0.017234833989261802,
+      "Reflation": -0.002137532158691213,
+      "Stagflation": -0.008263181118546683,
+      "Deflation": 0.030683197842689365
+    },
+    "final_nav": 991579.3304077642,
+    "total_costs": 33271.874098724234
+  },
+  {
+    "name": "T2: TSMOM continuous(1/3/6/12m) vt=10%",
+    "cagr": 0.007471371539692129,
+    "vol": 0.05258090476518957,
+    "sharpe_arith": -0.40239064640088656,
+    "max_dd": -0.15356697812161715,
+    "avg_positions": 10.500911221036189,
+    "avg_gross_pct_nav": 0.28075215304746926,
+    "regime_returns": {
+      "Goldilocks": 0.005788044353628795,
+      "Reflation": 0.004881492364624972,
+      "Stagflation": 0.01197394816143603,
+      "Deflation": 0.01197732994168508
+    },
+    "final_nav": 1120240.9613640415,
+    "total_costs": 17727.363299392546
+  },
+  {
+    "name": "T3: TSMOM continuous vt=15% higher risk",
+    "cagr": 0.008912576489894297,
+    "vol": 0.0740282698329254,
+    "sharpe_arith": -0.24808652482258065,
+    "max_dd": -0.20156879875377912,
+    "avg_positions": 10.500911221036189,
+    "avg_gross_pct_nav": 0.39776695004916396,
+    "regime_returns": {
+      "Goldilocks": 0.008541992156830757,
+      "Reflation": 0.004561197259162139,
+      "Stagflation": 0.010241157355510054,
+      "Deflation": 0.020752768312044808
+    },
+    "final_nav": 1144949.6730333122,
+    "total_costs": 24661.395532715967
+  },
+  {
+    "name": "T4: TSMOM continuous 3/6/12m (no 1m noise)",
+    "cagr": 0.009698882859463298,
+    "vol": 0.054598766737222734,
+    "sharpe_arith": -0.34500478188005274,
+    "max_dd": -0.1507394345997996,
+    "avg_positions": 10.598281697474617,
+    "avg_gross_pct_nav": 0.2947488893055048,
+    "regime_returns": {
+      "Goldilocks": 0.010513041263295596,
+      "Reflation": 0.00698577069052518,
+      "Stagflation": 0.005907488970327771,
+      "Deflation": 0.01902387493075783
+    },
+    "final_nav": 1158651.0167775764,
+    "total_costs": 14407.462878298878
+  },
+  {
+    "name": "T5: TSMOM + regime weights applied",
+    "cagr": 0.004722710325450574,
+    "vol": 0.050063053353294806,
+    "sharpe_arith": -0.4798885908023144,
+    "max_dd": -0.17373847240475002,
+    "avg_positions": 10.500911221036189,
+    "avg_gross_pct_nav": 0.2833771440695248,
+    "regime_returns": {
+      "Goldilocks": 0.005491544282674998,
+      "Reflation": 0.005391679647847566,
+      "Stagflation": 0.016427174957463337,
+      "Deflation": -0.0011228340534562987
+    },
+    "final_nav": 1074479.4446350588,
+    "total_costs": 18010.405153911295
+  },
+  {
+    "name": "T6: Hybrid 50% TSMOM / 50% BSV",
+    "cagr": 0.011216836431952038,
+    "vol": 0.036266399084313505,
+    "sharpe_arith": -0.500923746936643,
+    "max_dd": -0.0833887872039213,
+    "avg_positions": 10.128872689403801,
+    "avg_gross_pct_nav": 0.20990487500745195,
+    "regime_returns": {
+      "Goldilocks": 0.0050169677188788425,
+      "Reflation": 0.0135680166897305,
+      "Stagflation": 0.013147344578512224,
+      "Deflation": 0.014590728522973844
+    },
+    "final_nav": 1185591.3495109573,
+    "total_costs": 13181.183502703761
+  },
+  {
+    "name": "T7: Hybrid 70% TSMOM / 30% BSV",
+    "cagr": 0.009951269936548712,
+    "vol": 0.04277328936423476,
+    "sharpe_arith": -0.4480329016236785,
+    "max_dd": -0.11490622828558412,
+    "avg_positions": 10.284821661025774,
+    "avg_gross_pct_nav": 0.2356245739681388,
+    "regime_returns": {
+      "Goldilocks": 0.006274976082892139,
+      "Reflation": 0.010785833227287872,
+      "Stagflation": 0.012440316204316973,
+      "Deflation": 0.01311029967621271
+    },
+    "final_nav": 1163118.1505792197,
+    "total_costs": 15017.756474480942
+  },
+  {
+    "name": "T8: TSMOM continuous 6/12m only (slow only)",
+    "cagr": 0.011253767679906712,
+    "vol": 0.05407367103473129,
+    "sharpe_arith": -0.3203634414172551,
+    "max_dd": -0.14782864731906972,
+    "avg_positions": 10.756053111168967,
+    "avg_gross_pct_nav": 0.30926707729102504,
+    "regime_returns": {
+      "Goldilocks": 0.013241912070105149,
+      "Reflation": 0.00588568456087221,
+      "Stagflation": 0.01135786281923456,
+      "Deflation": 0.018742251759515726
+    },
+    "final_nav": 1186190.420819815,
+    "total_costs": 13177.02463902777
+  },
+  {
+    "name": "T9: TSMOM sign 3/6/12m slow-binary",
+    "cagr": 0.001215236092909855,
+    "vol": 0.07930368714639627,
+    "sharpe_arith": -0.3233208203508247,
+    "max_dd": -0.22956331194061066,
+    "avg_positions": 11.97422546211924,
+    "avg_gross_pct_nav": 0.53051339080947,
+    "regime_returns": {
+      "Goldilocks": -0.005651494177118427,
+      "Reflation": -0.003579043336989663,
+      "Stagflation": -0.0148150321501107,
+      "Deflation": 0.032913738660370416
+    },
+    "final_nav": 1018600.6384489704,
+    "total_costs": 25556.115509845167
+  }
+]

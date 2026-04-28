@@ -8,7 +8,7 @@ load_dotenv()
 
 # --- IBKR ---
 IBKR_HOST = os.getenv("IBKR_HOST", "127.0.0.1")
-IBKR_PORT = int(os.getenv("IBKR_PORT", 4001))  # 4001 = Gateway live, 4002 = Gateway paper
+IBKR_PORT = int(os.getenv("IBKR_PORT", 4002))  # 4002 = Gateway paper (safe default), 4001 = Gateway live (must opt in via .env)
 IBKR_CLIENT_ID = int(os.getenv("IBKR_CLIENT_ID", 1))
 
 # --- FRED API ---
@@ -59,3 +59,24 @@ FRED_CPI_SERIES = "CPIAUCSL"
 TRADE_LOG_PATH = "logs/trade_log.csv"
 SIGNAL_OUTPUT_PATH = "data/signals/"
 FUND_NOTE_PATH = "docs/fund_notes/"
+
+
+# --- Phase A: Alpha engine (T6 Hybrid) ---
+USE_HYBRID_ALPHA = os.getenv("USE_HYBRID_ALPHA", "true").lower() == "true"
+TSMOM_WEIGHT = float(os.getenv("TSMOM_WEIGHT", "0.50"))  # 0.5 = 50/50 BSV hybrid
+TSMOM_LOOKBACKS = (63, 126, 252)  # 3m, 6m, 12m trading days
+
+# --- Phase A: Vol-target sizing ---
+PORTFOLIO_VOL_TARGET = float(os.getenv("PORTFOLIO_VOL_TARGET", "0.10"))  # 10% annualized
+VOL_TARGET_WINDOW = int(os.getenv("VOL_TARGET_WINDOW", "63"))             # 3m trailing
+SIGNAL_GROSS_CAP = float(os.getenv("SIGNAL_GROSS_CAP", "1.00"))           # 100% NAV max gross
+
+# --- Phase A: Regime overlay toggle ---
+# Research showed regime tilts did not improve risk-adjusted returns on T6.
+# Kept here as a toggle for forward A/B testing; default OFF.
+APPLY_REGIME_TILTS = os.getenv("APPLY_REGIME_TILTS", "false").lower() == "true"
+
+# --- Phase A: Rebalance policy ---
+REBALANCE_FREQ = os.getenv("REBALANCE_FREQ", "weekly")  # daily|weekly|monthly
+REBALANCE_WEEKDAY = int(os.getenv("REBALANCE_WEEKDAY", "0"))  # 0=Monday
+TRADE_DEADBAND_PCT = float(os.getenv("TRADE_DEADBAND_PCT", "0.005"))  # 0.5% NAV min leg delta

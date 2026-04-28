@@ -1,0 +1,210 @@
+[
+  {
+    "name": "0: baseline",
+    "cagr": -0.025805794877714505,
+    "vol": 0.15101374234555479,
+    "sharpe_arith": -0.30498000391185526,
+    "max_dd": -0.5069355644364384,
+    "avg_positions": 4.2751887529289245,
+    "regime_returns": {
+      "Goldilocks": -0.07936760506842629,
+      "Reflation": -0.009963637637530007,
+      "Stagflation": -0.12884233829205707,
+      "Deflation": 0.11256481005821072
+    },
+    "final_nav": 670849.591708368,
+    "total_costs": 67772.74345856192
+  },
+  {
+    "name": "1: Stag energy 0.8\u21921.2",
+    "cagr": -0.027235456936145264,
+    "vol": 0.15143849169139179,
+    "sharpe_arith": -0.3134541933092672,
+    "max_dd": -0.5171261134106586,
+    "avg_positions": 4.26607654256704,
+    "regime_returns": {
+      "Goldilocks": -0.07749532779347267,
+      "Reflation": -0.011196670552473085,
+      "Stagflation": -0.13316951657937706,
+      "Deflation": 0.11073350361132878
+    },
+    "final_nav": 655976.370755986,
+    "total_costs": 67362.7201468181
+  },
+  {
+    "name": "2: Stag energy\u21921.4 + livestock\u21921.0",
+    "cagr": -0.02727193181659049,
+    "vol": 0.15132731125624813,
+    "sharpe_arith": -0.3140010998652505,
+    "max_dd": -0.5179839046556965,
+    "avg_positions": 4.2663368914345225,
+    "regime_returns": {
+      "Goldilocks": -0.0783647373796541,
+      "Reflation": -0.01109000622869727,
+      "Stagflation": -0.1332651073365427,
+      "Deflation": 0.11121843071253239
+    },
+    "final_nav": 655600.9738176211,
+    "total_costs": 67308.35535594176
+  },
+  {
+    "name": "3: weekly rebal only",
+    "cagr": -0.023731809451113084,
+    "vol": 0.12998234243224993,
+    "sharpe_arith": -0.3555568084340079,
+    "max_dd": -0.4427019835460686,
+    "avg_positions": 4.271023171049206,
+    "regime_returns": {
+      "Goldilocks": -0.10560024955444303,
+      "Reflation": -0.0037396664931533216,
+      "Stagflation": -0.07822101137062473,
+      "Deflation": 0.08841337088117389
+    },
+    "final_nav": 692986.9088677653,
+    "total_costs": 23594.181639451006
+  },
+  {
+    "name": "4: regime fix + weekly",
+    "cagr": -0.023515143303356467,
+    "vol": 0.130623055226821,
+    "sharpe_arith": -0.3515590471522546,
+    "max_dd": -0.4389402710165265,
+    "avg_positions": 4.2772715438687845,
+    "regime_returns": {
+      "Goldilocks": -0.10500870478881406,
+      "Reflation": -0.005312174632452471,
+      "Stagflation": -0.07497686918406787,
+      "Deflation": 0.08775281448744313
+    },
+    "final_nav": 695338.5288707673,
+    "total_costs": 23717.651550960523
+  },
+  {
+    "name": "5: #4 + 100% gross cap",
+    "cagr": -0.008114199280738088,
+    "vol": 0.08504412086069128,
+    "sharpe_arith": -0.40894409764663076,
+    "max_dd": -0.26070053305110674,
+    "avg_positions": 4.341057016401979,
+    "regime_returns": {
+      "Goldilocks": -0.0616538602226666,
+      "Reflation": -0.002629403896708132,
+      "Stagflation": -0.040439219643597826,
+      "Deflation": 0.06359990843458868
+    },
+    "final_nav": 883001.291780889,
+    "total_costs": 15534.452669879918
+  },
+  {
+    "name": "6: #5 + composite (0.50/0.15/0.20/0.15)",
+    "cagr": -0.008325621617824797,
+    "vol": 0.07541768164929175,
+    "sharpe_arith": -0.47270819109511014,
+    "max_dd": -0.24997070441861724,
+    "avg_positions": 4.37021608956001,
+    "regime_returns": {
+      "Goldilocks": -0.03622007156265161,
+      "Reflation": 0.0010406500879454256,
+      "Stagflation": -0.05170444824742316,
+      "Deflation": 0.04703986315113075
+    },
+    "final_nav": 880130.6665556404,
+    "total_costs": 13375.823939176558
+  },
+  {
+    "name": "7: #5 + pure momentum",
+    "cagr": -0.011630392936421652,
+    "vol": 0.07585828409204441,
+    "sharpe_arith": -0.5132467320810226,
+    "max_dd": -0.20901224351037806,
+    "avg_positions": 4.22103618849258,
+    "regime_returns": {
+      "Goldilocks": -0.02247347090258663,
+      "Reflation": -0.019798780509384186,
+      "Stagflation": -0.051089804164752665,
+      "Deflation": 0.042106501988652525
+    },
+    "final_nav": 836387.5407510889,
+    "total_costs": 12066.253729691509
+  },
+  {
+    "name": "8: baseline + ideal-NAV eligibility",
+    "cagr": -0.013061385111279078,
+    "vol": 0.2020671040340921,
+    "sharpe_arith": -0.11905298874573161,
+    "max_dd": -0.5948698918763912,
+    "avg_positions": 9.766206717000781,
+    "regime_returns": {
+      "Goldilocks": -0.05980899596621025,
+      "Reflation": 0.022053294865060413,
+      "Stagflation": -0.11382844579813095,
+      "Deflation": 0.1336148330836721
+    },
+    "final_nav": 817988.5850779968,
+    "total_costs": 148652.3474676693
+  },
+  {
+    "name": "9: baseline + ideal + fractional contracts",
+    "cagr": -0.007216873702659443,
+    "vol": 0.19546272760341685,
+    "sharpe_arith": -0.09964402771098334,
+    "max_dd": -0.5421238554754906,
+    "avg_positions": 11.977870346263995,
+    "regime_returns": {
+      "Goldilocks": -0.06750454930069126,
+      "Reflation": 0.029275519855548982,
+      "Stagflation": -0.10131831108148504,
+      "Deflation": 0.13932579786181074
+    },
+    "final_nav": 895142.2802640996,
+    "total_costs": 143166.72625555668
+  },
+  {
+    "name": "10: pure-momentum + ideal + fractional + weekly",
+    "cagr": -0.022017665503128003,
+    "vol": 0.18573696306698667,
+    "sharpe_arith": -0.19075185747015586,
+    "max_dd": -0.4602772009087169,
+    "avg_positions": 11.466284821661025,
+    "regime_returns": {
+      "Goldilocks": -0.0799390849858334,
+      "Reflation": -0.002186972360787728,
+      "Stagflation": -0.10710348673609502,
+      "Deflation": 0.12553178772252688
+    },
+    "final_nav": 711673.5184422036,
+    "total_costs": 34113.588488021
+  },
+  {
+    "name": "11: pure-momentum + ideal + fractional + weekly + 100% cap",
+    "cagr": -0.003930794656814562,
+    "vol": 0.10176507815428631,
+    "sharpe_arith": -0.28376854247496314,
+    "max_dd": -0.26126160834686685,
+    "avg_positions": 11.466284821661025,
+    "regime_returns": {
+      "Goldilocks": -0.04222824717822965,
+      "Reflation": 0.0040947872056368755,
+      "Stagflation": -0.05427521631595904,
+      "Deflation": 0.07358601415278325
+    },
+    "final_nav": 941508.6302669971,
+    "total_costs": 21890.47342300804
+  },
+  {
+    "name": "12: ideal+fractional+weekly+cap  composite=(0.40/0.25/0.20/0.15)",
+    "cagr": 0.011183492578997534,
+    "vol": 0.1160086734840985,
+    "sharpe_arith": -0.10693368610359344,
+    "max_dd": -0.27439925248817626,
+    "avg_positions": 11.977870346263995,
+    "regime_returns": {
+      "Goldilocks": -0.04903791126376632,
+      "Reflation": 0.035717670656617816,
+      "Stagflation": -0.03352539179798814,
+      "Deflation": 0.09217705278581623
+    },
+    "final_nav": 1184894.8274067014,
+    "total_costs": 34326.07852323341
+  }
+]

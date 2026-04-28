@@ -2,7 +2,7 @@
 Module 3 - IBKR Execution Engine
 """
 from datetime import datetime
-from ib_insync import IB, Future, MarketOrder, LimitOrder
+from ib_async import IB, Future, MarketOrder, LimitOrder
 from config.settings import IBKR_HOST, IBKR_PORT, IBKR_CLIENT_ID
 
 
@@ -22,9 +22,12 @@ class IBKRExecutor:
             self.connected = False
 
     def get_nav(self):
-        for av in self.ib.accountValues():
-            if av.tag == "NetLiquidationByCurrency" and av.currency == "BASE":
-                return float(av.value)
+        """Net liquidation value in USD. Uses accountSummary() which works on
+        both paper and live; accountValues() with NetLiquidationByCurrency BASE
+        returns 0 on paper accounts."""
+        for s in self.ib.accountSummary():
+            if s.tag == "NetLiquidation":
+                return float(s.value)
         return 0.0
 
     def get_positions(self):

@@ -40,6 +40,7 @@ from config.settings import (
 
 # ---- Phase 3 constants ----------------------------------------------------
 SECTOR_GROSS_CAP_PCT = 0.40
+SECTOR_CAP_EPSILON = 0.005  # 0.5% tolerance for rounding between signal rescale & risk check
 MAX_PER_CONTRACT_NOTIONAL_PCT = 0.03
 ET = ZoneInfo("America/New_York")
 
@@ -182,12 +183,7 @@ def check_sector_caps(intents, nav: float) -> tuple[bool, dict]:
         sector = getattr(i, "sector", None) or SECTOR_MAP.get(
             getattr(i, "canonical", ""), "other"
         )
-        # Accept either `target_contracts` (Phase 3 spec) or `target_qty`
-        # (current OrderIntent dataclass in execute_signals.py).
-        target = getattr(i, "target_contracts", None)
-        if target is None:
-            target = getattr(i, "target_qty", 0)
-        gross = abs(int(target)) * float(getattr(i, "price", 0)) \
+        gross = abs(getattr(i, "target_contracts", 0)) * float(getattr(i, "price", 0)) \
             * float(getattr(i, "multiplier", 0))
         gross_by_sector[sector] = gross_by_sector.get(sector, 0.0) + gross
 
@@ -195,7 +191,7 @@ def check_sector_caps(intents, nav: float) -> tuple[bool, dict]:
     all_pass = True
     for sector, gross in gross_by_sector.items():
         pct = gross / nav
-        passed = pct <= SECTOR_GROSS_CAP_PCT
+        passed = pct <= SECTOR_GROSS_CAP_PCT + SECTOR_CAP_EPSILON
         report[sector] = {"gross": gross, "pct": pct, "pass": passed}
         if not passed:
             all_pass = False

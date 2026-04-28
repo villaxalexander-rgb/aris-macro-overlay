@@ -1,0 +1,112 @@
+# A.R.I.S Macro Overlay System — Docker Compose
+#
+# Architecture:
+#   ibgateway  — IBC + IB Gateway (headless, handles IBKR auth)
+#   aris       — Signal pipeline + execution + Jeffrey briefing
+#   scheduler  — Cron container that triggers aris daily
+#
+# Usage:
+#   cp .env.example .env && vim .env   # fill in credentials
+#   docker compose up -d               # start all services
+#   docker compose logs -f aris        # watch pipeline output
+#   docker compose run aris python jeffrey_briefing/briefing.py --date 2026-04-16 --dry-run
+
+version: "3.9"
+
+services:
+  # ── IB Gateway via IBC ───────────────────────────────────────
+  ibgateway:
+    image: ghcr.io/gnzsnz/ib-gateway:stable
+    restart: unless-stopped
+    environment:
+      TWS_USERID: ${IBKR_USERNAME}
+      TWS_PASSWORD: ${IBKR_PASSWORD}
+      TRADING_MODE: ${IBKR_TRADING_MODE:-paper}
+      TWS_ACCEPT_INCOMING: "accept"
+      READ_ONLY_API: "no"
+      TWOFA_TIMEOUT_ACTION: restart
+      AUTO_RESTART_TIME: "11:45 PM"
+      RELOGIN_AFTER_2FA_TIMEOUT: "yes"
+    ports:
+      - "${IBKR_PORT:-4002}:${IBKR_PORT:-4002}"
+    volumes:
+      - ibgateway-data:/home/ibgateway/Jts
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "${IBKR_PORT:-4002}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+    networks:
+      - aris-net
+
+  # ── ARIS Application ─────────────────────────────────────────
+  aris:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "no"
+    depends_on:
+      ibgateway:
+        condition: service_healthy
+    environment:
+      IBKR_HOST: ibgateway
+      IBKR_PORT: ${IBKR_PORT:-4002}
+      IBKR_CLIENT_ID: ${IBKR_CLIENT_ID:-1}
+      FRED_API_KEY: ${FRED_API_KEY}
+      LSEG_APP_KEY: ${LSEG_APP_KEY}
+      LSEG_SESSION_TYPE: ${LSEG_SESSION_TYPE:-platform}
+      LSEG_USERNAME: ${LSEG_USERNAME:-}
+      LSEG_PASSWORD: ${LSEG_PASSWORD:-}
+      PRIMARY_PRICE_SOURCE: ${PRIMARY_PRICE_SOURCE:-lseg}
+      PRIMARY_MACRO_SOURCE: ${PRIMARY_MACRO_SOURCE:-fred}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    volumes:
+      - aris-data:/app/data
+      - aris-logs:/app/logs
+      - aris-state:/app/state
+      - aris-notes:/app/docs/fund_notes
+    networks:
+      - aris-net
+
+  # ── Scheduler (cron) ─────────────────────────────────────────
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    entrypoint: ["/app/docker/scripts/scheduler-entrypoint.sh"]
+    depends_on:
+      ibgateway:
+        condition: service_healthy
+    environment:
+      IBKR_HOST: ibgateway
+      IBKR_PORT: ${IBKR_PORT:-4002}
+      IBKR_CLIENT_ID: ${IBKR_CLIENT_ID:-2}
+      FRED_API_KEY: ${FRED_API_KEY}
+      LSEG_APP_KEY: ${LSEG_APP_KEY}
+      LSEG_SESSION_TYPE: ${LSEG_SESSION_TYPE:-platform}
+      LSEG_USERNAME: ${LSEG_USERNAME:-}
+      LSEG_PASSWORD: ${LSEG_PASSWORD:-}
+      PRIMARY_PRICE_SOURCE: ${PRIMARY_PRICE_SOURCE:-lseg}
+      PRIMARY_MACRO_SOURCE: ${PRIMARY_MACRO_SOURCE:-fred}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      PIPELINE_SCHEDULE: ${PIPELINE_SCHEDULE:-"30 16 * * 1-5"}
+    volumes:
+      - aris-data:/app/data
+      - aris-logs:/app/logs
+      - aris-state:/app/state
+      - aris-notes:/app/docs/fund_notes
+    networks:
+      - aris-net
+
+volumes:
+  ibgateway-data:
+  aris-data:
+  aris-logs:
+  aris-state:
+  aris-notes:
+
+networks:
+  aris-net:
+    driver: bridge

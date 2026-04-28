@@ -1,0 +1,309 @@
+{
+  "date": "2026-04-24",
+  "timestamp": "2026-04-24T20:20:10.605224",
+  "regime": {
+    "regime": "Stagflation",
+    "growth_trend": "down",
+    "inflation_trend": "up",
+    "growth_value": 12591.0,
+    "inflation_value": 3.2859577528651984,
+    "timestamp": "2026-04-24T20:19:40.339988",
+    "ism_source": "fresh",
+    "cpi_source": "fresh",
+    "ism_provider": "fred",
+    "cpi_provider": "fred",
+    "router_disagreements": {}
+  },
+  "signals": {
+    "CL": {
+      "momentum": 0.6842105263157894,
+      "carry": 0.894736842105263,
+      "value": 0.05263157894736836,
+      "reversal": -0.052631578947368474,
+      "bsv_composite": 0.4999999999999999,
+      "tsmom": 0.5084542110195011,
+      "composite": 0.5042271055097505
+    },
+    "BZ": {
+      "momentum": 0.894736842105263,
+      "carry": 1.0,
+      "value": -0.26315789473684215,
+      "reversal": 0.4736842105263157,
+      "bsv_composite": 0.6263157894736842,
+      "tsmom": 0.5916915727885312,
+      "composite": 0.6090036811311077
+    },
+    "NG": {
+      "momentum": -0.7894736842105263,
+      "carry": -0.7894736842105263,
+      "value": 1.0,
+      "reversal": 1.0,
+      "bsv_composite": -0.16315789473684214,
+      "tsmom": -0.23984026953357213,
+      "composite": -0.20149908213520712
+    },
+    "HO": {
+      "momentum": 1.0,
+      "carry": 0.5789473684210527,
+      "value": -0.6842105263157895,
+      "reversal": 0.7894736842105263,
+      "bsv_composite": 0.5263157894736843,
+      "tsmom": 0.5254002418588146,
+      "composite": 0.5258580156662495
+    },
+    "RB": {
+      "momentum": 0.7894736842105263,
+      "carry": 0.7894736842105263,
+      "value": -0.5789473684210527,
+      "reversal": -0.8947368421052632,
+      "bsv_composite": 0.26315789473684215,
+      "tsmom": 0.7314195919830554,
+      "composite": 0.49728874335994877
+    },
+    "GC": {
+      "momentum": 0.4736842105263157,
+      "carry": 0.05263157894736836,
+      "value": -0.8947368421052632,
+      "reversal": -0.4736842105263158,
+      "bsv_composite": -0.047368421052631615,
+      "tsmom": 0.22081622777329837,
+      "composite": 0.08672390336033338
+    },
+    "HG": {
+      "momentum": 0.368421052631579,
+      "carry": -0.052631578947368474,
+      "value": -0.368421052631579,
+      "reversal": -0.6842105263157895,
+      "bsv_composite": -0.04210526315789474,
+      "tsmom": 0.26304239113744476,
+      "composite": 0.110468563989775
+    },
+    "ZC": {
+      "momentum": -0.4736842105263158,
+      "carry": -0.4736842105263158,
+      "value": 0.6842105263157894,
+      "reversal": 0.6842105263157894,
+      "bsv_composite": -0.06842105263157905,
+      "tsmom": 0.2510922287020595,
+      "composite": 0.09133558803524022
+    },
+    "ZW": {
+      "momentum": 0.05263157894736836,
+      "carry": -0.368421052631579,
+      "value": 0.26315789473684204,
+      "reversal": 0.368421052631579,
+      "bsv_composite": 0.036842105263157864,
+      "tsmom": 0.3792359730310458,
+      "composite": 0.2080390391471018
+    },
+    "ZS": {
+      "momentum": -0.1578947368421053,
+      "carry": -0.1578947368421053,
+      "value": 0.368421052631579,
+      "reversal": 0.5789473684210527,
+      "bsv_composite": 0.05789473684210525,
+      "tsmom": 0.4408017942108598,
+      "composite": 0.24934826552648254
+    },
+    "ZM": {
+      "momentum": -0.052631578947368474,
+      "carry": 0.368421052631579,
+      "value": 0.5789473684210527,
+      "reversal": 0.1578947368421053,
+      "bsv_composite": 0.2105263157894737,
+      "tsmom": 0.29671475552785265,
+      "composite": 0.25362053565866316
+    },
+    "ZL": {
+      "momentum": 0.5789473684210527,
+      "carry": 0.1578947368421053,
+      "value": -0.1578947368421053,
+      "reversal": -0.368421052631579,
+      "bsv_composite": 0.18421052631578952,
+      "tsmom": 0.7943107755831812,
+      "composite": 0.48926065094948534
+    },
+    "CT": {
+      "momentum": -0.26315789473684215,
+      "carry": -0.6842105263157895,
+      "value": 0.4736842105263157,
+      "reversal": -0.7894736842105263,
+      "bsv_composite": -0.30000000000000004,
+      "tsmom": 0.5341363293834445,
+      "composite": 0.11706816469172221
+    },
+    "KC": {
+      "momentum": -0.6842105263157895,
+      "carry": 0.4736842105263157,
+      "value": -0.052631578947368474,
+      "reversal": 0.26315789473684204,
+      "bsv_composite": -0.12631578947368427,
+      "tsmom": -0.374961773910536,
+      "composite": -0.2506387816921101
+    },
+    "SB": {
+      "momentum": -0.5789473684210527,
+      "carry": -0.26315789473684215,
+      "value": 0.7894736842105263,
+      "reversal": 0.894736842105263,
+      "bsv_composite": -0.005263157894736886,
+      "tsmom": -0.21924812145904327,
+      "composite": -0.11225563967689008
+    },
+    "CC": {
+      "momentum": -0.8947368421052632,
+      "carry": -0.5789473684210527,
+      "value": 0.894736842105263,
+      "reversal": -0.5789473684210527,
+      "bsv_composite": -0.4105263157894737,
+      "tsmom": -0.4663486176536964,
+      "composite": -0.438437466721585
+    },
+    "LE": {
+      "momentum": 0.1578947368421053,
+      "carry": 0.26315789473684204,
+      "value": -0.4736842105263158,
+      "reversal": -0.26315789473684215,
+      "bsv_composite": -0.0052631578947368515,
+      "tsmom": 0.4048861655334841,
+      "composite": 0.19981150381937363
+    },
+    "GF": {
+      "momentum": 0.26315789473684204,
+      "carry": 0.6842105263157894,
+      "value": -0.7894736842105263,
+      "reversal": 0.05263157894736836,
+      "bsv_composite": 0.12631578947368416,
+      "tsmom": 0.3439120115235856,
+      "composite": 0.23511390049863487
+    },
+    "HE": {
+      "momentum": -0.368421052631579,
+      "carry": -0.8947368421052632,
+      "value": 0.1578947368421053,
+      "reversal": -0.1578947368421053,
+      "bsv_composite": -0.3631578947368422,
+      "tsmom": 0.31574118589220435,
+      "composite": -0.023708354422318917
+    }
+  },
+  "carry_source_per_asset": {
+    "CL": "real_curve",
+    "BZ": "real_curve",
+    "NG": "real_curve",
+    "HO": "real_curve",
+    "RB": "real_curve",
+    "GC": "real_curve",
+    "HG": "real_curve",
+    "ZC": "real_curve",
+    "ZW": "real_curve",
+    "ZS": "real_curve",
+    "ZM": "real_curve",
+    "ZL": "real_curve",
+    "CT": "real_curve",
+    "KC": "real_curve",
+    "SB": "real_curve",
+    "CC": "real_curve",
+    "LE": "real_curve",
+    "GF": "real_curve",
+    "HE": "real_curve"
+  },
+  "target_positions": {
+    "CL": 0.016109880634781328,
+    "BZ": 0.021198951398445794,
+    "NG": -0.003946596783189633,
+    "HO": 0.014860035757163775,
+    "RB": 0.020094877729578638,
+    "GC": 0.005228176526291902,
+    "HG": 0.007485291928159426,
+    "ZC": 0.015023190600888402,
+    "ZW": 0.01743171651124595,
+    "ZS": 0.04120528136428597,
+    "ZM": 0.027067856706308204,
+    "ZL": 0.043633986751934035,
+    "CT": 0.014390613720993348,
+    "KC": -0.016871177280826273,
+    "SB": -0.009681403898101841,
+    "CC": -0.018392961339154936,
+    "LE": 0.030907947230485684,
+    "GF": 0.039651443103321964
+  },
+  "excluded_assets": [
+    {
+      "symbol": "PA",
+      "one_lot_notional": 0.0
+    },
+    {
+      "symbol": "PL",
+      "one_lot_notional": 0.0
+    },
+    {
+      "symbol": "SI",
+      "one_lot_notional": 0.0
+    }
+  ],
+  "sector_rescales": [],
+  "health": {
+    "started_at": "2026-04-24T20:19:07.057494",
+    "completed_at": "2026-04-24T20:20:10.606765",
+    "healthy": false,
+    "sources": {
+      "macro_ism": "fresh",
+      "macro_cpi": "fresh",
+      "prices": "fresh",
+      "curves": "19/22"
+    },
+    "providers": {
+      "macro_ism": "fred",
+      "macro_cpi": "fred",
+      "prices": "lseg",
+      "curves": "lseg"
+    },
+    "disagreements": {
+      "BZ": {
+        "primary": 105.88,
+        "secondary": 99.77999877929688,
+        "pct_diff": 0.05761240291559427
+      },
+      "CT": {
+        "primary": 76.78,
+        "secondary": 79.31999969482422,
+        "pct_diff": 0.03308152767418882
+      },
+      "HE": {
+        "primary": 94.475,
+        "secondary": 101.9000015258789,
+        "pct_diff": 0.07859223631520415
+      },
+      "HO": {
+        "primary": 3.9518,
+        "secondary": 3.8457000255584717,
+        "pct_diff": 0.026848518255359152
+      },
+      "KC": {
+        "primary": 309.55,
+        "secondary": 294.8500061035156,
+        "pct_diff": 0.047488269735048896
+      },
+      "NG": {
+        "primary": 2.524,
+        "secondary": 2.688999891281128,
+        "pct_diff": 0.06537238164862437
+      },
+      "RB": {
+        "primary": 3.4793,
+        "secondary": 3.347100019454956,
+        "pct_diff": 0.03799614305896123
+      }
+    },
+    "degradations": [
+      "BZ: cross-validation disagreement (5.76%)",
+      "CT: cross-validation disagreement (3.31%)",
+      "HE: cross-validation disagreement (7.86%)",
+      "HO: cross-validation disagreement (2.68%)",
+      "KC: cross-validation disagreement (4.75%)",
+      "NG: cross-validation disagreement (6.54%)",
+      "RB: cross-validation disagreement (3.80%)"
+    ]
+  }
+}

@@ -27,6 +27,10 @@ credentials.json
 token.json
 service_account.json
 
+# Nested repo clones / large reference dirs
+aris-macro-overlay/
+aris-references/
+
 # OS
 .DS_Store
 Thumbs.db

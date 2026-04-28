@@ -1,0 +1,27 @@
+{
+  "total_return": 0.7445548195054288,
+  "cagr": 0.03712546121515947,
+  "annual_volatility": 0.14936182390887373,
+  "sharpe_ratio": 0.0477060404639056,
+  "sortino_ratio": 0.06505499694549234,
+  "max_drawdown": -0.42311776418720987,
+  "max_drawdown_date": "2024-08-05",
+  "max_drawdown_duration_days": 962,
+  "calmar_ratio": 0.08774262003977973,
+  "win_rate": 0.528125,
+  "best_day": 0.07036024782307401,
+  "worst_day": -0.0681595455655232,
+  "avg_gross_exposure": 1281325.816748617,
+  "avg_positions": 10.277792241603748,
+  "total_costs": 264496.18424654484,
+  "n_years": 15.266255989048597,
+  "n_trading_days": 3841,
+  "regime_annualized_returns": {
+    "Goldilocks": 0.07108553049220147,
+    "Reflation": 0.12760899957209554,
+    "Stagflation": -0.05703248054078946,
+    "Deflation": 0.044908665073284476
+  },
+  "initial_nav": 1000000,
+  "final_nav": 1744224.1488718912
+}

@@ -66,7 +66,7 @@ FUND_NOTE_PATH = "docs/fund_notes/"
 #   "c8"     = C8 Kitchen Sink VF (Phase A.1 — recommended, Sharpe 0.92 backtest)
 #   "hybrid" = T6 Hybrid 50/50 TSMOM+BSV (Phase A original)
 #   "bsv"    = Pure BSV composite (legacy)
-ALPHA_MODE = os.getenv("ALPHA_MODE", "c8").lower()
+ALPHA_MODE = os.getenv("ALPHA_MODE", "c10").lower()
 
 # T6 hybrid settings (only used when ALPHA_MODE=hybrid)
 USE_HYBRID_ALPHA = ALPHA_MODE == "hybrid"
@@ -84,6 +84,24 @@ C8_WEIGHTS = {
     "sector_rot": float(os.getenv("C8_W_SECTOR_ROT", "0.25")),
     "tsmom": float(os.getenv("C8_W_TSMOM", "0.15")),
     "value": float(os.getenv("C8_W_VALUE", "0.20")),
+}
+
+# --- Phase A.2: C10 Multi-Rev Carry (Battery #5 winner) ---
+C10_REVERSAL_WINDOWS = tuple(
+    int(x) for x in os.getenv("C10_REVERSAL_WINDOWS", "5,10,21").split(",")
+)
+C10_SECTOR_ROT_LOOKBACK = int(os.getenv("C10_SECTOR_ROT_LOOKBACK", "252"))
+C10_TSMOM_LOOKBACK = int(os.getenv("C10_TSMOM_LOOKBACK", "252"))
+C10_CARRY_SHORT = int(os.getenv("C10_CARRY_SHORT", "21"))
+C10_CARRY_LONG = int(os.getenv("C10_CARRY_LONG", "63"))
+C10_VOL_FILTER = os.getenv("C10_VOL_FILTER", "true").lower() == "true"
+C10_VOL_DAMPEN_LOW = float(os.getenv("C10_VOL_DAMPEN_LOW", "0.3"))
+C10_WEIGHTS = {
+    "reversal": float(os.getenv("C10_W_REVERSAL", "0.40")),
+    "sector_rot": float(os.getenv("C10_W_SECTOR_ROT", "0.15")),
+    "carry": float(os.getenv("C10_W_CARRY", "0.15")),
+    "tsmom": float(os.getenv("C10_W_TSMOM", "0.10")),
+    "value": float(os.getenv("C10_W_VALUE", "0.20")),
 }
 
 # --- Phase A: Vol-target sizing ---

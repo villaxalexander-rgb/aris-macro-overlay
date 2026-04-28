@@ -370,3 +370,102 @@ def generate_c8_signal(
         f"composite abs_mean={composite.abs().mean():.3f}"
     )
     return out
+
+
+def compute_carry_proxy(prices: pd.DataFrame, short_window: int = 21,
+                        long_window: int = 63) -> pd.Series:
+    """Roll-yield proxy via short vs long return differential.
+
+    Positive spread ≈ backwardation (buy signal).
+    Returns cross-sectionally ranked values in [-1, 1].
+
+    Gorton & Rouwenhorst (2006) and Koijen et al. (2018) document
+    Sharpe 0.5-0.8 on commodity carry alone. This proxy uses price
+    returns as a stand-in until real futures curve data (Phase B) is live.
+    """
+    ret_short = prices.pct_change(short_window).iloc[-1]
+    ret_long = prices.pct_change(long_window).iloc[-1]
+    raw = ret_short - ret_long / (long_window / short_window)
+    ranked = raw.rank(pct=True)
+    return (ranked - 0.5) * 2
+
+
+def generate_c10_signal(prices, curves=None, weights=None,
+                        reversal_windows=(5, 10, 21),
+                        sector_rot_lookback=252,
+                        tsmom_lookback=252,
+                        carry_short=21, carry_long=63,
+                        vol_filter_enabled=True,
+                        vol_dampen_low=0.3) -> pd.DataFrame:
+    """C10 'Multi-Rev Carry' composite — Battery #5 winner.
+
+    Default weights: rev=0.40, sec_rot=0.15, carry=0.15, tsmom=0.10, value=0.20
+    Key improvements over C8:
+      - Multi-window reversal ensemble (5d+10d+21d) instead of single 10d
+      - Roll-yield carry proxy as 5th factor
+    Sharpe 1.068 (0bp) / 0.713 (10bp), OOS 1.313, MaxDD -21.3%.
+    """
+    from signal_engine.tsmom import compute_tsmom_ensemble
+
+    if weights is None:
+        weights = {
+            "reversal": 0.40, "sector_rot": 0.15, "carry": 0.15,
+            "tsmom": 0.10, "value": 0.20,
+        }
+
+    # Factor 1: Multi-window reversal ensemble
+    rev_signals = [compute_reversal(prices, window=w) for w in reversal_windows]
+    rev = sum(rev_signals) / len(rev_signals)
+
+    # Factor 2: Sector rotation
+    sec_rot = compute_sector_rotation(prices, lookback=sector_rot_lookback)
+
+    # Factor 3: Carry proxy (roll yield)
+    carry = compute_carry_proxy(prices, short_window=carry_short,
+                                long_window=carry_long)
+
+    # Factor 4: TSMOM
+    tsmom_sig = compute_tsmom_ensemble(prices, lookbacks=(tsmom_lookback,))
+    tsmom_sig = tsmom_sig.reindex(prices.columns).fillna(0.0)
+
+    # Factor 5: Value (5y mean reversion)
+    val = compute_value(prices)
+
+    # Raw composite
+    raw = (
+        weights["reversal"] * rev.astype(float)
+        + weights["sector_rot"] * sec_rot.astype(float)
+        + weights["carry"] * carry.astype(float)
+        + weights["tsmom"] * tsmom_sig.astype(float)
+        + weights["value"] * val.astype(float)
+    )
+
+    # Vol filter
+    if vol_filter_enabled:
+        vol_mult = compute_vol_filter(prices, dampen_low_vol=vol_dampen_low)
+    else:
+        vol_mult = pd.Series(1.0, index=prices.columns)
+
+    composite = raw * vol_mult
+
+    out = pd.DataFrame({
+        "reversal": rev,
+        "sector_rot": sec_rot,
+        "carry": carry,
+        "tsmom": tsmom_sig,
+        "value": val,
+        "vol_mult": vol_mult,
+        "composite": composite,
+    })
+
+    log.info(
+        f"C10 signal: rev_mean={rev.abs().mean():.3f} "
+        f"(windows={reversal_windows}), "
+        f"secrot={sec_rot.abs().mean():.3f}, "
+        f"carry={carry.abs().mean():.3f}, "
+        f"tsmom={tsmom_sig.abs().mean():.3f}, "
+        f"val={val.abs().mean():.3f}, "
+        f"vf={'ON' if vol_filter_enabled else 'OFF'}, "
+        f"composite={composite.abs().mean():.3f}"
+    )
+    return out

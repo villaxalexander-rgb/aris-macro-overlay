@@ -110,12 +110,37 @@ def run_daily_signals() -> dict:
         C8_VOL_FILTER,
         C8_VOL_DAMPEN_LOW,
         C8_WEIGHTS,
+        C10_REVERSAL_WINDOWS,
+        C10_SECTOR_ROT_LOOKBACK,
+        C10_TSMOM_LOOKBACK,
+        C10_CARRY_SHORT,
+        C10_CARRY_LONG,
+        C10_VOL_FILTER,
+        C10_VOL_DAMPEN_LOW,
+        C10_WEIGHTS,
     )
-    from signal_engine.bsv_signals import generate_hybrid_signals, generate_c8_signal
+    from signal_engine.bsv_signals import (
+        generate_hybrid_signals, generate_c8_signal, generate_c10_signal,
+    )
 
     target_positions: dict[str, float] = {}
 
-    if ALPHA_MODE == "c8" and not prices.empty:
+    if ALPHA_MODE == "c10" and not prices.empty:
+        # C10 Multi-Rev Carry — Phase A.2 (battery #5 winner)
+        bsv = generate_c10_signal(
+            prices,
+            curves=curves,
+            weights=C10_WEIGHTS,
+            reversal_windows=C10_REVERSAL_WINDOWS,
+            sector_rot_lookback=C10_SECTOR_ROT_LOOKBACK,
+            tsmom_lookback=C10_TSMOM_LOOKBACK,
+            carry_short=C10_CARRY_SHORT,
+            carry_long=C10_CARRY_LONG,
+            vol_filter_enabled=C10_VOL_FILTER,
+            vol_dampen_low=C10_VOL_DAMPEN_LOW,
+        )
+        log.info("Alpha mode: C10 Multi-Rev Carry")
+    elif ALPHA_MODE == "c8" and not prices.empty:
         # C8 Kitchen Sink VF — Phase A.1 (battery #3 winner)
         bsv = generate_c8_signal(
             prices,
@@ -127,7 +152,7 @@ def run_daily_signals() -> dict:
             vol_filter_enabled=C8_VOL_FILTER,
             vol_dampen_low=C8_VOL_DAMPEN_LOW,
         )
-        log.info(f"Alpha mode: C8 Kitchen Sink VF")
+        log.info("Alpha mode: C8 Kitchen Sink VF")
     elif ALPHA_MODE == "hybrid" and not prices.empty:
         # T6 Hybrid — Phase A original
         bsv = generate_hybrid_signals(

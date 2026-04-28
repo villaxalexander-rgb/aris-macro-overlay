@@ -125,3 +125,81 @@ class TestGenerateC8Signal:
         """Sanity: default C8 weights should sum to 1.0."""
         from config.settings import C8_WEIGHTS
         assert sum(C8_WEIGHTS.values()) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# compute_carry_proxy
+# ---------------------------------------------------------------------------
+
+class TestCarryProxy:
+    def test_returns_series_with_correct_index(self, synthetic_prices):
+        from signal_engine.bsv_signals import compute_carry_proxy
+        result = compute_carry_proxy(synthetic_prices, short_window=21, long_window=63)
+        assert isinstance(result, pd.Series)
+        assert set(result.index) == set(synthetic_prices.columns)
+
+    def test_values_bounded(self, synthetic_prices):
+        from signal_engine.bsv_signals import compute_carry_proxy
+        result = compute_carry_proxy(synthetic_prices)
+        assert (result >= -1.0).all() and (result <= 1.0).all()
+
+    def test_different_windows_differ(self, synthetic_prices):
+        from signal_engine.bsv_signals import compute_carry_proxy
+        r1 = compute_carry_proxy(synthetic_prices, short_window=5, long_window=21)
+        r2 = compute_carry_proxy(synthetic_prices, short_window=21, long_window=63)
+        assert not r1.equals(r2)
+
+
+# ---------------------------------------------------------------------------
+# generate_c10_signal (integration)
+# ---------------------------------------------------------------------------
+
+class TestGenerateC10Signal:
+    def test_returns_dataframe_with_expected_columns(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        result = generate_c10_signal(synthetic_prices)
+        for col in ["reversal", "sector_rot", "carry", "tsmom", "value",
+                     "vol_mult", "composite"]:
+            assert col in result.columns, f"Missing column: {col}"
+
+    def test_index_matches_assets(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        result = generate_c10_signal(synthetic_prices)
+        assert set(result.index) == set(synthetic_prices.columns)
+
+    def test_composite_not_all_zero(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        result = generate_c10_signal(synthetic_prices)
+        assert result["composite"].abs().sum() > 0
+
+    def test_vol_filter_disabled(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        result = generate_c10_signal(synthetic_prices, vol_filter_enabled=False)
+        assert (result["vol_mult"] == 1.0).all()
+
+    def test_custom_weights_reversal_only(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        w = {"reversal": 1.0, "sector_rot": 0.0, "carry": 0.0,
+             "tsmom": 0.0, "value": 0.0}
+        result = generate_c10_signal(synthetic_prices, weights=w,
+                                     vol_filter_enabled=False)
+        pd.testing.assert_series_equal(
+            result["composite"], result["reversal"], check_names=False
+        )
+
+    def test_has_carry_column(self, synthetic_prices):
+        from signal_engine.bsv_signals import generate_c10_signal
+        result = generate_c10_signal(synthetic_prices)
+        assert "carry" in result.columns
+        assert result["carry"].abs().sum() > 0
+
+    def test_default_weights_sum_to_one(self):
+        from config.settings import C10_WEIGHTS
+        assert sum(C10_WEIGHTS.values()) == pytest.approx(1.0)
+
+    def test_multi_rev_windows(self, synthetic_prices):
+        """Single-window and multi-window should produce different signals."""
+        from signal_engine.bsv_signals import generate_c10_signal
+        r1 = generate_c10_signal(synthetic_prices, reversal_windows=(10,))
+        r2 = generate_c10_signal(synthetic_prices, reversal_windows=(5, 10, 21))
+        assert not r1["composite"].equals(r2["composite"])
